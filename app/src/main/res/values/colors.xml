@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="BackgorundColor">#168f7d</color>
+    <color name="ButtonColor">#08ae9e</color>
+    <color name="LoginEdittextColor">#ffffff</color>
+    <color name="signupbutton">#8ed4ca</color>9bc8c1
+    <color name="signupbgcolor">#cfe5e2</color>
+    <color name="homescreen_toolbar_color">#0c192c</color>
+    <color name="homescreen_bg_color">#c9cfbb</color>
+</resources>
