@@ -6,8 +6,11 @@
     <color name="BackgorundColor">#168f7d</color>
     <color name="ButtonColor">#08ae9e</color>
     <color name="LoginEdittextColor">#ffffff</color>
-    <color name="signupbutton">#8ed4ca</color>9bc8c1
+    <color name="signupbutton">#8ed4ca</color>
     <color name="signupbgcolor">#cfe5e2</color>
     <color name="homescreen_toolbar_color">#0c192c</color>
     <color name="homescreen_bg_color">#c9cfbb</color>
+    <color name="okbtn">#8ed4ca</color>
+    <color name="test">#85dcf5</color>
+    <color name="calibrate">#000000</color>
 </resources>

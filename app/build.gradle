@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.google.hangouts.hypnosture"
         minSdkVersion 15
@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,28 +21,30 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.google.firebase:firebase-auth:11.8.0'
     testCompile 'junit:junit:4.12'
 }
-
 buildscript {
+    repositories {
+        jcenter()
+    }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.google.gms:google-services:3.1.0'
     }
     repositories {
         google()
-        jcenter()
     }
 }
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
+repositories {
+    google()
 }
+
+apply plugin: 'com.google.gms.google-services'

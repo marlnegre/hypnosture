@@ -50,7 +50,8 @@
             app:srcCompat="@drawable/hypnosture2"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="39dp" />
+            android:layout_marginTop="39dp"
+            />
 
         <Button
             android:id="@+id/login"
@@ -66,13 +67,12 @@
             />
 
         <Button
-            android:id="@+id/Signup"
+            android:id="@+id/signupbtn"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:text="@string/signup"
             android:textColor="@color/LoginEdittextColor"
             android:background="@color/signupbutton"
-
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/login"
             android:layout_alignStart="@+id/login"

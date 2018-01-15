@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/menuSent"
+        android:text="@string/sentence"
+        />
+    <item
+        android:id="@+id/menuLogout"
+        android:title="@string/logout"
+        />
+    <item
+        android:id="@+id/menuCancel"
+        android:title="@string/cancel"
+        />
+</menu>
