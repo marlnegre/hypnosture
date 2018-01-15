@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.hangouts.hypnosture.AdminActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/calibrate" />
+
+        <ImageView
+            android:id="@+id/Adminprofile"
+            android:layout_width="50sp"
+            android:layout_height="58sp"
+            android:layout_alignBottom="@+id/toolbar2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:background="@drawable/profile"
+            android:scaleType="centerCrop"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <Button
+            android:id="@+id/viewBtn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchView"
+            android:layout_centerHorizontal="true"
+            android:background="@color/ButtonColor"
+            android:text="@string/viewStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="536dp" />
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="50sp"
+            android:layout_height="60sp"
+            android:layout_below="@+id/viewBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/profile"
+            android:scaleType="centerCrop"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/deleteBtn"
+            android:layout_alignLeft="@+id/deleteBtn"
+            android:layout_alignStart="@+id/deleteBtn"
+            android:background="@color/ButtonColor"
+            android:text="@string/updateStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="536dp" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/createBtn"
+            android:layout_alignLeft="@+id/createBtn"
+            android:layout_alignStart="@+id/createBtn"
+            android:layout_marginBottom="47dp"
+            android:background="@color/ButtonColor"
+            android:text="@string/deleteStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="536dp" />
+
+        <Button
+            android:id="@+id/createBtn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/viewBtn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/viewBtn"
+            android:layout_marginBottom="29dp"
+            android:background="@color/ButtonColor"
+            android:text="@string/createStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="536dp" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="250sp"
+            android:layout_height="50sp"
+            android:layout_below="@+id/toolbar2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:queryHint="@string/search"
+            android:searchHintIcon="@string/search"
+            android:autofillHints="@string/search"
+            android:hint="@string/search" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Adminprofile"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/Adminprofile"
+            android:layout_toRightOf="@+id/Adminprofile"
+            android:text="@string/adminStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

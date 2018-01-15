@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.hangouts.hypnosture.Calibrate">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/calibrate" />
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:text="@string/calib"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@+id/profile"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/posturerecorder" />
+
+        <Button
+            android:id="@+id/okbutton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="21dp"
+            android:background="@color/ButtonColor"
+            android:text="@string/profilebtn"
+            android:textColor="@color/LoginEdittextColor"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="536dp" />
+
+        <TextView
+            android:id="@+id/direction"
+            android:layout_width="250sp"
+            android:layout_height="210sp"
+            android:layout_below="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="@string/direction"
+            android:textColor="@color/calibrate"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
