@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import static java.lang.Thread.sleep;
-
 public class HomeActivity extends AppCompatActivity {
 
     AnimationDrawable animation;
@@ -17,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ImageView loading = (ImageView) findViewById(R.id.imageView);
+        ImageView loading = findViewById(R.id.imageView);
         animation = (AnimationDrawable) loading.getDrawable();
         animation.start();
         Thread myThread = new Thread(){
@@ -28,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     sleep(3000);
 
-                    Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent myIntent = new Intent(getApplicationContext(), AdminActivity.class);
                     startActivity(myIntent);
                     finish();
                 } catch (InterruptedException e) {

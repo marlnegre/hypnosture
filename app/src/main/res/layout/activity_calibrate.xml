@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/signupbgcolor"
     tools:context="com.google.hangouts.hypnosture.Calibrate">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,15 +19,15 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="@color/calibrate" />
+            android:background="@color/ButtonColor" />
 
         <TextView
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/toolbar"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
             android:text="@string/calib"
             android:textColor="@color/LoginEdittextColor"
             android:textSize="20sp" />
@@ -34,9 +36,22 @@
             android:id="@+id/imageView2"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:layout_below="@+id/profile"
+            android:layout_below="@+id/toolbar"
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/posturerecorder" />
+
+
+        <ImageButton
+            android:id="@+id/logoutBtn"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignBottom="@+id/profile"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/logo" />
 
         <Button
             android:id="@+id/okbutton"

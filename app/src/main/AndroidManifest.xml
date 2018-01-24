@@ -26,7 +26,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".Calibrate" />
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>

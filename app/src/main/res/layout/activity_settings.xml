@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ButtonColor"
+    tools:context="com.google.hangouts.hypnosture.Settings">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/signupbgcolor"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/ButtonColor"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:text="@string/settings"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/posturevib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="58dp"
+            android:text="@string/postureStr"
+            android:textColor="@color/calibrate"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/snorevib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/posturevib"
+            android:layout_alignRight="@+id/posturevib"
+            android:layout_below="@+id/delay1"
+            android:layout_marginTop="44dp"
+            android:text="@string/snoreStr"
+            android:textColor="@color/calibrate"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/snoreLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/calibrateBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="64dp"
+            android:text="@string/snoreLevelStr"
+            android:textColor="@color/calibrate"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/delay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/snoreLevel"
+            android:layout_alignLeft="@+id/delay1"
+            android:layout_alignStart="@+id/delay1"
+            android:layout_marginBottom="39dp"
+            android:text="@string/delayStr"
+            android:textColor="@color/calibrate"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/delay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/posturevib"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="88dp"
+            android:text="@string/delayStr"
+            android:textColor="@color/calibrate"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <Button
+            android:id="@+id/calibrateBtn"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginRight="62dp"
+            android:background="@color/ButtonColor"
+            android:text="@string/calibStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/calibrateBtn"
+            android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_toLeftOf="@+id/calibrateBtn"
+            android:layout_toStartOf="@+id/calibrateBtn"
+            android:background="@color/ButtonColor"
+            android:text="@string/saveStr"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

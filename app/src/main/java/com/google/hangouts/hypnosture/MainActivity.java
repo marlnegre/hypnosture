@@ -75,11 +75,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Intent intent = new Intent(MainActivity.this, Calibrate.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
-                        }else{
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }
@@ -90,6 +88,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login_Button = findViewById(R.id.login);
         signup_button = findViewById(R.id.signupbtn);
         progressBar = findViewById(R.id.progressbar);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(mAuth.getCurrentUser() != null){
+            finish();
+            startActivity(new Intent(this, Homescreen.class));
+        }
     }
 
     @Override

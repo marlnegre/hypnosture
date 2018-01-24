@@ -11,9 +11,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="212dp"
+        tools:layout_editor_absoluteY="385dp">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -39,6 +40,15 @@
             android:scaleType="centerCrop"
             tools:layout_editor_absoluteX="112dp"
             tools:layout_editor_absoluteY="107dp" />
+
+        <ProgressBar
+            android:id="@+id/profileProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/profile"
             android:layout_width="wrap_content"
@@ -51,6 +61,7 @@
             android:textSize="20sp"
             tools:layout_editor_absoluteX="153dp"
             tools:layout_editor_absoluteY="16dp" />
+
         <EditText
             android:id="@+id/fname"
             android:layout_width="290dp"
@@ -62,6 +73,7 @@
             android:hint="@string/profilefname"
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="267dp" />
+
         <EditText
             android:id="@+id/lname"
             android:layout_width="290dp"
@@ -73,6 +85,7 @@
             android:hint="@string/profilelname"
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="318dp" />
+
         <TextView
             android:id="@+id/sex"
             android:layout_width="wrap_content"
@@ -85,43 +98,52 @@
             android:textSize="25sp"
             tools:layout_editor_absoluteX="79dp"
             tools:layout_editor_absoluteY="390dp" />
-        <RadioButton
-            android:id="@+id/maleradiobtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/sex"
-            android:layout_marginLeft="9dp"
-            android:layout_marginStart="9dp"
-            android:layout_toEndOf="@+id/sex"
+
+
+        <RadioGroup
+            android:id="@+id/radioGrp"
+            android:layout_below="@+id/lname"
+            android:layout_marginTop="9dp"
             android:layout_toRightOf="@+id/sex"
-            android:text="@string/profilemale"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="131dp"
-            tools:layout_editor_absoluteY="390dp" />
-        <RadioButton
-            android:id="@+id/femaleradiobtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sex"
-            android:layout_alignBottom="@+id/sex"
-            android:layout_toEndOf="@+id/maleradiobtn"
-            android:layout_toRightOf="@+id/maleradiobtn"
-            android:text="@string/profilefem"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="386dp"
-            tools:layout_editor_absoluteY="645dp" />
+            android:layout_toEndOf="@+id/sex"
+            android:orientation="vertical"
+            android:layout_width="235sp"
+            android:layout_height="40sp">
+
+
+            <RadioButton
+                android:id="@+id/maleRBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="@string/profilemale"
+                android:onClick="onRadioButtonClicked" />
+
+            <RadioButton
+                android:id="@+id/femaleRBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/profilefem"
+                android:textSize="20sp"
+                android:onClick="onRadioButtonClicked" />
+
+        </RadioGroup>
+
         <TextView
             android:id="@+id/birthdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/profile"
             android:layout_alignRight="@+id/profile"
-            android:layout_below="@+id/femaleradiobtn"
-            android:layout_marginTop="12dp"
+            android:layout_below="@+id/sex"
+            android:layout_marginTop="24dp"
             android:text="@string/profilebdate"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="162dp"
             tools:layout_editor_absoluteY="447dp" />
+
         <EditText
             android:id="@+id/bdate"
             android:layout_width="wrap_content"

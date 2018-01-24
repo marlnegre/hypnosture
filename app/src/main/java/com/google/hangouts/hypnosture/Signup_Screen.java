@@ -93,6 +93,7 @@ public class Signup_Screen extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progress.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
+                            finish();
                             Intent intent = new Intent(Signup_Screen.this, EditProfileActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
@@ -119,6 +120,7 @@ public class Signup_Screen extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.signupbutton:
+                username.requestFocus();
                 registerUser();
                 break;
         }

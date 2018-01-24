@@ -58,5 +58,15 @@
     <string name="adminStr">ADMINISTRATOR</string>
     <string name="search">Search Account</string>
 
+    <!-- Strings related to Settings -->
+    <string name="calibStr">CALIBRATE</string>
+    <string name="saveStr">SAVE</string>
+    <string name="settings">SETTINGS</string>
+    <string name="postureStr">POSTURE VIBRATION</string>
+    <string name="delayStr">DELAY</string>
+    <string name="snoreStr">SNORE VIBRATION</string>
+    <string name="snoreLevelStr">SNORE LEVEL</string>
+
+
 
 </resources>
