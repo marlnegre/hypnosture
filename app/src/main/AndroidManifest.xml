@@ -24,7 +24,11 @@
         <activity android:name=".Homescreen" />
         <activity android:name=".Signup_Screen" />
         <activity android:name=".HistoryGallery" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".PerformanceStatistics"
+            android:label="@string/title_activity_performance_statistics"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
