@@ -27,4 +27,8 @@
     <string name="signup_password">Password</string>
     <string name="signup_ConfirmPassword">Confirm Password</string>
 
+
+    <!-- Strings related to bluetooth -->
+    <string name="action_settings">Settings</string>
+
 </resources>
