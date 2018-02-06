@@ -26,6 +26,16 @@
     <string name="signup_email">Email Address</string>
     <string name="signup_password">Password</string>
     <string name="signup_ConfirmPassword">Confirm Password</string>
+    <string name="title_activity_performance_statistics">PerformanceStatistics</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Strings related to Performance Statistics -->
+    <string name="performance_statistics">Performance Statistics</string>
+    <string name="tab_text_1">Week 1</string>
+    <string name="tab_text_2">Week 2</string>
+    <string name="tab_text_3">Week 3</string>
+    <string name="tab_text_4">Week 4</string>
 
 
     <!-- Strings related to bluetooth -->
