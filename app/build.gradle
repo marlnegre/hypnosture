@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.google.hangouts.hypnosture"
         minSdkVersion 15
@@ -20,28 +20,44 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:26.+'
+    compile 'com.google.firebase:firebase-auth:11.8.0'
+    compile 'com.android.support:design:26.1.0'
     testCompile 'junit:junit:4.12'
 }
 
 buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.google.gms:google-services:3.1.0'
     }
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
     }
 }
 allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
     }
 }
+apply plugin: 'com.google.gms.google-services'
