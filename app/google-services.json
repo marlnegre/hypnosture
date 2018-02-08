@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "38732486011",
+    "firebase_url": "https://hypnosture.firebaseio.com",
+    "project_id": "hypnosture",
+    "storage_bucket": "hypnosture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38732486011:android:338aa3576591b252",
+        "android_client_info": {
+          "package_name": "com.google.hangouts.hypnosture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38732486011-hvptboirj09cod0hba71vrrasqd9ql00.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.hangouts.hypnosture",
+            "certificate_hash": "91570330a4137461f368b9b2647a4ce8e1b96204"
+          }
+        },
+        {
+          "client_id": "38732486011-m9scbgarm8cp33vlfks8ql9ce1hi19is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWBOsrvGGZdGKj866mwsX_F2ezDbCZlVk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38732486011-m9scbgarm8cp33vlfks8ql9ce1hi19is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
