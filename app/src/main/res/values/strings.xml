@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Hypnosture</string>
-    <string name="Username">Username or Email</string>
+    <string name="Email">Username or Email</string>
     <string name="Password">Password</string>
     <string name="Button">LOGIN</string>
     <string name="signup">SIGN UP</string>
@@ -22,7 +22,7 @@
     <string name="title_activity_homescreen">Homescreen</string>
 
     <!-- Strings related to SIGN UP -->
-    <string name="signup_username">Username</string>
+    <string name="signup_name">Username</string>
     <string name="signup_email">Email Address</string>
     <string name="signup_password">Password</string>
     <string name="signup_ConfirmPassword">Confirm Password</string>
@@ -40,5 +40,57 @@
 
     <!-- Strings related to bluetooth -->
     <string name="action_settings">Settings</string>
+
+    <!-- Strings related to EDIT PROFILE -->
+    <string name="profile">PROFILE</string>
+    <string name="profilename">Name</string>
+    <string name="profilesex">Sex</string>
+    <string name="profilebdate">Birthdate:</string>
+    <string name="profilemale">Male</string>
+    <string name="profilefem">Female</string>
+    <string name="profilebtn">OK</string>
+    <string name="change_pass">Profile</string>
+
+
+    <!-- Strings related to LOGOUT -->
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="sentence"></string>
+
+    <!-- Strings related to Calibrate -->
+    <string name="direction">Try to hit the dot 3 times.
+        If you were able to hit the dot comfortably with the
+        posture and positioning of the device, the device correctly worn.
+        If not, try to adjust the device on your neck and try to calibrate again.</string>
+    <string name="okbtn">OK</string>
+    <string name="calib">CALIBRATE</string>
+
+    <!-- Strings related to Admin -->
+    <string name="viewStr">VIEW</string>
+    <string name="updateStr">UPDATE</string>
+    <string name="deleteStr">DELETE</string>
+    <string name="createStr">CREATE</string>
+    <string name="adminStr">ADMINISTRATOR</string>
+    <string name="search">Search Account</string>
+
+    <!-- Strings related to Settings -->
+    <string name="calibStr">CALIBRATE</string>
+    <string name="saveStr">SAVE</string>
+    <string name="settings">SETTINGS</string>
+    <string name="postureStr">POSTURE VIBRATION</string>
+    <string name="delayStr">DELAY</string>
+    <string name="snoreStr">SNORE VIBRATION</string>
+    <string name="snoreLevelStr">SNORE LEVEL</string>
+
+    <string name="information">Information</string>
+    <string name="updownExercise_Problem">Problem: Incorrect head posture deteriorates neck movement functions
+                                          to strain muscles and joints. In results, only limited parts are used.</string>
+
+
+    <!-- Strings related to Settings -->
+    <string name="changepass">CHANGE PASSWORD</string>
+    <string name="change">CHANGE</string>
+    <string name="stringpass">Enter new password</string>
+
 
 </resources>
