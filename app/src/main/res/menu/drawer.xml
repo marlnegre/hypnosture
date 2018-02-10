@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/drawer_profile"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
+
+    <item
+        android:id="@+id/drawer_stat"
+        android:icon="@drawable/perfstat"
+        android:title="@string/performancestat" />
+
+    <item
+        android:id="@+id/drawer_recommendation"
+        android:icon="@drawable/ic_recommend"
+        android:title="@string/recommend" />
+
+    <item
+        android:id="@+id/drawer_settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings" />
+
+
+    <item
+        android:id="@+id/navigation_exercise"
+        android:icon="@drawable/ic_arrow_forward_black_24dp"
+        android:title="@string/logout" />
+
+</menu>
