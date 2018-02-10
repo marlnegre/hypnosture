@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.hangouts.hypnosture.EditProfileActivity">
+    tools:context="com.google.hangouts.hypnosture.UserProfileActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -67,37 +66,14 @@
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="267dp" />
 
-
-        <TextView
-            android:id="@+id/sex"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/birthday"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_centerHorizontal="true"
-            android:text="@string/profilesex"
-            android:textSize="25sp"
-            tools:layout_editor_absoluteX="79dp"
-            tools:layout_editor_absoluteY="390dp" />
-
-
-        <TextView
-            android:id="@+id/birthdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rg"
-            android:layout_centerHorizontal="true"
-            android:text="@string/profilebdate"
-            android:textSize="25sp"
-            tools:layout_editor_absoluteX="162dp"
-            tools:layout_editor_absoluteY="447dp" />
-
-        <EditText
-            android:id="@+id/birthday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/birthdate"
-            android:layout_centerHorizontal="true"
             android:ems="10"
+            android:hint="Birthday"
             android:inputType="date"
             tools:layout_editor_absoluteX="98dp"
             tools:layout_editor_absoluteY="483dp" />
@@ -106,20 +82,42 @@
             android:id="@+id/okbutton"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/profile"
-            android:layout_alignRight="@+id/profile"
-            android:layout_below="@+id/birthday"
+            android:layout_alignLeft="@+id/displayVerification"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/displayVerification"
+            android:layout_marginBottom="15dp"
             android:background="@color/ButtonColor"
             android:text="@string/profilebtn"
             android:textColor="@color/LoginEdittextColor" />
+
+        <TextView
+            android:id="@+id/displayVerification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileImage"
+            android:layout_centerHorizontal="true"
+            android:text="Verified"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/birthday"
+            android:layout_centerHorizontal="true"
+            android:text="@string/profilesex"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="390dp" />
 
         <RadioGroup
             android:id="@+id/rg"
             android:layout_width="200sp"
             android:layout_height="40sp"
-            android:layout_alignEnd="@+id/birthday"
-            android:layout_alignRight="@+id/birthday"
-            android:layout_below="@+id/sex"
+            android:layout_below="@+id/birthday"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
             android:orientation="horizontal">
 
             <RadioButton
@@ -148,28 +146,6 @@
 
         </RadioGroup>
 
-        <TextView
-            android:id="@+id/displayVerification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profileImage"
-            android:layout_centerHorizontal="true"
-            android:text="Verified"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-
-        <Button
-            android:id="@+id/changebutton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/profileImage"
-            android:layout_alignRight="@+id/profileImage"
-            android:layout_below="@+id/okbutton"
-            android:background="@color/ButtonColor"
-            android:text="@string/changepass"
-            android:textColor="@color/LoginEdittextColor"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="512dp" />
 
     </RelativeLayout>
 
