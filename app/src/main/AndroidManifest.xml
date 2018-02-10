@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SettingsActivity"/>
         <activity android:name=".ExercisesActivity" />
         <activity android:name=".Homescreen" />
         <activity android:name=".Signup_Screen" />
@@ -34,6 +35,7 @@
         <activity android:name=".SideTiltExercise" />
         <activity android:name=".headShakeActivity" />
         <activity android:name=".UpdownExerciseActivity" />
+
 
     </application>
 
