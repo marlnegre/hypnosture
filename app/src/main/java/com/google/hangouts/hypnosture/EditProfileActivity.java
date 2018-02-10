@@ -83,12 +83,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         loadUserInfo();
 
-        findViewById(R.id.changebutton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(EditProfileActivity.this, ChangingPassword.class));
-            }
-        });
+
 
         findViewById(R.id.profileImage).setOnClickListener(new View.OnClickListener(){
             @Override
