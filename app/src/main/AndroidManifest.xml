@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListViewClass"/>
+        <activity android:name=".ExercisesActivity" />
         <activity android:name=".Homescreen" />
         <activity android:name=".Signup_Screen" />
         <activity android:name=".HistoryGallery" />
@@ -31,7 +31,7 @@
             android:label="@string/title_activity_performance_statistics"
             android:theme="@style/AppTheme" />
         <activity android:name=".ETExercise" />
-        <activity android:name=".ExercisesActivity" />
+        <activity android:name=".SideTiltExercise" />
         <activity android:name=".headShakeActivity" />
         <activity android:name=".UpdownExerciseActivity" />
 
