@@ -85,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.hasChildren()){
                                             if(!passLogin.isEmpty()){
+
+                                                Intent intent = new Intent(MainActivity.this, Homescreen.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
                                                 Toast.makeText(MainActivity.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
                                             }
                                         }
