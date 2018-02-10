@@ -21,7 +21,7 @@
             android:backgroundTint="@color/LoginEdittextColor"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/Email"
+            android:hint="@string/Username"
             android:textColor="@color/LoginEdittextColor"
             android:layout_marginTop="34dp"
             android:layout_below="@+id/imageView"
