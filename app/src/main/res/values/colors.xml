@@ -11,4 +11,6 @@
     <color name="signupbgcolor">#cfe5e2</color>
     <color name="homescreen_toolbar_color">#0c192c</color>
     <color name="homescreen_bg_color">#c9cfbb</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#CC000000</color>
 </resources>

@@ -89,5 +89,8 @@
     <string name="change">CHANGE</string>
     <string name="stringpass">Enter new password</string>
 
+    <!-- Strings related to exercises -->
+     <string name="button_ok">OK</string>
+
 
 </resources>
