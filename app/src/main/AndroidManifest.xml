@@ -23,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ExercisesActivity" />
         <activity android:name=".Homescreen" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" android:theme="@style/Base.Theme.AppCompat"/>
         <activity android:name=".Signup_Screen" />
@@ -38,6 +39,10 @@
         <activity android:name=".SearchBarActivity" />
         <activity android:name=".BarChartActivity" />
         <activity android:name=".UserProfileActivity"/>
+        <activity android:name=".ETExercise" />
+        <activity android:name=".SideTiltExercise" />
+        <activity android:name=".headShakeActivity" />
+        <activity android:name=".UpdownExerciseActivity" />
 
     </application>
 

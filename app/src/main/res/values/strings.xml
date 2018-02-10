@@ -89,5 +89,19 @@
     <string name="change">CHANGE</string>
     <string name="stringpass">Enter new password</string>
 
+    <!-- Strings related to exercises -->
+     <string name="button_ok">OK</string>
+
+    <!-- Strings related to homescreen -->
+    <string name="title_home">Home</string>
+    <string name="title_Gallery">Gallery</string>
+    <string name="title_exercise">Exercise</string>
+    <string name="title_menu">Menu</string>
+    <string name="profile_">Profile</string>
+    <string name="performancestat">Performance Statistic</string>
+    <string name="logout_">Log Out</string>
+    <string name="recommend">Recommendations</string>
+    <string name="settings_">Settings</string>
+
 
 </resources>

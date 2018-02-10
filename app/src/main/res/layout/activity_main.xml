@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
     android:background="@color/BackgorundColor"
     >
 
-    <RelativeLayout
+
         android:layout_width="372dp"
         android:layout_height="572dp"
         tools:layout_editor_absoluteX="8dp"
@@ -21,7 +21,7 @@
             android:backgroundTint="@color/LoginEdittextColor"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/Email"
+            android:hint="@string/Username"
             android:textColor="@color/LoginEdittextColor"
             android:layout_marginTop="34dp"
             android:layout_below="@+id/imageView"
@@ -88,7 +88,9 @@
             android:layout_alignStart="@+id/login"
             android:layout_marginBottom="13dp" />
 
-    </RelativeLayout>
+   
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+</RelativeLayout>
