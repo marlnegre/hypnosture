@@ -7,6 +7,7 @@
     <color name="ButtonColor">#08ae9e</color>
     <color name="LoginEdittextColor">#ffffff</color>
     <color name="signupbutton">#8ed4ca</color>9bc8c1
+    <color name="calibrate">#000000</color>
     <color name="signupbgcolor">#cfe5e2</color>
     <color name="homescreen_toolbar_color">#0c192c</color>
     <color name="homescreen_bg_color">#c9cfbb</color>
