@@ -102,6 +102,8 @@
     <string name="logout_">Log Out</string>
     <string name="recommend">Recommendations</string>
     <string name="settings_">Settings</string>
+    <string name="snore">Snore Page</string>
+
 
 
 </resources>
