@@ -59,12 +59,22 @@
     </android.support.constraint.ConstraintLayout>
 
 
+    <include
+        layout="@layout/app_bar_navigation_addition"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view_created"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:menu="@menu/drawer"
-        android:layout_gravity = "start">
+        android:layout_gravity = "start"
+        app:headerLayout="@layout/nav_header_nav_drawer">
 
 
     </android.support.design.widget.NavigationView>
+
+
+</android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
