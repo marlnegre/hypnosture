@@ -8,12 +8,6 @@
     android:background="@color/BackgorundColor"
     >
 
-
-        android:layout_width="372dp"
-        android:layout_height="572dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="-1dp">
-
         <EditText
             android:id="@+id/editText"
             android:layout_width="290dp"
@@ -53,16 +47,6 @@
             android:layout_marginTop="39dp"
             />
 
-        <ProgressBar
-            android:id="@+id/progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/login"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone"
-            tools:layout_editor_absoluteX="168dp"
-            tools:layout_editor_absoluteY="447dp" />
-
         <Button
             android:id="@+id/login"
             android:layout_width="290dp"
@@ -79,18 +63,13 @@
         <Button
             android:id="@+id/signupbtn"
             android:layout_width="290dp"
+            android:layout_marginTop="13dp"
             android:layout_height="wrap_content"
-            android:text="@string/signup"
-            android:textColor="@color/LoginEdittextColor"
-            android:background="@color/signupbutton"
-            android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/login"
             android:layout_alignStart="@+id/login"
-            android:layout_marginBottom="13dp" />
-
-   
-
-
-
+            android:layout_below="@+id/login"
+            android:background="@color/signupbutton"
+            android:text="@string/signup"
+            android:textColor="@color/LoginEdittextColor" />
 
 </RelativeLayout>

@@ -85,7 +85,7 @@
             android:layout_alignLeft="@+id/displayVerification"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/displayVerification"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="30dp"
             android:background="@color/ButtonColor"
             android:text="@string/profilebtn"
             android:textColor="@color/LoginEdittextColor" />
