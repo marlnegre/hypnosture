@@ -1,5 +1,6 @@
 package com.google.hangouts.hypnosture;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,7 +43,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA = 3;
     private static final int SELECT_FILE = 2;
 
-
+    TextView textView;
     ImageView userImageProfileview;
     EditText name, birthday;
     RadioGroup rg;
@@ -63,6 +65,7 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        textView = findViewById(R.id.displayVerification);
         userImageProfileview = findViewById(R.id.profileImage);
         name = findViewById(R.id.name);
         birthday = findViewById(R.id.birthday);
@@ -70,6 +73,7 @@ public class UserProfileActivity extends AppCompatActivity {
         rb2 =  findViewById(R.id.femaleRB);
         rg = findViewById(R.id.rg);
         okbutton = findViewById(R.id.okbutton);
+
 
         Intent intent = getIntent();
         final String id = intent.getStringExtra(Signup_Screen.USER_ID);
@@ -90,10 +94,13 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         };
 
+
         mProgress = new ProgressDialog(this);
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mStorageref = FirebaseStorage.getInstance().getReference();
+
+        loadUserInfo();
 
         okbutton.setOnClickListener(new View.OnClickListener(){
 
@@ -109,12 +116,34 @@ public class UserProfileActivity extends AppCompatActivity {
         userImageProfileview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 profilePicSelection();
-                
             }
         });
 
+    }
+   @SuppressLint("CheckResult")
+   private void loadUserInfo() {
+        final FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            if(user.isEmailVerified()){
+                textView.setText("Email Verified");
+            }
+            else{
+                textView.setText("Email Not Verified (Click to verify.)");
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(UserProfileActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                });
+            }
+        }
     }
 
     public void rbclick(View v){
@@ -154,11 +183,11 @@ public class UserProfileActivity extends AppCompatActivity {
                         final String id = intent.getStringExtra(Signup_Screen.USER_ID);
                         String profilePhotoUrl = imageUri.toString();
 
-                        Map<String, Object> updateUserData = new HashMap<>();
+                        //Map<String, Object> updateUserData = new HashMap<>();
 
                         UserProfile newProfile = new UserProfile(Username, radioText, Birthday, profilePhotoUrl);
-                        //mUserDatabase.updateChildren().child(id).setValue(newProfile);
-                        mUserDatabase.updateChildren(updateUserData);
+                        mUserDatabase.child(id).setValue(newProfile);
+                        //mUserDatabase.updateChildren(updateUserData);
                         Toast.makeText(UserProfileActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
                         mProgress.dismiss();
                     }

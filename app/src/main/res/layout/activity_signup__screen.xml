@@ -34,53 +34,6 @@
             android:textColor="@color/LoginEdittextColor"
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editText6"
-            android:layout_alignStart="@+id/editText6"
-            android:layout_below="@+id/editText6"
-            android:layout_marginTop="29dp"
-            android:ems="10"
-            android:hint="@string/signup_ConfirmPassword"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editText5"
-            android:layout_alignStart="@+id/editText5"
-            android:layout_below="@+id/editText5"
-            android:layout_marginTop="28dp"
-            android:ems="10"
-            android:hint="@string/signup_password"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editText4"
-            android:layout_alignStart="@+id/editText4"
-            android:layout_below="@+id/editText4"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:hint="@string/signup_email"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:ems="10"
-            android:hint="@string/signup_name"
-            android:inputType="textPersonName" />
-
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -94,12 +47,62 @@
             android:id="@+id/submitSignup"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText3"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="42dp"
+            android:layout_marginBottom="70dp"
             android:background="@color/ButtonColor"
             android:text="@string/SUBMIT"
             android:textColor="@color/LoginEdittextColor" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_marginTop="38dp"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editText5"
+            android:layout_alignLeft="@+id/editText6"
+            android:layout_alignStart="@+id/editText6"
+            android:layout_marginBottom="19dp"
+            android:hint="@string/signup_name"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editText6"
+            android:layout_alignLeft="@+id/editText4"
+            android:layout_alignStart="@+id/editText4"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:hint="@string/signup_email"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editText3"
+            android:layout_alignLeft="@+id/editText3"
+            android:layout_alignStart="@+id/editText3"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:hint="@string/signup_password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/submitSignup"
+            android:layout_alignLeft="@+id/submitSignup"
+            android:layout_alignStart="@+id/submitSignup"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:hint="@string/signup_ConfirmPassword"
+            android:inputType="textPassword" />
+
+
 
     </RelativeLayout>
 

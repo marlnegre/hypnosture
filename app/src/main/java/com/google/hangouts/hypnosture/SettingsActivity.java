@@ -1,5 +1,6 @@
 package com.google.hangouts.hypnosture;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,19 @@ public class SettingsActivity extends AppCompatActivity {
         seekbarPosture();
         seekbarSnore();
         backButton();
+
+        findViewById(R.id.calibrate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingsActivity.this, Calibrate.class));
+            }
+        });
+        findViewById(R.id.changepw).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingsActivity.this, ChangingPassword.class));
+            }
+        });
     }
 
     public void seekbarPosture () {
