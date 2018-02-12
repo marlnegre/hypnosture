@@ -59,10 +59,12 @@
             android:id="@+id/name"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/displayVerification"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/birthday"
+            android:layout_alignStart="@+id/birthday"
+            android:layout_centerVertical="true"
             android:ems="10"
             android:hint="@string/profilename"
+            android:inputType="textPersonName"
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="267dp" />
 
@@ -83,9 +85,9 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/displayVerification"
-            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/displayVerification"
-            android:layout_marginBottom="30dp"
+            android:layout_below="@+id/rg"
+            android:layout_marginTop="31dp"
             android:background="@color/ButtonColor"
             android:text="@string/profilebtn"
             android:textColor="@color/LoginEdittextColor" />
