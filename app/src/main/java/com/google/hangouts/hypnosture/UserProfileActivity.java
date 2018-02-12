@@ -34,9 +34,6 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserProfileActivity extends AppCompatActivity {
@@ -76,13 +73,13 @@ public class UserProfileActivity extends AppCompatActivity {
         rg = findViewById(R.id.rg);
         ok = findViewById(R.id.okbutton);
 
-        Intent intent = getIntent();
-        final String id = intent.getStringExtra(Signup_Screen.USER_ID);
+         Intent intent = getIntent();
+         String id = intent.getStringExtra(Signup_Screen.USER_ID);
         //String name = intent.getStringExtra(Signup_Screen.USER_NAME);
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+          mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -96,20 +93,19 @@ public class UserProfileActivity extends AppCompatActivity {
         };
 
 
+
         mProgress = new ProgressDialog(this);
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Profiles").child(id);
         mStorageref = FirebaseStorage.getInstance().getReference();
 
         loadUserInfo();
-
         ok.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                saveUserProfile();
             }
-
         });
 
         userImageProfileview.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +116,7 @@ public class UserProfileActivity extends AppCompatActivity {
         });
 
     }
-   @SuppressLint("CheckResult")
+  @SuppressLint("CheckResult")
    private void loadUserInfo() {
         final FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
@@ -200,12 +196,12 @@ public class UserProfileActivity extends AppCompatActivity {
 
                         final Uri imageUri = taskSnapshot.getDownloadUrl();
                         Intent intent = getIntent();
-                        final String id = intent.getStringExtra(Signup_Screen.USER_ID);
+                       // final String id = intent.getStringExtra(Signup_Screen.USER_ID);
                         String profilePhotoUrl = imageUri.toString();
 
                         UserProfile newProfile = new UserProfile(Username, rb.getText().toString(), Birthday, profilePhotoUrl);
                         mUserDatabase.setValue(newProfile);
-
+                        startActivity(new Intent(UserProfileActivity.this, Homescreen.class));
                         mProgress.dismiss();
                     }
                 });
