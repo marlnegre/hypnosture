@@ -8,7 +8,7 @@ import android.widget.RadioGroup;
 
 public class UserProfile {
 
-    String full_name;
+    String fullname;
     String sex;
     String birthday;
     String profilePicURL;
@@ -17,28 +17,19 @@ public class UserProfile {
 
     }
 
-    public UserProfile(String full_name, String sex, String birthday, String profilePicURL) {
-     //   this.profileId = profileId;
-        this.full_name = full_name;
+    public UserProfile(String fullname, String sex, String birthday, String profilePicURL) {
+        this.fullname = fullname;
         this.sex = sex;
         this.birthday = birthday;
         this.profilePicURL = profilePicURL;
     }
 
-    /*public String getProfileId() {
-        return profileId;
-    }
-
-    public void setProfileId(String profileId) {
-        this.profileId = profileId;
-    }
-*/
     public String getFull_name() {
-        return full_name;
+        return fullname;
     }
 
     public void setFull_name(String full_name) {
-        this.full_name = full_name;
+        this.fullname = full_name;
     }
 
     public String getSex() {

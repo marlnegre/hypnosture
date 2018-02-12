@@ -36,6 +36,8 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -48,7 +50,7 @@ public class UserProfileActivity extends AppCompatActivity {
     EditText name, birthday;
     RadioGroup rg;
     RadioButton rb, rb1, rb2;
-    Button okbutton;
+    Button ok;
 
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
@@ -72,12 +74,11 @@ public class UserProfileActivity extends AppCompatActivity {
         rb1 = findViewById(R.id.maleRB);
         rb2 =  findViewById(R.id.femaleRB);
         rg = findViewById(R.id.rg);
-        okbutton = findViewById(R.id.okbutton);
-
+        ok = findViewById(R.id.okbutton);
 
         Intent intent = getIntent();
         final String id = intent.getStringExtra(Signup_Screen.USER_ID);
-        String name = intent.getStringExtra(Signup_Screen.USER_NAME);
+        //String name = intent.getStringExtra(Signup_Screen.USER_NAME);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -97,18 +98,16 @@ public class UserProfileActivity extends AppCompatActivity {
 
         mProgress = new ProgressDialog(this);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Profiles").child(id);
         mStorageref = FirebaseStorage.getInstance().getReference();
 
         loadUserInfo();
 
-        okbutton.setOnClickListener(new View.OnClickListener(){
+        ok.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-
                saveUserProfile();
-
             }
 
         });
@@ -153,20 +152,41 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
-
     private void saveUserProfile() {
 
         final String Username = name.getText().toString();
         final String Birthday = birthday.getText().toString();
         int radioBtnID = rg.getCheckedRadioButtonId();
         rb =  findViewById(radioBtnID);
-        final String radioText= rb.getText().toString();
 
+        String edit_text_name = Username;
+        String edit_text_date = Birthday;
 
+        Pattern regex = Pattern.compile("[$&+,:;=?@#|/'<>.^*0123456789()%-]");
+        Pattern regexDate = Pattern.compile("^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d{2}$");
+
+        if (regex.matcher(edit_text_name).find()) {
+            name.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
+            name.requestFocus();
+            return;
+        }
+
+        if (regexDate.matcher(edit_text_date).find()) {
+            birthday.setError("Must not contain numbers and [$&+,:;=?@#|/'<>. ^*()%-]");
+            birthday.requestFocus();
+            return;
+        }
+
+        if (userImageProfileview.getDrawable() == null){
+            Toast.makeText(UserProfileActivity.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!rb1.isChecked() && !rb2.isChecked()){
+            Toast.makeText(UserProfileActivity.this, "Select Sex", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(!TextUtils.isEmpty(Username) && !TextUtils.isEmpty(Birthday))
         {
-            if (userImageProfileview != null){
-
                 mProgress.setTitle("Saving Profile");
                 mProgress.setMessage("Please wait...");
                 mProgress.show();
@@ -183,20 +203,12 @@ public class UserProfileActivity extends AppCompatActivity {
                         final String id = intent.getStringExtra(Signup_Screen.USER_ID);
                         String profilePhotoUrl = imageUri.toString();
 
-                        //Map<String, Object> updateUserData = new HashMap<>();
+                        UserProfile newProfile = new UserProfile(Username, rb.getText().toString(), Birthday, profilePhotoUrl);
+                        mUserDatabase.setValue(newProfile);
 
-                        UserProfile newProfile = new UserProfile(Username, radioText, Birthday, profilePhotoUrl);
-                        mUserDatabase.child(id).setValue(newProfile);
-                        //mUserDatabase.updateChildren(updateUserData);
-                        Toast.makeText(UserProfileActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
                         mProgress.dismiss();
                     }
                 });
-
-            }else{
-                Toast.makeText(this, "Please select profile picture!", Toast.LENGTH_SHORT).show();
-            }
-
         }else{
             Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
         }

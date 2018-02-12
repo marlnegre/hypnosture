@@ -56,37 +56,36 @@
 
         <EditText
             android:id="@+id/editText4"
-            android:layout_marginTop="38dp"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText5"
             android:layout_alignLeft="@+id/editText6"
             android:layout_alignStart="@+id/editText6"
-            android:layout_marginBottom="19dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="58dp"
             android:hint="@string/signup_name"
-            android:inputType="text"/>
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/editText5"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText6"
-            android:layout_alignLeft="@+id/editText4"
-            android:layout_alignStart="@+id/editText4"
-            android:layout_marginBottom="30dp"
+            android:layout_alignLeft="@+id/editText6"
+            android:layout_alignStart="@+id/editText6"
+            android:layout_below="@+id/editText4"
+            android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="@string/signup_email"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/editText6"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText3"
             android:layout_alignLeft="@+id/editText3"
             android:layout_alignStart="@+id/editText3"
-            android:layout_marginBottom="30dp"
+            android:layout_below="@+id/editText5"
             android:ems="10"
+            android:layout_marginTop="30dp"
             android:hint="@string/signup_password"
             android:inputType="textPassword" />
 
@@ -94,11 +93,11 @@
             android:id="@+id/editText3"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/submitSignup"
             android:layout_alignLeft="@+id/submitSignup"
             android:layout_alignStart="@+id/submitSignup"
-            android:layout_marginBottom="30dp"
+            android:layout_below="@+id/editText6"
             android:ems="10"
+            android:layout_marginTop="30dp"
             android:hint="@string/signup_ConfirmPassword"
             android:inputType="textPassword" />
 
