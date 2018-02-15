@@ -6,40 +6,42 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_profile"
-            android:icon="@drawable/profile"
-            android:title="@string/profile" />
+            android:icon="@drawable/ic_profile"
+            android:title="@string/drawer_profile" />
+
 
         <item
             android:id="@+id/drawer_stat"
-            android:icon="@drawable/perfstat"
-            android:title="@string/performancestat" />
+            android:icon="@drawable/ic_perftsats"
+            android:title="@string/drawer_perfstat" />
 
         <item
             android:id="@+id/drawer_recommendation"
-            android:icon="@drawable/ic_recommend"
-            android:title="@string/recommend" />
+            android:icon="@drawable/ic_recommendation"
+            android:title="@string/drawer_recommendations" />
 
         <item
             android:id="@+id/drawer_snore"
             android:icon="@drawable/ic_snore"
-            android:title="@string/snore" />
+            android:title="@string/drawer_snore" />
 
 
     </group>
 
     <item android:title="Options">
         <menu>
-            <item
-                android:id="@+id/drawer_settings"
-                android:icon="@drawable/ic_settings_black_24dp"
-                android:title="@string/settings" />
 
+            <item
+                android:id="@+id/navigation_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/action_settings" />
 
             <item
                 android:id="@+id/navigation_exercise"
-                android:icon="@drawable/ic_arrow_forward_black_24dp"
-                android:title="@string/logout" />
+                android:icon="@drawable/ic_logout"
+                android:title="@string/drawer_logout" />
 
         </menu>
     </item>
+
 </menu>
