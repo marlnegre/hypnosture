@@ -44,6 +44,10 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.10'
 }
 
+dependencies {
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+}
+
 buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
