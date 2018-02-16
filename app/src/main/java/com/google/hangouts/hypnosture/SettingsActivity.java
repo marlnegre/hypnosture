@@ -27,12 +27,6 @@ public class SettingsActivity extends AppCompatActivity {
         seekbarPosture();
         seekbarSnore();
 
-        findViewById(R.id.calibrate).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingsActivity.this, Calibrate.class));
-            }
-        });
         findViewById(R.id.changepw).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
