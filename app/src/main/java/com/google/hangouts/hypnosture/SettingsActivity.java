@@ -3,6 +3,7 @@ package com.google.hangouts.hypnosture;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -17,9 +18,14 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        Toolbar toolbar = findViewById(R.id.settingsToolbar);
+        setSupportActionBar(toolbar);
+
+        setBackBtn();
+
         seekbarPosture();
         seekbarSnore();
-        backButton();
+
     }
 
     public void seekbarPosture () {
@@ -75,18 +81,19 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    public void backButton ()  {
-        Toolbar settingsToolbar = (Toolbar) findViewById(R.id.settingsToolbar);
-        setSupportActionBar(settingsToolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    public void setBackBtn() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+    }
 
-        settingsToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

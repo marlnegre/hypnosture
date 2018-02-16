@@ -30,7 +30,7 @@ public class Activity_Homescreen extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_homescreen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -98,12 +98,12 @@ public class Activity_Homescreen extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -151,8 +151,12 @@ public class Activity_Homescreen extends AppCompatActivity
                 startActivity(s3);
                 break;
             case R.id.navigation_settings:
-                Intent s4 = new Intent(Activity_Homescreen.this, Activity_Settings.class);
+                Intent s4 = new Intent(Activity_Homescreen.this, SettingsActivity.class);
                 startActivity(s4);
+                break;
+            case R.id.drawer_exercise:
+                Intent s5 = new Intent(Activity_Homescreen.this, ExercisesActivity.class);
+                startActivity(s5);
                 break;
 
 

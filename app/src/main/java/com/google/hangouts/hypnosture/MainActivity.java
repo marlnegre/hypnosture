@@ -43,16 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //kemt's added code
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        setTitle("Home");
-        transaction.replace(R.id.frame, new home()).commit();
-        //kemt's added code
-
         findViewById(R.id.signupbtn).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -100,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         if (dataSnapshot.hasChildren()){
                                             if(!passLogin.isEmpty()){
 
-                                                Intent intent = new Intent(MainActivity.this, Homescreen.class);
+                                                Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                 startActivity(intent);
                                                 Toast.makeText(MainActivity.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
@@ -146,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(MainActivity.this, Homescreen.class);
+                            Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }else {
@@ -171,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
         if(mAuth.getCurrentUser() != null){
             finish();
-            startActivity(new Intent(this, Homescreen.class));
+            startActivity(new Intent(this, Activity_Homescreen.class));
         }
     }
 
@@ -187,35 +177,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //Kent's code for the added code haha
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    setTitle("Home");
-                    transaction.replace(R.id.frame, new home()).commit();
-                    return true;
-                case R.id.navigation_dashboard:
-
-                    setTitle("Gallery");
-                    transaction.replace(R.id.frame, new gallery()).commit();
-                    return true;
-                case R.id.navigation_exercise:
-
-                    setTitle("Exercises");
-                    transaction.replace(R.id.frame, new exercise()).commit();
-                    return true;
-
-            }
-            return false;
-        }
-    };
 
 
 

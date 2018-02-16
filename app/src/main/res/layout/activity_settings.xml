@@ -208,13 +208,13 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@color/button"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="140dp"
             android:text="SAVE" />
         <Button
             android:id="@+id/calibrate"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="140dp"
             android:layout_below="@id/save"
             android:background="@color/button"
@@ -224,7 +224,7 @@
         <Button
             android:id="@+id/changepw"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="140dp"
             android:layout_below="@id/calibrate"
             android:background="@color/button"

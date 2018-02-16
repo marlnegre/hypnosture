@@ -6,23 +6,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_profile"
-            android:icon="@drawable/ic_profile"
+            android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="@string/drawer_profile" />
 
 
         <item
             android:id="@+id/drawer_stat"
-            android:icon="@drawable/ic_perftsats"
+            android:icon="@drawable/ic_equalizer_black_24dp"
             android:title="@string/drawer_perfstat" />
 
         <item
             android:id="@+id/drawer_recommendation"
-            android:icon="@drawable/ic_recommendation"
+            android:icon="@drawable/ic_airline_seat_individual_suite_black_24dp"
             android:title="@string/drawer_recommendations" />
 
         <item
             android:id="@+id/drawer_snore"
             android:icon="@drawable/ic_snore"
+            android:title="@string/drawer_snore" />
+        <item
+            android:id="@+id/drawer_exercise"
+            android:icon="@drawable/ic_directions_run_black_24dp"
             android:title="@string/drawer_snore" />
 
 
@@ -38,7 +42,7 @@
 
             <item
                 android:id="@+id/navigation_exercise"
-                android:icon="@drawable/ic_logout"
+                android:icon="@drawable/ic_input_black_24dp"
                 android:title="@string/drawer_logout" />
 
         </menu>

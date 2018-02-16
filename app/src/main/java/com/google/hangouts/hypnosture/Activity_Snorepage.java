@@ -2,6 +2,8 @@ package com.google.hangouts.hypnosture;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 public class Activity_Snorepage extends AppCompatActivity {
 
@@ -9,5 +11,26 @@ public class Activity_Snorepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__snorepage);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_snore);
+        setSupportActionBar(toolbar);
+
+        setBackBtn();
+    }
+
+    public void setBackBtn() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }
