@@ -106,10 +106,6 @@ public class Signup_Screen extends AppCompatActivity {
                         }
                         else {
 
-                            mProgress.setTitle("Creating User");
-                            mProgress.setMessage("Please wait...");
-                            mProgress.show();
-
                             registerUser();
                         }
                     }
@@ -135,18 +131,24 @@ public class Signup_Screen extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
+
                         if (task.isSuccessful()) {
+
+                            mProgress.setTitle("Creating User");
+                            mProgress.setMessage("Please wait...");
+                            mProgress.show();
+
                             String id = databaseUsers.push().getKey();
 
                             User newUser = new User(id, User, Email, Password);
 
                             databaseUsers.child(id).setValue(newUser);
 
-//                           // Intent intent = new Intent(Signup_Screen.this, EditProfileActivity.class);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            intent.putExtra(USER_ID, newUser.getUserId());
-//                            intent.putExtra(USER_NAME, newUser.getUsername());
-//                            startActivity(intent);
+                            Intent intent = new Intent(Signup_Screen.this, UserProfileActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra(USER_ID, newUser.getUserId());
+                            intent.putExtra(USER_NAME, newUser.getUsername());
+                            startActivity(intent);
 
                             finish();
 
