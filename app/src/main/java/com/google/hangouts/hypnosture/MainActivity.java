@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                 startActivity(intent);
                                                 Toast.makeText(MainActivity.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(MainActivity.this, Homescreen.class));
+                                                startActivity(new Intent(MainActivity.this, Activity_Homescreen.class));
                                             }
                                         }
                                         else
