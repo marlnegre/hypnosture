@@ -87,7 +87,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 if (user!=null){
                     finish();
-                    startActivity(new Intent(UserProfileActivity.this, Homescreen.class));
+                    startActivity(new Intent(UserProfileActivity.this, Activity_Homescreen.class));
                 }
             }
         };
@@ -201,7 +201,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
                         UserProfile newProfile = new UserProfile(Username, rb.getText().toString(), Birthday, profilePhotoUrl);
                         mUserDatabase.setValue(newProfile);
-                        startActivity(new Intent(UserProfileActivity.this, Homescreen.class));
+                        startActivity(new Intent(UserProfileActivity.this, Activity_Homescreen.class));
                         mProgress.dismiss();
                     }
                 });
