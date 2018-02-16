@@ -42,7 +42,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA = 3;
     private static final int SELECT_FILE = 2;
 
-    TextView textView;
+    TextView textView, nameText;
     ImageView userImageProfileview;
     EditText name, birthday;
     RadioGroup rg;
@@ -72,6 +72,7 @@ public class UserProfileActivity extends AppCompatActivity {
         rb2 =  findViewById(R.id.femaleRB);
         rg = findViewById(R.id.rg);
         ok = findViewById(R.id.okbutton);
+        nameText = findViewById(R.id.name);
 
          Intent intent = getIntent();
          String id = intent.getStringExtra(Signup_Screen.USER_ID);
@@ -203,6 +204,9 @@ public class UserProfileActivity extends AppCompatActivity {
                         mUserDatabase.setValue(newProfile);
                         startActivity(new Intent(UserProfileActivity.this, Activity_Homescreen.class));
                         mProgress.dismiss();
+
+                        //display name
+                        nameText.setText(name.getText().toString());
                     }
                 });
         }else{

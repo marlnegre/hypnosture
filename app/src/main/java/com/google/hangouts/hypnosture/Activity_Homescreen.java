@@ -15,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * Created by christian Kent Igot on 16/02/2018.
  */
@@ -26,11 +28,16 @@ public class Activity_Homescreen extends AppCompatActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     Toolbar toolbar=null;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+        //firebase
+        mAuth = FirebaseAuth.getInstance();
+
+        //firebase
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -157,6 +164,10 @@ public class Activity_Homescreen extends AppCompatActivity
             case R.id.drawer_exercise:
                 Intent s5 = new Intent(Activity_Homescreen.this, ExercisesActivity.class);
                 startActivity(s5);
+                break;
+            case R.id.drawer_logout:
+                mAuth.signOut();
+                finish();
                 break;
 
 
