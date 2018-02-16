@@ -154,7 +154,7 @@ public class Activity_Homescreen extends AppCompatActivity
                 startActivity(s2);
                 break;
             case R.id.drawer_snore:
-                Intent s3 = new Intent(Activity_Homescreen.this, Activity_Snorepage.class);
+                Intent s3 = new Intent(Activity_Homescreen.this, SnoreTrackActivity.class);
                 startActivity(s3);
                 break;
             case R.id.navigation_settings:

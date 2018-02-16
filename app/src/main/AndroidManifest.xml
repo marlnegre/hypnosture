@@ -52,6 +52,8 @@
             android:label="@string/act_snore"/>
         <activity android:name=".SettingsActivity"
             android:label="@string/act_setting"/>
+        <activity android:name=".SnoreTrackActivity"
+            android:label="@string/act_snore"/>
 
         <activity android:name=".Activity_Homescreen"
             android:label="@string/nav_home"/>
