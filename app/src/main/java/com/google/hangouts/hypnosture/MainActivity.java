@@ -89,9 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.hasChildren()){
                                             if(!passLogin.isEmpty()){
-                                                mProgress.setTitle("Logging in user");
-                                                mProgress.setMessage("Please wait...");
-                                                mProgress.show();
+                                                Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
                                                 Toast.makeText(MainActivity.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(MainActivity.this, Homescreen.class));
                                             }
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         mProgress.setMessage("Please wait...");
                         mProgress.show();
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(MainActivity.this, Homescreen.class);
+                            Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }else {
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
         if(mAuth.getCurrentUser() != null){
             finish();
-            startActivity(new Intent(this, Homescreen.class));
+            startActivity(new Intent(this, Activity_Homescreen.class));
         }
     }
 

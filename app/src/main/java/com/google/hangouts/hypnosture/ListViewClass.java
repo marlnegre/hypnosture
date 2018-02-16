@@ -1,8 +1,6 @@
 package com.google.hangouts.hypnosture;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +14,14 @@ public class ListViewClass extends ArrayAdapter<String> {
     private final String [] exercises;
     private final Integer[] images;
 
-    public ListViewClass (Activity context, String[] exercises, Integer[] images)
+    public ListViewClass (ExercisesActivity context, String[] exercises, Integer[] images)
     {
         super (context, R.layout.activity_listview, exercises);
         this.context = context;
         this.exercises = exercises;
         this.images = images;
     }
+
 
     public View getView (int position, View view, ViewGroup parent)
     {

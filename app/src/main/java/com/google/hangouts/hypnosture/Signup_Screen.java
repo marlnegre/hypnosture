@@ -142,11 +142,11 @@ public class Signup_Screen extends AppCompatActivity {
 
                             databaseUsers.child(id).setValue(newUser);
 
-                            Intent intent = new Intent(Signup_Screen.this, UserProfileActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra(USER_ID, newUser.getUserId());
-                            intent.putExtra(USER_NAME, newUser.getUsername());
-                            startActivity(intent);
+//                           // Intent intent = new Intent(Signup_Screen.this, EditProfileActivity.class);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            intent.putExtra(USER_ID, newUser.getUserId());
+//                            intent.putExtra(USER_NAME, newUser.getUsername());
+//                            startActivity(intent);
 
                             finish();
 
