@@ -106,4 +106,21 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Strings related to navdrawer -->
+    <string name="nav_home">Home</string>
+    <string name="nav_gallery">Gallery</string>
+    <string name="nav_Exercise">Exercise</string>
+    <string name="drawer_profile">Profile</string>
+    <string name="drawer_perfstat">Performance Statistics</string>
+    <string name="drawer_recommendations">Recommendations</string>
+    <string name="drawer_snore">Snore Track</string>
+    <string name="drawer_logout">Log Out</string>
+    <string name="act_perstat">Performance Statistics</string>
+    <string name="act_profile">Profile</string>
+    <string name="act_recom">Recommendation</string>
+    <string name="act_snore">Snore Track</string>
+    <string name="act_setting">Settings</string>
+
+
 </resources>
