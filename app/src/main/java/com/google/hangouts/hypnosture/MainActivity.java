@@ -1,5 +1,6 @@
 package com.google.hangouts.hypnosture;
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference users;
-    ProgressBar progressBar;
+
+    ProgressDialog mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +46,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.signupbtn).setOnClickListener(this);
+        mProgress = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
 
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
-        progressBar = findViewById(R.id.progressbar);
 
-        refs();
+        userEmail = findViewById(R.id.editText);
+        password = findViewById(R.id.editText2);
+        login_Button = findViewById(R.id.login);
+        signup_button = findViewById(R.id.signupbtn);
+
 
         login_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,30 +76,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     password.requestFocus();
                     return;
                 }
-                progressBar.setVisibility(View.VISIBLE);
-
-
                 final Query passwordQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("password").equalTo(passLogin);
-
                 Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").equalTo(userLogin);
                 usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        progressBar.setVisibility(View.GONE);
 
                         if (dataSnapshot.getChildrenCount() > 0) {
                             if (!userLogin.isEmpty()) {
-
                                 passwordQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.hasChildren()){
                                             if(!passLogin.isEmpty()){
-
                                                 Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                 startActivity(intent);
                                                 Toast.makeText(MainActivity.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(MainActivity.this, Homescreen.class));
                                             }
                                         }
                                         else
@@ -102,24 +102,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
-
                                     }
                                 });
                             }
-                        }
-                        else if (Patterns.EMAIL_ADDRESS.matcher(userLogin).matches()) {
+                        }else
+                            Toast.makeText(MainActivity.this, "Username or Password is wrong", Toast.LENGTH_SHORT).show();
+
+                        if (Patterns.EMAIL_ADDRESS.matcher(userLogin).matches()) {
                             loginUser();
                         }
-                     else
-                            Toast.makeText(MainActivity.this, "Username or Password is wrong", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
-
                 });
-
             }
         });
     }
@@ -128,13 +125,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String userLogin = userEmail.getText().toString().trim();
         String passLogin = password.getText().toString().trim();
 
-        progressBar.setVisibility(View.VISIBLE);
-
         mAuth.signInWithEmailAndPassword(userLogin, passLogin)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.GONE);
+                        mProgress.setTitle("Logging in user");
+                        mProgress.setMessage("Please wait...");
+                        mProgress.show();
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -144,16 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-
-    }
-
-
-    public void refs() {
-        userEmail = findViewById(R.id.editText);
-        password = findViewById(R.id.editText2);
-        login_Button = findViewById(R.id.login);
-        signup_button = findViewById(R.id.signupbtn);
-    }
+            }
 
 
     @Override
@@ -175,9 +163,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
-
-
-
-
 }

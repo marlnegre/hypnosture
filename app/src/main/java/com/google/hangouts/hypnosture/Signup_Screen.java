@@ -1,5 +1,6 @@
 package com.google.hangouts.hypnosture;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +24,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.regex.Pattern;
+
 
 public class Signup_Screen extends AppCompatActivity {
 
     Button signup;
     EditText username, email, password, confirm;
     private FirebaseAuth mAuth;
+    ProgressDialog mProgress;
 
     public static final String USER_ID = "artistid";
     public static final String USER_NAME = "artistname";
@@ -36,13 +40,13 @@ public class Signup_Screen extends AppCompatActivity {
     DatabaseReference databaseUsers;
     FirebaseDatabase usersDatabase;
 
-    ProgressBar progressBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup__screen);
+
+        mProgress = new ProgressDialog(this);
 
         databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         usersDatabase = FirebaseDatabase.getInstance();
@@ -62,6 +66,15 @@ public class Signup_Screen extends AppCompatActivity {
                 final String Email = email.getText().toString().trim();
                 final String Password = password.getText().toString().trim();
                 final String Confirm = confirm.getText().toString().trim();
+
+                String edit_text_name = User;
+
+                Pattern regex = Pattern.compile("[$&+,:;=?@#|/'<>. ^*()%-]");
+
+                if (regex.matcher(edit_text_name).find()) {
+                    Toast.makeText(Signup_Screen.this, "Must not contain the following [$&+,:;=?@#|/'<>. ^*()%-]", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (User.isEmpty() || Email.isEmpty() || Password.isEmpty() || Confirm.isEmpty()){
                     Toast.makeText(Signup_Screen.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
@@ -92,6 +105,11 @@ public class Signup_Screen extends AppCompatActivity {
                             Toast.makeText(Signup_Screen.this, "Choose a different username.", Toast.LENGTH_SHORT).show();
                         }
                         else {
+
+                            mProgress.setTitle("Creating User");
+                            mProgress.setMessage("Please wait...");
+                            mProgress.show();
+
                             registerUser();
                         }
                     }
@@ -111,17 +129,13 @@ public class Signup_Screen extends AppCompatActivity {
         final String User = username.getText().toString().trim();
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
-        progressBar.setVisibility(View.VISIBLE);
 
         mAuth.createUserWithEmailAndPassword(Email, Password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.GONE);
 
                         if (task.isSuccessful()) {
-
-
                             String id = databaseUsers.push().getKey();
 
                             User newUser = new User(id, User, Email, Password);
@@ -146,6 +160,4 @@ public class Signup_Screen extends AppCompatActivity {
                     }
                 });
     }
-
-
 }
