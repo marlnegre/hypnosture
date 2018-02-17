@@ -3,6 +3,8 @@ package com.google.hangouts.hypnosture;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -22,7 +24,13 @@ public class SnoreTrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snoretrack);
 
+        Toolbar toolbar = findViewById(R.id.snoreToolbar);
+        setSupportActionBar(toolbar);
+
+        setBackBtn();
+
         setupPieChart();
+
     }
 
     private void setupPieChart()
@@ -75,5 +83,20 @@ public class SnoreTrackActivity extends AppCompatActivity {
        // dataSet.setSelectionShift(5);
 
 
+    }
+    public void setBackBtn() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }
