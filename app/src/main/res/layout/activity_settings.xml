@@ -17,6 +17,7 @@
         android:background="@color/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        android:layout_marginBottom="15dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
 
     <TextView
@@ -35,14 +36,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textAlignment="center"
         android:text="POSTURE VIBRATION"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
@@ -67,8 +68,8 @@
         android:id="@+id/postureDelay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
         android:textAlignment="center"
         android:text="DELAY"/>
 
@@ -82,7 +83,7 @@
         <SeekBar
             android:id="@+id/seekbar_posture"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
@@ -102,8 +103,8 @@
     android:id="@+id/snoreVibration"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:textSize="15dp"
+    android:layout_marginTop="15dp"
+    android:textSize="18dp"
     android:textAlignment="center"
     android:text="SNORE VIBRATION"/>
 
@@ -111,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <RadioButton
@@ -135,8 +136,8 @@
         android:id="@+id/snoreDelay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
         android:textAlignment="center"
         android:text="DELAY"/>
 
@@ -150,7 +151,7 @@
             android:id="@+id/seekbarSnore"
             android:layout_gravity="center"
             android:layout_width="200dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -168,8 +169,8 @@
         android:id="@+id/snoreLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
         android:textAlignment="center"
         android:text="SNORE LEVEL"/>
 
@@ -177,7 +178,7 @@
         android:id="@+id/tablerow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_gravity="center">
 
         <CheckBox
@@ -207,29 +208,9 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@color/button"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
             android:text="SAVE" />
-        <Button
-            android:id="@+id/calibrate"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="140dp"
-            android:layout_below="@id/save"
-            android:background="@color/button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="CALIBRATE" />
-        <Button
-            android:id="@+id/changepw"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="140dp"
-            android:layout_below="@id/calibrate"
-            android:background="@color/button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="CHANGE PASSWORD" />
 
 </LinearLayout>
 </RelativeLayout>

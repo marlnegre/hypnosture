@@ -6,13 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private static SeekBar seekbar_posture, seekbar_snore;
     private static TextView ctr_posture, ctr_snore;
+    Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +25,18 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.settingsToolbar);
         setSupportActionBar(toolbar);
 
+        save = (Button) findViewById(R.id.save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SettingsActivity.this, "Changes saved", Toast.LENGTH_LONG).show();
+            }
+        });
+
         setBackBtn();
 
         seekbarPosture();
         seekbarSnore();
-
-        findViewById(R.id.changepw).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingsActivity.this, ChangingPassword.class));
-            }
-        });
     }
 
     public void seekbarPosture () {
