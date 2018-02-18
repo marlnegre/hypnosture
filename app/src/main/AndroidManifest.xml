@@ -41,6 +41,7 @@
         <activity android:name=".SideTiltExercise" />
         <activity android:name=".headShakeActivity" />
         <activity android:name=".UpdownExerciseActivity" />
+        <activity android:name=".ScreenshotType" />
         <activity
             android:name=".Activity_PerformanceStat"
             android:label="@string/act_perstat" />
