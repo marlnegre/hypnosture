@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.hangouts.hypnosture.AdminActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:text="ADMINISTRATOR"
+        android:textColor="@color/LoginEdittextColor"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/submitSignup"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextEmail"
+        android:layout_alignStart="@+id/editTextEmail"
+        android:layout_below="@+id/editTextEmail"
+        android:background="@color/ButtonColor"
+        android:text="CREATE USER"
+        android:textColor="@color/LoginEdittextColor" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextPassword"
+        android:layout_alignStart="@+id/editTextPassword"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="59dp"
+        android:hint="@string/signup_name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editTextUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:inputType="textPassword"
+        android:hint="@string/Password"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextPassword"
+        android:layout_alignStart="@+id/editTextPassword"
+        android:layout_below="@+id/editTextPassword"
+        android:hint="@string/signup_email"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_below="@id/submitSignup"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="USERS"/>
+    <ListView
+        android:id="@+id/listViewUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@+id/submitSignup"
+        android:layout_alignLeft="@+id/submitSignup"
+        android:layout_alignRight="@+id/submitSignup"
+        android:layout_alignStart="@+id/submitSignup"
+        android:layout_below="@+id/title" />
+
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextUsername"
+        android:layout_alignStart="@+id/editTextUsername"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="15dp"
+        android:hint="Search here..."
+        android:inputType="text"/>
+
+
+</RelativeLayout>

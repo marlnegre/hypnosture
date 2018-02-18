@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.google.hangouts.hypnosture.AdminUpdate">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/listViewProfiles"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="14dp"
+            android:text="USER INFORMATION"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <Button
+            android:id="@+id/deleteAccBtn"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="53dp"
+            android:background="@color/ButtonColor"
+            android:text="DELETE ACCOUNT"
+            android:textColor="@color/LoginEdittextColor"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+
+            android:layout_alignBottom="@id/deleteAccBtn"
+            />
+
+        <ListView
+            android:id="@+id/listViewProfiles"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:layout_alignEnd="@+id/deleteAccBtn"
+            android:layout_alignLeft="@+id/deleteAccBtn"
+            android:layout_alignRight="@+id/deleteAccBtn"
+            android:layout_alignStart="@+id/deleteAccBtn"
+            android:layout_below="@id/toolbar" />
+
+    </RelativeLayout>
+</LinearLayout>
