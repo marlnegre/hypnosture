@@ -17,6 +17,7 @@
         android:background="@color/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        android:layout_marginBottom="20dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
 
     <TextView
@@ -42,7 +43,7 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
@@ -67,7 +68,7 @@
         android:id="@+id/postureDelay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:textSize="15dp"
         android:textAlignment="center"
         android:text="DELAY"/>
@@ -102,7 +103,7 @@
     android:id="@+id/snoreVibration"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="15dp"
     android:textSize="15dp"
     android:textAlignment="center"
     android:text="SNORE VIBRATION"/>
@@ -135,7 +136,7 @@
         android:id="@+id/snoreDelay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:textSize="15dp"
         android:textAlignment="center"
         android:text="DELAY"/>
@@ -168,7 +169,7 @@
         android:id="@+id/snoreLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:textSize="15dp"
         android:textAlignment="center"
         android:text="SNORE LEVEL"/>
@@ -177,7 +178,7 @@
         android:id="@+id/tablerow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_gravity="center">
 
         <CheckBox
@@ -207,29 +208,10 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@color/button"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginTop="23dp"
+            android:layout_gravity="center"
             android:text="SAVE" />
-        <Button
-            android:id="@+id/calibrate"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="140dp"
-            android:layout_below="@id/save"
-            android:background="@color/button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="CALIBRATE" />
-        <Button
-            android:id="@+id/changepw"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="140dp"
-            android:layout_below="@id/calibrate"
-            android:background="@color/button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="CHANGE PASSWORD" />
+
 
 </LinearLayout>
 </RelativeLayout>
