@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name = "android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name = "android.permission.BLUETOOTH"/>
 
     <application
         android:allowBackup="true"
@@ -32,10 +34,10 @@
         <activity android:name=".HistoryGallery" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Calibrate" />
-        <!--<activity android:name=".ChangingPassword" />-->
-        <!--<activity android:name=".AdminActivity" />-->
-        <!--<activity android:name=".SearchBarActivity" />-->
-        <!--<activity android:name=".BarChartActivity" />-->
+        <!-- <activity android:name=".ChangingPassword" /> -->
+        <!-- <activity android:name=".AdminActivity" /> -->
+        <!-- <activity android:name=".SearchBarActivity" /> -->
+        <!-- <activity android:name=".BarChartActivity" /> -->
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".ETExercise" />
         <activity android:name=".SideTiltExercise" />
@@ -45,19 +47,25 @@
         <activity
             android:name=".Activity_PerformanceStat"
             android:label="@string/act_perstat" />
-        <activity android:name=".Activity_Profile"
-            android:label="@string/act_profile"/>
-        <activity android:name=".Activity_Recommendations"
-            android:label="@string/act_recom"/>
-        <activity android:name=".Activity_Snorepage"
-            android:label="@string/act_snore"/>
-        <activity android:name=".SettingsActivity"
-            android:label="@string/act_setting"/>
-        <activity android:name=".SnoreTrackActivity"
-            android:label="@string/act_snore"/>
-
-        <activity android:name=".Activity_Homescreen"
-            android:label="@string/nav_home"/>
+        <activity
+            android:name=".Activity_Profile"
+            android:label="@string/act_profile" />
+        <activity
+            android:name=".Activity_Recommendations"
+            android:label="@string/act_recom" />
+        <activity
+            android:name=".Activity_Snorepage"
+            android:label="@string/act_snore" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/act_setting" />
+        <activity
+            android:name=".SnoreTrackActivity"
+            android:label="@string/act_snore" />
+        <activity
+            android:name=".Activity_Homescreen"
+            android:label="@string/nav_home" />
+        <activity android:name=".Activity_Bluetooth"></activity>
     </application>
 
 </manifest>

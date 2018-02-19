@@ -36,6 +36,11 @@
         <menu>
 
             <item
+                android:id="@+id/drawer_bluetooth"
+                android:icon="@drawable/ic_bluetooth_black_24dp"
+                android:title="Bluetooth" />
+
+            <item
                 android:id="@+id/navigation_settings"
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/action_settings" />

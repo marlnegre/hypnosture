@@ -165,6 +165,10 @@ public class Activity_Homescreen extends AppCompatActivity
                 Intent s5 = new Intent(Activity_Homescreen.this, ExercisesActivity.class);
                 startActivity(s5);
                 break;
+            case R.id.drawer_bluetooth:
+                Intent s6 = new Intent(Activity_Homescreen.this, Activity_Bluetooth.class);
+                startActivity(s6);
+                break;
             case R.id.drawer_logout:
                 mAuth.signOut();
                 finish();
