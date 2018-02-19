@@ -5,11 +5,20 @@
     tools:context="com.google.hangouts.hypnosture.Fragment_Home">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDisconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="126dp"
-        android:text="Button" />
+        android:layout_marginBottom="66dp"
+        android:text="Disconnect" />
+
+    <TextView
+        android:id="@+id/angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnDisconnect"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="Angle" />
 </RelativeLayout>
