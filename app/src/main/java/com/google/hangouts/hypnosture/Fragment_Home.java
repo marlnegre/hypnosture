@@ -58,6 +58,7 @@ public class Fragment_Home extends Fragment {
         disconnect = view.findViewById(R.id.btnDisconnect);
         display_angle = view.findViewById(R.id.angle);
 
+        disconnect.setVisibility(View.GONE);
         disconnect.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -71,6 +72,8 @@ public class Fragment_Home extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         if(Activity_Bluetooth.selected) {
             //Retrieve address from the bluetooth device
@@ -134,7 +137,7 @@ public class Fragment_Home extends Fragment {
                 msg("Connected.");
                 isBtConnected = true;
                 startThreadConnected(btSocket);
-                display_angle.setText("Print");
+                disconnect.setVisibility(View.VISIBLE);
             }
             progress.dismiss();
         }
