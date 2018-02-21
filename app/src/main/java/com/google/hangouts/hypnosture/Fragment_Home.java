@@ -1,35 +1,44 @@
 package com.google.hangouts.hypnosture;
 
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.UUID;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 public class Fragment_Home extends Fragment {
 
     Button disconnect;
     TextView display_angle;
     ImageView angle_image;
+    RelativeLayout rootContent;
+    ScreenShot ss = new ScreenShot();
 
     private String angle;
     String TAG = "Fragment_Home";
@@ -57,6 +66,7 @@ public class Fragment_Home extends Fragment {
         disconnect = view.findViewById(R.id.btnDisconnect);
         display_angle = view.findViewById(R.id.angle);
         angle_image = view.findViewById(R.id.imageView2);
+        rootContent = view.findViewById(R.id.root_content);
 
         disconnect.setVisibility(View.GONE);
         disconnect.setOnClickListener(new View.OnClickListener() {
@@ -726,6 +736,18 @@ public class Fragment_Home extends Fragment {
                                 default:
                                     break;
                             }
+
+                            int angled = Integer.parseInt(display_angle.getText().toString());
+
+                            // static pa ni. Time sa. para ni sa delay sa settings. daghan ma affected.
+                            int counter = 0;
+
+
+                            if(angled < 70 || angled > 80) {
+                                takeScreenshot(ScreenshotType.FULL);
+                                //counter++;
+                            }
+
                         }
                     });
                 } catch (IOException e) {
@@ -745,5 +767,61 @@ public class Fragment_Home extends Fragment {
 
             }
         }
+    }
+
+    public void takeScreenshot(ScreenshotType screenshotType) {
+        Bitmap b = null;
+        switch (screenshotType) {
+            case FULL:
+                //If Screenshot type is FULL take full page screenshot i.e our root content.
+                b = com.google.hangouts.hypnosture.ScreenshotUtils.getScreenShot(rootContent);
+                break;
+            case CUSTOM:
+                //If Screenshot type is CUSTOM
+
+                //fullPageScreenshot.setVisibility(View.INVISIBLE);//set the visibility to INVISIBLE of first button
+//                hiddenText.setVisibility(View.VISIBLE);//set the visibility to VISIBLE of hidden text
+
+                b = com.google.hangouts.hypnosture.ScreenshotUtils.getScreenShot(rootContent);
+
+                //After taking screenshot reset the button and view again
+                //fullPageScreenshot.setVisibility(View.VISIBLE);//set the visibility to VISIBLE of first button again
+//                hiddenText.setVisibility(View.INVISIBLE);//set the visibility to INVISIBLE of hidden text
+
+                //NOTE:  You need to use visibility INVISIBLE instead of GONE to remove the view from frame else it wont consider the view in frame and you will not get screenshot as you required.
+                break;
+        }
+
+        //If bitmap is not null
+        if (b != null) {
+            //showScreenShotImage(b);//show bitmap over imageview
+
+
+            sendNotification();
+
+            File saveFile = com.google.hangouts.hypnosture.ScreenshotUtils.getMainDirectoryName(getActivity());//get the path to save screenshot
+            File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "screenshot" + screenshotType + ".jpg", saveFile);//save the screenshot to selected path
+            //shareScreenshot(file);//finally share screenshot
+        } else
+            //If bitmap is null show toast message
+            Toast.makeText(getActivity(), R.string.screenshot_take_failed, Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void sendNotification() {
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(getActivity())
+                        .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                        .setContentTitle("Hypnosture")
+                        .setContentText("improper posture");
+
+        int notificationId = 101;
+
+        NotificationManager notifyMgr =
+                (NotificationManager)
+                        getActivity().getSystemService(NOTIFICATION_SERVICE);
+
+        notifyMgr.notify(notificationId, builder.build());
     }
 }
