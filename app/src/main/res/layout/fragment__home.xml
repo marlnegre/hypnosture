@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:foregroundGravity="center"
+    android:id="@+id/root_content"
     tools:context="com.google.hangouts.hypnosture.Fragment_Home">
 
     <ImageView

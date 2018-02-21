@@ -1,14 +1,17 @@
 package com.google.hangouts.hypnosture;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,10 +19,10 @@ import java.io.File;
 
 public class ScreenShot extends AppCompatActivity implements  View.OnClickListener {
 
-    private Button fullPageScreenshot, customPageScreenshot;
-    private LinearLayout rootContent;
-    private ImageView imageView;
-    private TextView hiddenText;
+    Button fullPageScreenshot, customPageScreenshot;
+    LinearLayout rootContent;
+    ImageView imageView;
+    TextView hiddenText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class ScreenShot extends AppCompatActivity implements  View.OnClickListen
     }
 
     /*  Method which will take screenshot on Basis of Screenshot Type ENUM  */
-    private void takeScreenshot(ScreenshotType screenshotType) {
+    public void takeScreenshot(ScreenshotType screenshotType) {
         Bitmap b = null;
         switch (screenshotType) {
             case FULL:
@@ -85,7 +88,9 @@ public class ScreenShot extends AppCompatActivity implements  View.OnClickListen
 
         //If bitmap is not null
         if (b != null) {
-            showScreenShotImage(b);//show bitmap over imageview
+            //showScreenShotImage(b);//show bitmap over imageview
+
+            sendNotification();
 
             File saveFile = com.google.hangouts.hypnosture.ScreenshotUtils.getMainDirectoryName(this);//get the path to save screenshot
             File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "screenshot" + screenshotType + ".jpg", saveFile);//save the screenshot to selected path
@@ -101,8 +106,25 @@ public class ScreenShot extends AppCompatActivity implements  View.OnClickListen
         imageView.setImageBitmap(b);
     }
 
+    private void sendNotification() {
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                        .setContentTitle("Hey...")
+                        .setContentText("You have an improper posture!");
+
+        int notificationId = 101;
+
+        NotificationManager notifyMgr =
+                (NotificationManager)
+                        getSystemService(NOTIFICATION_SERVICE);
+
+        notifyMgr.notify(notificationId, builder.build());
+    }
+
     /*  Share Screenshot  */
-    private void shareScreenshot(File file) {
+    public void shareScreenshot(File file) {
         Uri uri = Uri.fromFile(file);//Convert file path into Uri for sharing
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
