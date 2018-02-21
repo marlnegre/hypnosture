@@ -39,6 +39,9 @@ public class Fragment_Home extends Fragment {
     ImageView angle_image;
     RelativeLayout rootContent;
     ScreenShot ss = new ScreenShot();
+    Boolean done = false;
+    int counter = 0;
+    int pic = 0;
 
     private String angle;
     String TAG = "Fragment_Home";
@@ -740,13 +743,29 @@ public class Fragment_Home extends Fragment {
                             int angled = Integer.parseInt(display_angle.getText().toString());
 
                             // static pa ni. Time sa. para ni sa delay sa settings. daghan ma affected.
-                            int counter = 0;
+
+//                            if(angled < 70 || angled > 80)
+//                            {
+//                                if(counter == 5){
+//                                    takeScreenshot(ScreenshotType.FULL);
+//                                    done = true;
+//                                }
+//                                else
+//                                    counter++;
+//                            }
 
 
-                            if(angled < 70 || angled > 80) {
-                                takeScreenshot(ScreenshotType.FULL);
-                                //counter++;
+                            if(angled < 70 || angled > 80){
+                                if(counter == 5){
+                                    takeScreenshot(ScreenshotType.FULL);
+                                }
+                                counter++;
                             }
+                            else
+                            {
+                                counter = 0;
+                            }
+
 
                         }
                     });
@@ -800,8 +819,9 @@ public class Fragment_Home extends Fragment {
             sendNotification();
 
             File saveFile = com.google.hangouts.hypnosture.ScreenshotUtils.getMainDirectoryName(getActivity());//get the path to save screenshot
-            File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "screenshot" + screenshotType + ".jpg", saveFile);//save the screenshot to selected path
+            File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "ImproperPosture" + pic + ".jpg", saveFile);//save the screenshot to selected path
             //shareScreenshot(file);//finally share screenshot
+            pic++;
         } else
             //If bitmap is null show toast message
             Toast.makeText(getActivity(), R.string.screenshot_take_failed, Toast.LENGTH_SHORT).show();
