@@ -744,17 +744,6 @@ public class Fragment_Home extends Fragment {
 
                             // static pa ni. Time sa. para ni sa delay sa settings. daghan ma affected.
 
-//                            if(angled < 70 || angled > 80)
-//                            {
-//                                if(counter == 5){
-//                                    takeScreenshot(ScreenshotType.FULL);
-//                                    done = true;
-//                                }
-//                                else
-//                                    counter++;
-//                            }
-
-
                             if(angled < 70 || angled > 80){
                                 if(counter == 5){
                                     takeScreenshot(ScreenshotType.FULL);
@@ -765,8 +754,6 @@ public class Fragment_Home extends Fragment {
                             {
                                 counter = 0;
                             }
-
-
                         }
                     });
                 } catch (IOException e) {
