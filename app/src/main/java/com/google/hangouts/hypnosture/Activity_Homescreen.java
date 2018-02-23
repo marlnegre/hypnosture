@@ -57,7 +57,7 @@ public class Activity_Homescreen extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         setTitle("Home");
-        transaction.replace(R.id.frame, new Fragment_Home()).commit();
+        transaction.replace(R.id.frame, new Fragament_HomeReflect()).commit();
 
 
     }
@@ -84,7 +84,6 @@ public class Activity_Homescreen extends AppCompatActivity
 
                 case R.id.navigation_exercise:
                     setTitle("Exercises");
-
                     transaction.replace(R.id.frame, new Fragment_Exercise()).commit();
                     return true;
 
