@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.google.hangouts.hypnosture.Week_Two">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+    <com.github.mikephil.charting.charts.BarChart
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/weekTwo"
+        android:layout_gravity="center_horizontal"
+        >
+    </com.github.mikephil.charting.charts.BarChart>
 </FrameLayout>
