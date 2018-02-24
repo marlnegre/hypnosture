@@ -27,8 +27,7 @@ public class HomeActivity extends AppCompatActivity {
                 try {
 
                     sleep(3000);
-
-                    Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent myIntent = new Intent(getApplicationContext(), UserAdmin.class);
                     startActivity(myIntent);
                     finish();
                 } catch (InterruptedException e) {

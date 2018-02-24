@@ -1,9 +1,11 @@
-package com.google.hangouts.hypnosture;
+package com.google.hangouts.hypnosture.USER;
 
-import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -14,16 +16,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -31,26 +32,32 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.hangouts.hypnosture.Activity_Homescreen;
+import com.google.hangouts.hypnosture.R;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
-public class UserProfileActivity extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
 
+public class UpdateProfile extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 3;
     private static final int SELECT_FILE = 2;
 
-    TextView textView, nameText;
-    ImageView userImageProfileview;
-    EditText name, birthday;
+    CircleImageView userImageProfileview;
+    EditText fullname;
     RadioGroup rg;
     RadioButton rb, rb1, rb2;
     Button ok;
-
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
+    private TextView textViewBirthdate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     DatabaseReference mUserDatabase;
     StorageReference mStorageref;
@@ -62,25 +69,18 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_update_profile);
 
-        textView = findViewById(R.id.displayVerification);
         userImageProfileview = findViewById(R.id.profileImage);
-        name = findViewById(R.id.name);
-        birthday = findViewById(R.id.birthday);
+        fullname = findViewById(R.id.fname);
+        textViewBirthdate = findViewById(R.id.textViewBirthday);
         rb1 = findViewById(R.id.maleRB);
         rb2 =  findViewById(R.id.femaleRB);
         rg = findViewById(R.id.rg);
         ok = findViewById(R.id.okbutton);
-        nameText = findViewById(R.id.name);
-
-         Intent intent = getIntent();
-         String id = intent.getStringExtra(Signup_Screen.USER_ID);
-        //String name = intent.getStringExtra(Signup_Screen.USER_NAME);
-
         mAuth = FirebaseAuth.getInstance();
 
-          mAuthListener = new FirebaseAuth.AuthStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -88,24 +88,48 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 if (user!=null){
                     finish();
-                    startActivity(new Intent(UserProfileActivity.this, Activity_Homescreen.class));
+                    startActivity(new Intent(UpdateProfile.this, Activity_Homescreen.class));
                 }
             }
         };
 
+        textViewBirthdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
+                DatePickerDialog dialog = new DatePickerDialog(
+                        UpdateProfile.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month += 1;
+                final String Birthday = month + "/" + dayOfMonth + "/" + year;
+                textViewBirthdate.setText(Birthday);
+            }
+        };
 
         mProgress = new ProgressDialog(this);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Profiles").child(id);
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mStorageref = FirebaseStorage.getInstance().getReference();
 
-        loadUserInfo();
         ok.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
-               saveUserProfile();
+                saveUserProfile();
             }
         });
 
@@ -115,32 +139,8 @@ public class UserProfileActivity extends AppCompatActivity {
                 profilePicSelection();
             }
         });
-
     }
-  @SuppressLint("CheckResult")
-   private void loadUserInfo() {
-        final FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            if(user.isEmailVerified()){
-                textView.setText("Email Verified");
-            }
-            else{
-                textView.setText("Email Not Verified (Click to verify.)");
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(UserProfileActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
-                            }
-                        });
 
-                    }
-                });
-            }
-        }
-    }
 
     public void rbclick(View v){
 
@@ -151,74 +151,77 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private void saveUserProfile() {
 
-        final String Username = name.getText().toString();
-        final String Birthday = birthday.getText().toString();
+        final String Fname = fullname.getText().toString();
         int radioBtnID = rg.getCheckedRadioButtonId();
+        final String Birthday = textViewBirthdate.getText().toString();
         rb =  findViewById(radioBtnID);
 
-        String edit_text_name = Username;
-        String edit_text_date = Birthday;
+        String edit_text_fname = Fname;
 
-        Pattern regex = Pattern.compile("[$&+,:;=?@#|/'<>.^*0123456789()%-]");
-        Pattern regexDate = Pattern.compile("^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d{2}$");
+        Pattern regexx = Pattern.compile("[$&+,:;=?@#|/'<>.^*0123456789()%-]");
 
-        if (regex.matcher(edit_text_name).find()) {
-            name.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
-            name.requestFocus();
+
+        if (TextUtils.isEmpty(Fname)  || TextUtils.isEmpty(Birthday)){
+            Toast.makeText(UpdateProfile.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        if (regexDate.matcher(edit_text_date).find()) {
-            birthday.setError("Must not contain numbers and [$&+,:;=?@#|/'<>. ^*()%-]");
-            birthday.requestFocus();
+        if (regexx.matcher(edit_text_fname).find()) {
+            fullname.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
+            fullname.requestFocus();
             return;
         }
 
         if (userImageProfileview.getDrawable() == null){
-            Toast.makeText(UserProfileActivity.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateProfile.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!rb1.isChecked() && !rb2.isChecked()){
-            Toast.makeText(UserProfileActivity.this, "Select Sex", Toast.LENGTH_SHORT).show();
+
+        if (!rb1.isChecked() && !rb2.isChecked()) {
+            Toast.makeText(UpdateProfile.this, "Select Sex", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(!TextUtils.isEmpty(Username) && !TextUtils.isEmpty(Birthday))
-        {
-                mProgress.setTitle("Saving Profile");
-                mProgress.setMessage("Please wait...");
-                mProgress.show();
 
-                StorageReference mChildStorage = mStorageref.child("User_Profile").child(imageHoldUri.getLastPathSegment());
-                String profilePicUrl = imageHoldUri.getLastPathSegment();
 
-                mChildStorage.putFile(imageHoldUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                        final Uri imageUri = taskSnapshot.getDownloadUrl();
-                        Intent intent = getIntent();
-                       // final String id = intent.getStringExtra(Signup_Screen.USER_ID);
-                        String profilePhotoUrl = imageUri.toString();
+        if(user!=null) {
+            StorageReference mChildStorage = mStorageref.child("User_Profile").child(imageHoldUri.getLastPathSegment());
+            String profilePicUrl = imageHoldUri.getLastPathSegment();
 
-                        UserProfile newProfile = new UserProfile(Username, rb.getText().toString(), Birthday, profilePhotoUrl);
-                        mUserDatabase.setValue(newProfile);
-                        startActivity(new Intent(UserProfileActivity.this, Activity_Homescreen.class));
-                        mProgress.dismiss();
+            mChildStorage.putFile(imageHoldUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        //display name
-                        nameText.setText(name.getText().toString());
-                    }
-                });
-        }else{
-            Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
+                    final Uri imageUri = taskSnapshot.getDownloadUrl();
+                    String profilePhotoUrl = imageUri.toString();
+
+
+                    String user_id = mAuth.getCurrentUser().getUid();
+                    DatabaseReference current_user_profile = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+                    Map newUserInfo = new HashMap();
+                    newUserInfo.put("fname", Fname);
+                    newUserInfo.put("sex", rb.getText().toString());
+                    newUserInfo.put("birthday", Birthday);
+                    newUserInfo.put("profilePicURL", profilePhotoUrl);
+                    current_user_profile.updateChildren(newUserInfo);
+
+
+
+
+                    Toast.makeText(UpdateProfile.this, "Profile Updated!", Toast.LENGTH_SHORT).show();
+                    mProgress.dismiss();
+
+                }
+            });
+
         }
     }
 
     private void profilePicSelection() {
-
         final CharSequence[] items = {"Take Photo", "Choose from Gallery",
-        "Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
+                "Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfile.this);
         builder.setTitle("Add Photo!");
 
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -234,7 +237,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 }
             }
         });
-            builder.show();
+        builder.show();
     }
 
     private void cameraIntent() {
@@ -257,7 +260,6 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == SELECT_FILE && resultCode == RESULT_OK){
 
             Uri imageUri = data.getData();
@@ -275,7 +277,6 @@ public class UserProfileActivity extends AppCompatActivity {
                     .setAspectRatio(1,1)
                     .start(this);
         }
-
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
 
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
@@ -286,9 +287,6 @@ public class UserProfileActivity extends AppCompatActivity {
             }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
                 Exception error = result.getError();
             }
-
         }
-
-
     }
 }

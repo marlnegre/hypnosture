@@ -1,6 +1,5 @@
-package com.google.hangouts.hypnosture;
+package com.google.hangouts.hypnosture.USER;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +17,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.hangouts.hypnosture.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChangingPassword extends AppCompatActivity implements View.OnClickListener{
+public class ChangingPassword extends AppCompatActivity{
 
     EditText change;
     Button changeBtn;
@@ -32,7 +32,6 @@ public class ChangingPassword extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changing_password);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,6 +71,7 @@ public class ChangingPassword extends AppCompatActivity implements View.OnClickL
             change.requestFocus();
             return;
         }
+
         if (password.length() < 6) {
             change.setError("Minimum length must be 6");
             change.requestFocus();
@@ -83,18 +83,11 @@ public class ChangingPassword extends AppCompatActivity implements View.OnClickL
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-
-
                         String user_id = mAuth.getCurrentUser().getUid();
-
                         DatabaseReference current_user_profile = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-
                         Map newUserInfo = new HashMap();
-
-                        newUserInfo.put("password: ", password);
-
+                        newUserInfo.put("password", password);
                         current_user_profile.updateChildren(newUserInfo);
-
                         Toast.makeText(ChangingPassword.this, "Your password has been changed!", Toast.LENGTH_SHORT).show();
                         mAuth.signOut();
                         finish();
@@ -109,9 +102,4 @@ public class ChangingPassword extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
-    @Override
-    public void onClick(View v) {
-
-    }
 }

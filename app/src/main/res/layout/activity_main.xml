@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.hangouts.hypnosture.MainActivity"
+    tools:context="com.google.hangouts.hypnosture.USER.MainActivity"
     android:background="@color/BackgorundColor"
     >
 
@@ -15,7 +15,7 @@
             android:backgroundTint="@color/LoginEdittextColor"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/Username"
+            android:hint="Email"
             android:textColor="@color/LoginEdittextColor"
             android:layout_marginTop="34dp"
             android:layout_below="@+id/imageView"
