@@ -1,15 +1,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundGravity="center"
+    android:id="@+id/root_content"
     tools:context="com.google.hangouts.hypnosture.Fragment_Home">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_above="@+id/angle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/a" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDisconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="126dp"
-        android:text="Button" />
+        android:layout_marginBottom="79dp"
+        android:text="Disconnect" />
+
+    <TextView
+        android:id="@+id/angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnDisconnect"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="Angle" />
+
 </RelativeLayout>

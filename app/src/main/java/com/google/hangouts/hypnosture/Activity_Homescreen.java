@@ -55,7 +55,7 @@ public class Activity_Homescreen extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         setTitle("Home");
-        transaction.replace(R.id.frame, new Fragment_Home()).commit();
+        transaction.replace(R.id.frame, new Fragament_HomeReflect()).commit();
 
 
     }
@@ -82,7 +82,6 @@ public class Activity_Homescreen extends AppCompatActivity
 
                 case R.id.navigation_exercise:
                     setTitle("Exercises");
-
                     transaction.replace(R.id.frame, new Fragment_Exercise()).commit();
                     return true;
 
@@ -128,8 +127,8 @@ public class Activity_Homescreen extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
 //        // Handle navigation view item clicks here.
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -162,6 +161,10 @@ public class Activity_Homescreen extends AppCompatActivity
             case R.id.drawer_exercise:
                 Intent s5 = new Intent(Activity_Homescreen.this, ExercisesActivity.class);
                 startActivity(s5);
+                break;
+            case R.id.drawer_bluetooth:
+                Intent s6 = new Intent(Activity_Homescreen.this, Activity_Bluetooth.class);
+                startActivity(s6);
                 break;
             case R.id.drawer_logout:
                 mAuth.signOut();

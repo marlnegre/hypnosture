@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name = "android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name = "android.permission.BLUETOOTH"/>
 
     <application
         android:allowBackup="true"
@@ -42,6 +44,7 @@
         <activity android:name=".SideTiltExercise" />
         <activity android:name=".headShakeActivity" />
         <activity android:name=".UpdownExerciseActivity" />
+        <activity android:name=".ScreenShot" />
         <activity
             android:name=".Activity_PerformanceStat"
             android:label="@string/act_perstat" />
@@ -82,6 +85,7 @@
         <activity android:name=".ADMIN.AdminProfile" />
         <activity android:name=".ADMIN.AdminChangePassword" />
         <activity android:name=".ADMIN.AdminUpdateProfile"></activity>
+        <activity android:name=".Activity_Bluetooth"></activity>
     </application>
 
 </manifest>
