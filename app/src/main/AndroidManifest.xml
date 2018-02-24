@@ -3,6 +3,7 @@
     package="com.google.hangouts.hypnosture">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -26,19 +27,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".ExercisesActivity" />
-        <activity android:name=".Homescreen" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".Signup_Screen" />
+        <activity android:name=".USER.Signup_Screen" />
         <activity android:name=".HistoryGallery" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Calibrate" />
-        <!-- <activity android:name=".ChangingPassword" /> -->
-        <!-- <activity android:name=".AdminActivity" /> -->
-        <!-- <activity android:name=".SearchBarActivity" /> -->
+        <activity android:name=".USER.MainActivity" />
+        <activity android:name=".USER.ChangingPassword" />
+        <!--
+            <activity
+            android:name=".AdminUpdate"
+            android:label=" " />
+        -->
         <!-- <activity android:name=".BarChartActivity" /> -->
-        <activity android:name=".UserProfileActivity" />
         <activity android:name=".ETExercise" />
         <activity android:name=".SideTiltExercise" />
         <activity android:name=".headShakeActivity" />
@@ -65,6 +66,25 @@
         <activity
             android:name=".Activity_Homescreen"
             android:label="@string/nav_home" />
+        <!--
+        <activity
+            android:name=".DisplayProfile"
+            android:label=" " />
+        <activity android:name=".AdminCreate" />
+        -->
+        <activity android:name=".ADMIN.AdminAngle" />
+        <activity android:name=".USER.UpdateProfile" />
+        <activity android:name=".UserAdmin" />
+        <activity
+            android:name=".USER.UserProfile"
+            android:label=" " />
+        <activity android:name=".ADMIN.UsersActivity" />
+        <activity android:name=".ADMIN.VerifiedAdmin" />
+        <activity android:name=".ADMIN.AdminLogin" />
+        <activity android:name=".ADMIN.AdminSignup_Screen" />
+        <activity android:name=".ADMIN.AdminProfile" />
+        <activity android:name=".ADMIN.AdminChangePassword" />
+        <activity android:name=".ADMIN.AdminUpdateProfile"></activity>
         <activity android:name=".Activity_Bluetooth"></activity>
     </application>
 

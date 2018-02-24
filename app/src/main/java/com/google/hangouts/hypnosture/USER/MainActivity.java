@@ -1,32 +1,24 @@
-package com.google.hangouts.hypnosture;
+package com.google.hangouts.hypnosture.USER;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Patterns;
-import android.view.MenuItem;
 import  android.view.View;
 import  android.widget.Button;
 import  android.content.Intent;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.google.hangouts.hypnosture.Activity_Homescreen;
+import com.google.hangouts.hypnosture.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -37,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference users;
-
     ProgressDialog mProgress;
 
     @Override
@@ -76,9 +67,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     password.requestFocus();
                     return;
                 }
-                final Query passwordQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("password").equalTo(passLogin);
-                Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").equalTo(userLogin);
-                usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                loginUser();
+
+
+           //     final Query passwordQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("password").equalTo(passLogin);
+           //     Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").equalTo(userLogin);
+   /*             usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -87,36 +82,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 passwordQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.hasChildren()){
-                                            if(!passLogin.isEmpty()){
-                                                Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                startActivity(intent);
+                                        if (dataSnapshot.hasChildren()) {
+                                            if (!passLogin.isEmpty()) {
+
                                                 Toast.makeText(MainActivity.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(MainActivity.this, Activity_Homescreen.class));
+                                                startActivity(new Intent(MainActivity.this, UserProfile.class));
+                                            } else {
+                                                Toast.makeText(MainActivity.this, "Password field is empty!", Toast.LENGTH_SHORT).show();
                                             }
-                                        }
-                                        else
+                                        } else {
                                             Toast.makeText(MainActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
 
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
                                     }
                                 });
+                            }else{
+                                Toast.makeText(MainActivity.this, "Username or Password field is empty", Toast.LENGTH_SHORT).show();
                             }
-                        }else
-                            Toast.makeText(MainActivity.this, "Username or Password is wrong", Toast.LENGTH_SHORT).show();
-
-                        if (Patterns.EMAIL_ADDRESS.matcher(userLogin).matches()) {
+                        } else if (Patterns.EMAIL_ADDRESS.matcher(userLogin).matches()) {
                             loginUser();
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Username or Password is wrong", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
-                });
+                });*/
             }
         });
     }
@@ -129,10 +126,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        mProgress.setTitle("Logging in user");
-                        mProgress.setMessage("Please wait...");
-                        mProgress.show();
+
                         if (task.isSuccessful()) {
+                            mProgress.setTitle("Logging in user");
+                            mProgress.setMessage("Please wait...");
+                            mProgress.show();
+
                             Intent intent = new Intent(MainActivity.this, Activity_Homescreen.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
@@ -152,15 +151,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, Activity_Homescreen.class));
         }
     }
-
-
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.signupbtn:
                 startActivity(new Intent(this, Signup_Screen.class));
                 break;
-
         }
     }
 }

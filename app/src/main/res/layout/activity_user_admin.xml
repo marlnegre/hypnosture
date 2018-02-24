@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.hangouts.hypnosture.USER.MainActivity"
+    android:background="@color/BackgorundColor"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="230dp"
+        app:srcCompat="@drawable/hypnosture2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        />
+
+
+    <Button
+        android:id="@+id/userlogin"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:background="@color/LoginEdittextColor"
+        android:text="User"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/adminlogin"
+        android:layout_width="290dp"
+        android:layout_marginTop="13dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/userlogin"
+        android:layout_alignStart="@+id/userlogin"
+        android:layout_below="@+id/userlogin"
+        android:background="@color/LoginEdittextColor"
+        android:text="Admin"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

@@ -12,10 +12,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.hangouts.hypnosture.USER.UserProfile;
 
 /**
  * Created by christian Kent Igot on 16/02/2018.
@@ -29,14 +29,12 @@ public class Activity_Homescreen extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar=null;
     FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
         //firebase
         mAuth = FirebaseAuth.getInstance();
-
         //firebase
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -141,7 +139,7 @@ public class Activity_Homescreen extends AppCompatActivity
         switch(id){
 
             case R.id.drawer_profile:
-                Intent s0 = new Intent(Activity_Homescreen.this, Activity_Profile.class);
+                Intent s0 = new Intent(Activity_Homescreen.this, UserProfile.class);
                 startActivity(s0);
                 break;
             case R.id.drawer_stat:
@@ -170,7 +168,8 @@ public class Activity_Homescreen extends AppCompatActivity
                 break;
             case R.id.drawer_logout:
                 mAuth.signOut();
-                finish();
+                Intent s6 = new Intent(Activity_Homescreen.this, UserAdmin.class);
+                startActivity(s6);
                 break;
 
 
