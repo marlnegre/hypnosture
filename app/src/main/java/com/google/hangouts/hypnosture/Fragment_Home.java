@@ -71,7 +71,7 @@ public class Fragment_Home extends Fragment {
         angle_image = view.findViewById(R.id.imageView2);
         rootContent = view.findViewById(R.id.root_content);
 
-        disconnect.setVisibility(View.GONE);
+        disconnect.setVisibility(View.INVISIBLE);
         disconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +92,9 @@ public class Fragment_Home extends Fragment {
 
             new ConnectBt().execute();
 
+        }
+        else {
+            Toast.makeText(getActivity(),"Please Connect to Bluetooth", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -807,7 +810,7 @@ public class Fragment_Home extends Fragment {
 
             File saveFile = com.google.hangouts.hypnosture.ScreenshotUtils.getMainDirectoryName(getActivity());//get the path to save screenshot
             File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "ImproperPosture" + pic + ".jpg", saveFile);//save the screenshot to selected path
-            //shareScreenshot(file);//finally share screenshot
+            //shareScreenshot(file); //finally share screenshot
             pic++;
         } else
             //If bitmap is null show toast message
