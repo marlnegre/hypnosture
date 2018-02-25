@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -134,9 +136,13 @@ public class UpdownExerciseActivity extends AppCompatActivity {
         updownExerciseToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(UpdownExerciseActivity.this, ExercisesActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
+//                Intent i=new Intent(UpdownExerciseActivity.this, Fragment_Exercise.class);
+//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(i);
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            transaction.replace(R.id.fragment, new Fragment_Exercise()).commit();
+            finish();
             }
         });
     }

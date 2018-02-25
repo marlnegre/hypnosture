@@ -22,9 +22,9 @@
         android:id="@+id/EToolbarTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/ETExerciseToolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
+        android:layout_marginBottom="12dp"
         android:text="ET EXERCISE"
         android:textSize="22dp"
         android:textColor="@color/white"/>
@@ -41,43 +41,32 @@
         android:layout_marginRight="18dp"
         android:background="@drawable/info_icon" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout3"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:layout_below="@+id/info_imgButton"
-        android:layout_centerHorizontal="true">
-
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="320dp"
+            android:layout_below="@+id/info_imgButton"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:src="@drawable/exercise_et" />
-
-    </FrameLayout>
+            android:src="@drawable/exercise_et"
+            android:id="@+id/gifImageView"/>
 
     <TextView
         android:id="@+id/etTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/gifImageView"
+        android:layout_centerHorizontal="true"
         android:text=" "
-        android:textSize="20dp"
-        android:layout_below="@+id/frameLayout3"
-        android:layout_centerHorizontal="true" />
+        android:textSize="20dp" />
 
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etTimer">
 
         <Button
             android:id="@+id/sButton_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="START"
-            android:layout_marginLeft="160dp"
+            android:layout_below="@+id/etTimer"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="23dp" />
-    </TableRow>
 
 </RelativeLayout>
