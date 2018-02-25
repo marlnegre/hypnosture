@@ -22,10 +22,9 @@
         android:id="@+id/updownExerciseToolbarTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:layout_toLeftOf="@+id/info_imgButton"
-        android:layout_toStartOf="@+id/info_imgButton"
+        android:layout_alignBottom="@+id/updownExercisetoolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
         android:text="UP DOWN EXERCISE"
         android:textSize="22dp"
         android:textColor="@color/white"/>
@@ -42,48 +41,33 @@
         android:layout_marginRight="18dp"
         android:background="@drawable/info_icon" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="200dp"
-        android:layout_marginLeft="100dp"
-        android:layout_height="300dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/info_imgButton">
 
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="320dp"
+            android:layout_below="@+id/info_imgButton"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:src="@drawable/exercise_updown" />
-
-    </FrameLayout>
+            android:src="@drawable/exercise_updown"
+            android:id="@+id/gifImageView"/>
 
     <TextView
         android:id="@+id/updownTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/frameLayout"
+        android:layout_below="@+id/gifImageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:text=""
+        android:text=" "
         android:textSize="20dp" />
 
-    <TableRow
+
+    <Button
+        android:id="@+id/sbutton_UPDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/updownTimer">
-
-        <Button
-            android:id="@+id/sbutton_UPDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="START"
-            android:layout_marginLeft="160dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="23dp"/>
-
-    </TableRow>
-
+        android:layout_below="@+id/updownTimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="START" />
 
 </RelativeLayout>

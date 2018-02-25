@@ -135,9 +135,10 @@ public class ETExercise extends AppCompatActivity {
         ETExerciseToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(ETExercise.this, ExercisesActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
+//                Intent i=new Intent(ETExercise.this, ExercisesActivity.class);
+//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(i);
+                finish();
             }
         });
     }
