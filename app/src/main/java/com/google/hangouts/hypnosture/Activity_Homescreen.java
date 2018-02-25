@@ -55,7 +55,7 @@ public class Activity_Homescreen extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         setTitle("Home");
-        transaction.replace(R.id.frame, new Fragament_HomeReflect()).commit();
+        transaction.replace(R.id.frame, new Fragment_Home()).commit();
 
 
     }
@@ -168,8 +168,8 @@ public class Activity_Homescreen extends AppCompatActivity
                 break;
             case R.id.drawer_logout:
                 mAuth.signOut();
-                Intent s6 = new Intent(Activity_Homescreen.this, UserAdmin.class);
-                startActivity(s6);
+                Intent s7 = new Intent(Activity_Homescreen.this, UserAdmin.class);
+                startActivity(s7);
                 break;
 
 
