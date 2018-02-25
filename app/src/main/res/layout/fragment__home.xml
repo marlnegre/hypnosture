@@ -19,7 +19,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="67dp"
+            android:layout_marginTop="50dp"
             android:adjustViewBounds="true"
             android:src="@drawable/a"
             app:layout_constraintBottom_toTopOf="@+id/angle"
