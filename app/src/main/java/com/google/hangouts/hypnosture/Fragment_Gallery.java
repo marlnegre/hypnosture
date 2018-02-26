@@ -1,14 +1,17 @@
 package com.google.hangouts.hypnosture;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -24,7 +27,7 @@ public class Fragment_Gallery extends Fragment {
     GridView gridview;
     List<String> your_array_list = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
-    public class ImageAdapter extends BaseAdapter {
+    public static class ImageAdapter extends BaseAdapter {
 
         private Context mContext;
         ArrayList<String> itemList = new ArrayList<String>();
@@ -43,7 +46,7 @@ public class Fragment_Gallery extends Fragment {
         }
 
         @Override
-        public Object getItem(int arg0) {
+        public Object getItem(int position) {
 
             return null;
         }
@@ -59,7 +62,7 @@ public class Fragment_Gallery extends Fragment {
             ImageView imageView;
             if (convertView == null) {  // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(120, 120));
+                imageView.setLayoutParams(new GridView.LayoutParams(120, 220));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 imageView.setPadding(8, 8, 8, 8);
             } else {
@@ -126,8 +129,10 @@ public class Fragment_Gallery extends Fragment {
         else {
             for (String image : images) {
                 myImageAdapter.add(image);
+
             }
         }
+
     }
 
     @Override
@@ -137,6 +142,7 @@ public class Fragment_Gallery extends Fragment {
         gridview = view.findViewById(R.id.gridview);
         gridview.setAdapter(myImageAdapter);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
