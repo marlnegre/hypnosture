@@ -28,7 +28,7 @@ public class Fragment_Gallery extends Fragment {
     List<String> your_array_list = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
     public static class ImageAdapter extends BaseAdapter {
-        String [] item;
+
         private Context mContext;
         ArrayList<String> itemList = new ArrayList<String>();
 
@@ -48,13 +48,13 @@ public class Fragment_Gallery extends Fragment {
         @Override
         public Object getItem(int position) {
 
-            return position;
+            return null;
         }
 
         @Override
         public long getItemId(int position) {
 
-            return position;
+            return 0;
         }
 
         @Override
