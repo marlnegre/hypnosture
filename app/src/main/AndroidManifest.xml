@@ -52,7 +52,7 @@
             android:name=".Activity_Profile"
             android:label="@string/act_profile" />
         <activity
-            android:name=".Activity_Recommendations"
+            android:name=".RecommendationActivity"
             android:label="@string/act_recom" />
         <activity
             android:name=".Activity_Snorepage"
