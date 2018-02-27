@@ -24,11 +24,6 @@
             android:id="@+id/drawer_snore"
             android:icon="@drawable/ic_snore"
             android:title="@string/drawer_snore" />
-        <item
-            android:id="@+id/drawer_exercise"
-            android:icon="@drawable/ic_directions_run_black_24dp"
-            android:title="@string/nav_Exercise" />
-
 
     </group>
 
