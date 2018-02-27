@@ -147,7 +147,7 @@ public class Activity_Homescreen extends AppCompatActivity
                 startActivity(s1);
                 break;
             case R.id.drawer_recommendation:
-                Intent s2 = new Intent(Activity_Homescreen.this, Activity_Recommendations.class);
+                Intent s2 = new Intent(Activity_Homescreen.this, RecommendationActivity.class);
                 startActivity(s2);
                 break;
             case R.id.drawer_snore:
@@ -157,10 +157,6 @@ public class Activity_Homescreen extends AppCompatActivity
             case R.id.navigation_settings:
                 Intent s4 = new Intent(Activity_Homescreen.this, SettingsActivity.class);
                 startActivity(s4);
-                break;
-            case R.id.drawer_exercise:
-                Intent s5 = new Intent(Activity_Homescreen.this, ExercisesActivity.class);
-                startActivity(s5);
                 break;
             case R.id.drawer_bluetooth:
                 Intent s6 = new Intent(Activity_Homescreen.this, Activity_Bluetooth.class);
