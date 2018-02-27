@@ -28,8 +28,8 @@ public class ExercisesActivity extends AppCompatActivity {
 
         listOfExercises = findViewById(R.id.listView);
 
-        ListViewClass adapter = new ListViewClass(ExercisesActivity.this, exercises, images);
-        listOfExercises.setAdapter(adapter);
+        //ListViewClass adapter = new ListViewClass(ExercisesActivity.this, exercises, images);
+        //listOfExercises.setAdapter(adapter);
         listOfExercises.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

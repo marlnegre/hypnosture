@@ -32,7 +32,7 @@
     <ImageButton
         android:id="@+id/info_imgButton"
         android:layout_width="35dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
@@ -42,46 +42,49 @@
         android:background="@drawable/info_icon" />
 
 
-    <FrameLayout
-        android:id="@+id/frameLayout1"
-        android:layout_width="200dp"
-        android:layout_marginLeft="100dp"
-        android:layout_height="300dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/info_imgButton">
+    <!--<FrameLayout-->
+        <!--android:id="@+id/frameLayout1"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_marginLeft="100dp"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/info_imgButton">-->
 
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/exercise_sidetilt" />
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="220dp"
+        android:layout_height="320dp"
+        android:layout_below="@+id/info_imgButton"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:src="@drawable/exercise_sidetilt"
+        android:id="@+id/gifImageView" />
 
-    </FrameLayout>
+    <!--</FrameLayout>-->
 
     <TextView
         android:id="@+id/sideTiltTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/frameLayout1"
+        android:layout_below="@+id/gifImageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
         android:text=""
         android:textSize="20dp" />
 
-    <TableRow
+    <!--<TableRow-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/sideTiltTimer">-->
+
+    <Button
+        android:id="@+id/sbutton_sideTilt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sideTiltTimer">
+        android:layout_below="@+id/sideTiltTimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="START" />
 
-        <Button
-            android:id="@+id/sbutton_sideTilt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="START"
-            android:layout_below="@+id/sideTiltTimer"
-            android:layout_marginLeft="160dp" />
-
-    </TableRow>
+    <!--</TableRow>-->
 
 </RelativeLayout>

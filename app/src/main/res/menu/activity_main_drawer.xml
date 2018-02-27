@@ -24,16 +24,16 @@
             android:id="@+id/drawer_snore"
             android:icon="@drawable/ic_snore"
             android:title="@string/drawer_snore" />
-        <item
-            android:id="@+id/drawer_exercise"
-            android:icon="@drawable/ic_directions_run_black_24dp"
-            android:title="@string/nav_Exercise" />
-
 
     </group>
 
     <item android:title="Options">
         <menu>
+
+            <item
+                android:id="@+id/drawer_bluetooth"
+                android:icon="@drawable/ic_bluetooth_black_24dp"
+                android:title="Bluetooth" />
 
             <item
                 android:id="@+id/navigation_settings"

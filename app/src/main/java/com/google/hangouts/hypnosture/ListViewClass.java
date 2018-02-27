@@ -14,10 +14,10 @@ public class ListViewClass extends ArrayAdapter<String> {
     private final String [] exercises;
     private final Integer[] images;
 
-    public ListViewClass (ExercisesActivity context, String[] exercises, Integer[] images)
+    public ListViewClass (Fragment_Exercise context, String[] exercises, Integer[] images)
     {
-        super (context, R.layout.activity_listview, exercises);
-        this.context = context;
+        super (context.getActivity(), R.layout.activity_listview, exercises);
+        this.context = context.getActivity();
         this.exercises = exercises;
         this.images = images;
     }

@@ -147,7 +147,6 @@ public class Activity_Homescreen extends AppCompatActivity
 
                 case R.id.navigation_exercise:
                     setTitle("Exercises");
-
                     transaction.replace(R.id.frame, new Fragment_Exercise()).commit();
                     return true;
 
@@ -215,8 +214,8 @@ public class Activity_Homescreen extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
 //        // Handle navigation view item clicks here.
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -235,7 +234,7 @@ public class Activity_Homescreen extends AppCompatActivity
                 startActivity(s1);
                 break;
             case R.id.drawer_recommendation:
-                Intent s2 = new Intent(Activity_Homescreen.this, Activity_Recommendations.class);
+                Intent s2 = new Intent(Activity_Homescreen.this, RecommendationActivity.class);
                 startActivity(s2);
                 break;
             case R.id.drawer_snore:
@@ -246,14 +245,14 @@ public class Activity_Homescreen extends AppCompatActivity
                 Intent s4 = new Intent(Activity_Homescreen.this, SettingsActivity.class);
                 startActivity(s4);
                 break;
-            case R.id.drawer_exercise:
-                Intent s5 = new Intent(Activity_Homescreen.this, ExercisesActivity.class);
-                startActivity(s5);
+            case R.id.drawer_bluetooth:
+                Intent s6 = new Intent(Activity_Homescreen.this, Activity_Bluetooth.class);
+                startActivity(s6);
                 break;
             case R.id.drawer_logout:
                 mAuth.signOut();
-                Intent s6 = new Intent(Activity_Homescreen.this, UserAdmin.class);
-                startActivity(s6);
+                Intent s7 = new Intent(Activity_Homescreen.this, UserAdmin.class);
+                startActivity(s7);
                 break;
 
 

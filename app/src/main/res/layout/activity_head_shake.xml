@@ -43,48 +43,46 @@
         android:background="@drawable/info_icon" />
 
 
-    <FrameLayout
-        android:id="@+id/frameLayout2"
-        android:layout_width="200dp"
-        android:layout_marginLeft="100dp"
-        android:layout_height="300dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/info_imgButton">
+    <!--<FrameLayout-->
+        <!--android:id="@+id/frameLayout2"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_marginLeft="85dp"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:foregroundGravity="center"-->
+        <!--android:layout_below="@+id/info_imgButton">-->
 
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="320dp"
+            android:layout_below="@+id/info_imgButton"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:src="@drawable/exercise_headshake" />
+            android:src="@drawable/exercise_headshake"
+            android:id="@+id/gifImageView"/>
 
-    </FrameLayout>
+    <!--</FrameLayout>-->
 
     <TextView
         android:id="@+id/headShakeTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_below="@+id/gifImageView"
         android:text=""
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/frameLayout2"
         android:layout_centerHorizontal="true" />
 
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/headShakeTimer">
 
         <Button
             android:id="@+id/startButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="START"
-            android:layout_marginLeft="160dp"
+            android:layout_below="@+id/headShakeTimer"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="23dp" />
+            android:layout_marginTop="18dp" />
 
-    </TableRow>
 
 
 </RelativeLayout>
