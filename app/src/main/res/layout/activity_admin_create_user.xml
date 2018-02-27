@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/signupbgcolor">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:text="CREATE USER"
+        android:textColor="@color/LoginEdittextColor"
+        android:textSize="20sp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/profilehome"
+        app:civ_border_color="@color/ButtonColor"
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/editPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileImage"
+        android:layout_centerHorizontal="true"
+        android:text="Tap Photo"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/fname"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPhoto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Complete Name"
+        android:inputType="textPersonName" />
+
+
+    <TextView
+        android:id="@+id/sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fname"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/profilesex"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textSize="25sp" />
+
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="50dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sex"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/maleRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rg"
+            android:layout_alignStart="@+id/rg"
+            android:layout_below="@+id/sex"
+            android:checked="false"
+            android:onClick="rbclick"
+            android:text="Male"
+            android:textSize="22sp" />
+
+        <RadioButton
+            android:id="@+id/femaleRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:onClick="rbclick"
+            android:text="Female"
+            android:textSize="22sp" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6"
+        android:layout_below="@+id/textViewBirthday"
+        android:ems="10"
+        android:hint="@string/signup_email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fname"
+        android:layout_alignStart="@+id/fname"
+        android:layout_below="@+id/editText5"
+        android:ems="10"
+        android:hint="@string/signup_password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6"
+        android:layout_below="@+id/editText6"
+        android:ems="10"
+        android:hint="@string/signup_ConfirmPassword"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/submitSignup"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:background="@color/ButtonColor"
+        android:text="@string/SUBMIT"
+        android:textColor="@color/LoginEdittextColor" />
+
+    <TextView
+        android:id="@+id/textViewBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/rg"
+        android:layout_alignRight="@+id/rg"
+        android:layout_below="@+id/rg"
+        android:text="Click Me"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/textViewTitleBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewBirthday"
+        android:layout_alignBottom="@+id/textViewBirthday"
+        android:layout_alignEnd="@+id/sex"
+        android:layout_alignRight="@+id/sex"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:text="Birthdate: "
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+
+</RelativeLayout>

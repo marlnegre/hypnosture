@@ -1,4 +1,4 @@
-package com.google.hangouts.hypnosture.USER;
+package com.google.hangouts.hypnosture.ADMIN;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -39,6 +38,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.hangouts.hypnosture.Activity_Homescreen;
 import com.google.hangouts.hypnosture.R;
+import com.google.hangouts.hypnosture.USER.User;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -47,8 +47,7 @@ import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
-public class Signup_Screen extends AppCompatActivity {
+public class AdminSignup_Screen extends AppCompatActivity {
 
     private static final String TAG = "Signup_Screen";
     private static final int REQUEST_CAMERA = 3;
@@ -58,40 +57,34 @@ public class Signup_Screen extends AppCompatActivity {
 
     Button signup;
     EditText email, password, confirm;
+    private FirebaseAuth mAuth;
     private TextView textViewBirthdate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     ProgressDialog mProgress;
 
-
+    DatabaseReference databaseUsers;
+    FirebaseDatabase usersDatabase;
     StorageReference mStorageref;
 
     CircleImageView userImageProfileview;
     EditText fname;
     RadioGroup rg;
     RadioButton rb, rb1, rb2;
+    FirebaseAuth.AuthStateListener mAuthListener;
     Uri imageHoldUri = null;
-
-
-    private FirebaseDatabase mFirebaseDatabase;
-    private FirebaseAuth mAuth;
-    private DatabaseReference myRef;
     private String userID;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup__screen);
-
-        mListView = findViewById(R.id.listView);
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference().child("Users");
+        setContentView(R.layout.activity_admin_signup__screen);
 
 
         mProgress = new ProgressDialog(this);
         textViewBirthdate = findViewById(R.id.textViewBirthday);
+        databaseUsers = FirebaseDatabase.getInstance().getReference("Admins");
+        usersDatabase = FirebaseDatabase.getInstance();
+
         mAuth = FirebaseAuth.getInstance();
 
         email = findViewById(R.id.editText5);
@@ -115,7 +108,7 @@ public class Signup_Screen extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user!=null){
                     finish();
-                    startActivity(new Intent(Signup_Screen.this, Activity_Homescreen.class));
+                    startActivity(new Intent(AdminSignup_Screen.this, Activity_Homescreen.class));
                 }
             }
         };
@@ -130,7 +123,7 @@ public class Signup_Screen extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        Signup_Screen.this,
+                        AdminSignup_Screen.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
                         year,month,day);
@@ -138,6 +131,7 @@ public class Signup_Screen extends AppCompatActivity {
                 dialog.show();
             }
         });
+
 
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -156,7 +150,7 @@ public class Signup_Screen extends AppCompatActivity {
             }
         });
 
-      signup.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String Email = email.getText().toString().trim();
@@ -175,7 +169,7 @@ public class Signup_Screen extends AppCompatActivity {
 
 
                 if (Email.isEmpty() || Password.isEmpty() || Confirm.isEmpty() || TextUtils.isEmpty(Fname) || TextUtils.isEmpty(Birthday)){
-                    Toast.makeText(Signup_Screen.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminSignup_Screen.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (regexx.matcher(edit_text_fname).find()) {
@@ -202,12 +196,12 @@ public class Signup_Screen extends AppCompatActivity {
 
 
                 if (userImageProfileview.getDrawable() == null){
-                    Toast.makeText(Signup_Screen.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminSignup_Screen.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!rb1.isChecked() && !rb2.isChecked()) {
-                    Toast.makeText(Signup_Screen.this, "Select Sex", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminSignup_Screen.this, "Select Sex", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -227,11 +221,12 @@ public class Signup_Screen extends AppCompatActivity {
                         }
                     });*/
 
-                    registerUser();
+                registerUser();
 
             }
         });
     }
+
 
 
     public void registerUser() {
@@ -249,12 +244,12 @@ public class Signup_Screen extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()) {
 
+
+                        if (task.isSuccessful()) {
                             mProgress.setTitle("Registering User");
                             mProgress.setMessage("Please wait...");
                             mProgress.show();
-
 
                             StorageReference mChildStorage = mStorageref.child("profilepics").child(imageHoldUri.getLastPathSegment());
                             final String profilePicUrl = imageHoldUri.getLastPathSegment();
@@ -264,14 +259,15 @@ public class Signup_Screen extends AppCompatActivity {
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                                     Uri imageUri = taskSnapshot.getDownloadUrl();
-                                     String profilePhotoUrl = imageUri.toString();
+                                    String profilePhotoUrl = imageUri.toString();
+
 
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     userID = user.getUid();
 
                                     User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
-                                    myRef.child(userID).setValue(newUser);
-                                    Intent profileintent = new Intent(Signup_Screen.this, Activity_Homescreen.class);
+                                    databaseUsers.child(userID).setValue(newUser);
+                                    Intent profileintent = new Intent(AdminSignup_Screen.this, UsersActivity.class);
                                     startActivity(profileintent);
                                 }
                             });
@@ -300,7 +296,7 @@ public class Signup_Screen extends AppCompatActivity {
 
         final CharSequence[] items = {"Take Photo", "Choose from Gallery",
                 "Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(Signup_Screen.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(AdminSignup_Screen.this);
         builder.setTitle("Add Photo!");
 
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -371,5 +367,9 @@ public class Signup_Screen extends AppCompatActivity {
 
         }
     }
+
+
+
+
 
 }

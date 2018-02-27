@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.hangouts.hypnosture.USER.UserProfile">
+    tools:context="com.google.hangouts.hypnosture.ADMIN.UsersProfileActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,10 +49,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="3">
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -64,21 +65,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:gravity="center"
                         android:textSize="17sp"
                         android:text="Update Profile"
                         android:textColor="#4a4a4a" />
 
                     <ImageButton
                         android:id="@+id/imageviewUpdateProfile"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:background="@drawable/updateprofileicon" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,6 +91,7 @@
                     <TextView
                         android:textSize="17sp"
                         android:id="@+id/titleChangePassword"
+                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -96,10 +100,38 @@
 
                     <ImageButton
                         android:id="@+id/imageviewChangePassword"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:background="@drawable/updatepasswordicon" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="17sp"
+                        android:id="@+id/titleDeleteAccount"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Delete Account"
+                        android:textColor="#4a4a4a" />
+
+                    <ImageButton
+                        android:id="@+id/imageviewDeleteAccount"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_delete" />
 
                 </LinearLayout>
 

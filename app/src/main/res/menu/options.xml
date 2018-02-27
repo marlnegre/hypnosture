@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/angle"
+        android:title="Set Angle"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/user"
+        android:title="Create User"
+        android:orderInCategory="200"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/profile"
+        android:title="My Profile"
+        android:orderInCategory="300"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:orderInCategory="400"
+        app:showAsAction="never"
+        />
+
+</menu>

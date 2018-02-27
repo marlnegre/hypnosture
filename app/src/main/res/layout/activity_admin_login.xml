@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgorundColor"
+    tools:context="com.google.hangouts.hypnosture.ADMIN.AdminLogin">
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/LoginEdittextColor"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Email"
+        android:textColor="@color/LoginEdittextColor"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/LoginEdittextColor"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="77dp"
+        android:backgroundTint="@color/LoginEdittextColor"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/Password"
+        android:textColor="@color/LoginEdittextColor"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:textColorHint="@color/LoginEdittextColor"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="230dp"
+        app:srcCompat="@drawable/hypnosture2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:background="@color/ButtonColor"
+        android:text="@string/Button"
+        android:textColor="@color/LoginEdittextColor"
+        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        />
+
+    <Button
+        android:id="@+id/signupbtn"
+        android:layout_width="290dp"
+        android:layout_marginTop="13dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login"
+        android:layout_alignStart="@+id/login"
+        android:layout_below="@+id/login"
+        android:background="@color/signupbutton"
+        android:text="@string/signup"
+        android:textColor="@color/LoginEdittextColor" />
+
+</RelativeLayout>

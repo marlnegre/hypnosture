@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="com.google.hangouts.hypnosture.AdminActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -15,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+       />
 
     <TextView
         android:id="@+id/textView4"
@@ -28,76 +30,21 @@
         android:textColor="@color/LoginEdittextColor"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/submitSignup"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextEmail"
-        android:layout_alignStart="@+id/editTextEmail"
-        android:layout_below="@+id/editTextEmail"
-        android:background="@color/ButtonColor"
-        android:text="CREATE USER"
-        android:textColor="@color/LoginEdittextColor" />
-
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextPassword"
-        android:layout_alignStart="@+id/editTextPassword"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="59dp"
-        android:hint="@string/signup_name"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/editTextUsername"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:inputType="textPassword"
-        android:hint="@string/Password"/>
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextPassword"
-        android:layout_alignStart="@+id/editTextPassword"
-        android:layout_below="@+id/editTextPassword"
-        android:hint="@string/signup_email"
-        android:inputType="textEmailAddress" />
-
     <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:layout_below="@id/submitSignup"
+        android:id="@+id/textViewUsers"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:text="USERS"/>
+        android:text="USERS" />
+
     <ListView
         android:id="@+id/listViewUsers"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignEnd="@+id/submitSignup"
-        android:layout_alignLeft="@+id/submitSignup"
-        android:layout_alignRight="@+id/submitSignup"
-        android:layout_alignStart="@+id/submitSignup"
-        android:layout_below="@+id/title" />
-
-    <EditText
-        android:id="@+id/editTextSearch"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextUsername"
-        android:layout_alignStart="@+id/editTextUsername"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="15dp"
-        android:hint="Search here..."
-        android:inputType="text"/>
-
+        android:layout_below="@+id/textViewUsers" />
 
 </RelativeLayout>

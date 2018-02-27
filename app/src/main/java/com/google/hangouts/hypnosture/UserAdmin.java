@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.hangouts.hypnosture.ADMIN.AdminLogin;
+import com.google.hangouts.hypnosture.ADMIN.VerifiedAdmin;
 import com.google.hangouts.hypnosture.USER.MainActivity;
 
 public class UserAdmin extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class UserAdmin extends AppCompatActivity {
         adminlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserAdmin.this, AdminLogin.class));
+                startActivity(new Intent(UserAdmin.this, VerifiedAdmin.class));
             }
         });
     }

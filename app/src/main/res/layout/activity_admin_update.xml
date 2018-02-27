@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/signupbgcolor"
     tools:context="com.google.hangouts.hypnosture.AdminUpdate">
 
     <RelativeLayout
@@ -43,34 +44,13 @@
             tools:layout_editor_absoluteX="153dp"
             tools:layout_editor_absoluteY="16dp" />
 
-        <Button
-            android:id="@+id/deleteAccBtn"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="53dp"
-            android:background="@color/ButtonColor"
-            android:text="DELETE ACCOUNT"
-            android:textColor="@color/LoginEdittextColor"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/space"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-
-            android:layout_alignBottom="@id/deleteAccBtn"
-            />
-
         <ListView
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_marginTop="55dp"
             android:id="@+id/listViewProfiles"
             android:layout_width="wrap_content"
             android:layout_height="400dp"
-            android:layout_alignEnd="@+id/deleteAccBtn"
-            android:layout_alignLeft="@+id/deleteAccBtn"
-            android:layout_alignRight="@+id/deleteAccBtn"
-            android:layout_alignStart="@+id/deleteAccBtn"
             android:layout_below="@id/toolbar" />
 
     </RelativeLayout>
