@@ -6,10 +6,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by cath on 2/24/18.
- */
-
 public class PhotoManager {
 
     String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
