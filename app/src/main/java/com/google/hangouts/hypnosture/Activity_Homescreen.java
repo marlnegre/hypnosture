@@ -1,6 +1,7 @@
 package com.google.hangouts.hypnosture;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,9 +14,19 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.hangouts.hypnosture.USER.MainActivity;
 import com.google.hangouts.hypnosture.USER.UserProfile;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by christian Kent Igot on 16/02/2018.
@@ -28,7 +39,17 @@ public class Activity_Homescreen extends AppCompatActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     Toolbar toolbar=null;
-    FirebaseAuth mAuth;
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    DatabaseReference mUsersDatabase;
+
+    private TextView mName, mEmail;
+    private String name;
+    private Uri photoUrl;
+    private CircleImageView mPic;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +69,14 @@ public class Activity_Homescreen extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //
+        //
+        //
+
         //Bottom navigation
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -57,6 +84,44 @@ public class Activity_Homescreen extends AppCompatActivity
         setTitle("Home");
         transaction.replace(R.id.frame, new Fragment_Home()).commit();
 
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser() == null){
+                    startActivity(new Intent(Activity_Homescreen.this, MainActivity.class));
+                }
+            }
+        };
+
+        navigationView = findViewById(R.id.nav_view);
+
+        mName = navigationView.getHeaderView(0).findViewById(R.id.navbarname);
+        mEmail = navigationView.getHeaderView(0).findViewById(R.id.navbaremail);
+        mPic = navigationView.getHeaderView(0).findViewById(R.id.circleImageView);
+        //getCurrentinfo();
+
+        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+        mUsersDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String PhotoUrl = dataSnapshot.child("profilePicURL").getValue().toString();
+                String Email = dataSnapshot.child("email").getValue().toString();
+                String Fname = dataSnapshot.child("fname").getValue().toString();
+
+                Glide.with(Activity_Homescreen.this).load(PhotoUrl).into(mPic);
+                mEmail.setText(Email);
+                mName.setText(Fname);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -89,6 +154,28 @@ public class Activity_Homescreen extends AppCompatActivity
             return false;
         }
     };
+
+    /*private void getCurrentinfo(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+                // Id of the provider (ex: google.com)
+                String providerId = profile.getProviderId();
+
+                // UID specific to the provider
+                String uid = profile.getUid();
+
+                // Name, email address, and profile photo Url
+                name = profile.getDisplayName();
+                photoUrl = profile.getPhotoUrl();
+                mName.setText(name);
+
+                Glide.with(getApplicationContext())
+                        .load(photoUrl.toString())
+                        .into(mPic);
+            };
+        }
+    }*/
 
     //Bottom nav
 

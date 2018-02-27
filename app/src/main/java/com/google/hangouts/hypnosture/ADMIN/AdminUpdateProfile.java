@@ -1,4 +1,4 @@
-package com.google.hangouts.hypnosture.USER;
+package com.google.hangouts.hypnosture.ADMIN;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -12,10 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -36,6 +34,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.hangouts.hypnosture.Activity_Homescreen;
 import com.google.hangouts.hypnosture.R;
+import com.google.hangouts.hypnosture.USER.UpdateProfile;
+import com.google.hangouts.hypnosture.USER.UserProfile;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -46,7 +46,7 @@ import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UpdateProfile extends AppCompatActivity {
+public class AdminUpdateProfile extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 3;
     private static final int SELECT_FILE = 2;
@@ -66,10 +66,12 @@ public class UpdateProfile extends AppCompatActivity {
 
     Uri imageHoldUri = null;
 
+    ProgressDialog mProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_profile);
+        setContentView(R.layout.activity_admin_update_profile);
 
         userImageProfileview = findViewById(R.id.profileImage);
         fullname = findViewById(R.id.fname);
@@ -80,12 +82,6 @@ public class UpdateProfile extends AppCompatActivity {
         ok = findViewById(R.id.okbutton);
         mAuth = FirebaseAuth.getInstance();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        backButton();
-
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -94,7 +90,7 @@ public class UpdateProfile extends AppCompatActivity {
 
                 if (user!=null){
                     finish();
-                    startActivity(new Intent(UpdateProfile.this, Activity_Homescreen.class));
+                    startActivity(new Intent(AdminUpdateProfile.this, Activity_Homescreen.class));
                 }
             }
         };
@@ -108,7 +104,7 @@ public class UpdateProfile extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        UpdateProfile.this,
+                        AdminUpdateProfile.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
                         year,month,day);
@@ -127,8 +123,9 @@ public class UpdateProfile extends AppCompatActivity {
             }
         };
 
+        mProgress = new ProgressDialog(this);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Admins");
         mStorageref = FirebaseStorage.getInstance().getReference();
 
         ok.setOnClickListener(new View.OnClickListener(){
@@ -144,22 +141,6 @@ public class UpdateProfile extends AppCompatActivity {
                 profilePicSelection();
             }
         });
-    }
-
-    public void backButton() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -183,7 +164,7 @@ public class UpdateProfile extends AppCompatActivity {
 
 
         if (TextUtils.isEmpty(Fname)  || TextUtils.isEmpty(Birthday)){
-            Toast.makeText(UpdateProfile.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminUpdateProfile.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
             return;
         }
         if (regexx.matcher(edit_text_fname).find()) {
@@ -193,12 +174,12 @@ public class UpdateProfile extends AppCompatActivity {
         }
 
         if (userImageProfileview.getDrawable() == null){
-            Toast.makeText(UpdateProfile.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminUpdateProfile.this, "Select Profile Picture", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (!rb1.isChecked() && !rb2.isChecked()) {
-            Toast.makeText(UpdateProfile.this, "Select Sex", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminUpdateProfile.this, "Select Sex", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -218,7 +199,7 @@ public class UpdateProfile extends AppCompatActivity {
 
 
                     String user_id = mAuth.getCurrentUser().getUid();
-                    DatabaseReference current_user_profile = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                    DatabaseReference current_user_profile = FirebaseDatabase.getInstance().getReference().child("Admins").child(user_id);
 
                     Map newUserInfo = new HashMap();
                     newUserInfo.put("fname", Fname);
@@ -227,8 +208,9 @@ public class UpdateProfile extends AppCompatActivity {
                     newUserInfo.put("profilePicURL", profilePhotoUrl);
                     current_user_profile.updateChildren(newUserInfo);
 
-
-                    Toast.makeText(UpdateProfile.this, "Profile Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminUpdateProfile.this, "Profile Updated!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AdminUpdateProfile.this, UsersActivity.class));
+                    finish();
                 }
             });
 
@@ -238,7 +220,7 @@ public class UpdateProfile extends AppCompatActivity {
     private void profilePicSelection() {
         final CharSequence[] items = {"Take Photo", "Choose from Gallery",
                 "Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfile.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(AdminUpdateProfile.this);
         builder.setTitle("Add Photo!");
 
         builder.setItems(items, new DialogInterface.OnClickListener() {

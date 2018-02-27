@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/signupbgcolor"
+    tools:context="com.google.hangouts.hypnosture.ADMIN.AdminAngle">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:text="SET POSTURE ANGLE"
+        android:textColor="@color/LoginEdittextColor"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/textViewStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="144dp"
+        android:text="START"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewStart"
+        android:layout_alignBottom="@+id/textViewStart"
+        android:layout_alignEnd="@+id/editTextEnd"
+        android:layout_alignRight="@+id/editTextEnd"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:text="END"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="27dp"
+        android:layout_toLeftOf="@+id/editTextEnd"
+        android:layout_toStartOf="@+id/editTextEnd"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/setAngleBtn"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewStart"
+        android:layout_alignStart="@+id/textViewStart"
+        android:layout_below="@+id/textViewTo"
+        android:layout_marginTop="36dp"
+        android:background="@color/ButtonColor"
+        android:text="SET"
+        android:textColor="@color/LoginEdittextColor" />
+
+    <EditText
+        android:id="@+id/editTextStart"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewStart"
+        android:layout_alignStart="@+id/textViewStart"
+        android:layout_alignTop="@+id/textViewTo"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextEnd"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/setAngleBtn"
+        android:layout_alignRight="@+id/setAngleBtn"
+        android:layout_alignTop="@+id/textViewTo"
+        android:inputType="number" />
+
+</RelativeLayout>

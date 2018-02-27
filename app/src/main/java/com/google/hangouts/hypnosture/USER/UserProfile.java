@@ -2,16 +2,22 @@ package com.google.hangouts.hypnosture.USER;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,14 +25,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.hangouts.hypnosture.ADMIN.AdminProfile;
 import com.google.hangouts.hypnosture.R;
+import com.google.hangouts.hypnosture.UserAdmin;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserProfile extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity{
 
+    ImageButton updateBtn, changepassBtn;
     private CircleImageView circleImageView;
-    private DatabaseReference mUsersDatabase;
+    DatabaseReference mUsersDatabase;
     private TextView fullname, birthday, sex, email;
 
     @Override
@@ -35,6 +44,9 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         setBackBtn();
+
+        updateBtn = findViewById(R.id.imageviewUpdateProfile);
+        changepassBtn = findViewById(R.id.imageviewChangePassword);
 
         String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -47,6 +59,20 @@ public class UserProfile extends AppCompatActivity {
         fullname = findViewById(R.id.editTextFullName);
         birthday = findViewById(R.id.editTextBirthday);
         sex = findViewById(R.id.editTextSex);
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfile.this, UpdateProfile.class));
+            }
+        });
+
+        changepassBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfile.this, ChangingPassword.class));
+            }
+        });
 
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -80,29 +106,4 @@ public class UserProfile extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options3, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.changepass:
-                startActivity(new Intent(this, ChangingPassword.class));
-                return true;
-            case R.id.editprofile:
-                startActivity(new Intent(this, UpdateProfile.class));
-                return true;
-            case R.id.home:
-                finish();
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
 }

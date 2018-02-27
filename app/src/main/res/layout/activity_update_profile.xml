@@ -8,25 +8,24 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImage"
-            android:layout_width="165sp"
-            android:layout_height="160sp"
+            android:layout_width="145sp"
+            android:layout_height="140sp"
             android:layout_below="@+id/toolbar"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/profilehome"
             android:scaleType="centerCrop"
             tools:layout_editor_absoluteX="112dp"
@@ -64,9 +63,9 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/profile"
-            android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/profile"
-            android:layout_marginBottom="22dp"
+            android:layout_below="@+id/rg"
+            android:layout_marginTop="30dp"
             android:background="@color/ButtonColor"
             android:text="@string/profilebtn"
             android:textColor="@color/LoginEdittextColor" />
@@ -93,6 +92,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:layout_gravity="center"
                 android:id="@+id/maleRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,6 +105,7 @@
                 android:textSize="22sp" />
 
             <RadioButton
+                android:layout_gravity="center"
                 android:id="@+id/femaleRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
