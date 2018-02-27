@@ -13,46 +13,95 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="427dp"
-            android:layout_height="319dp"
-            android:layout_above="@+id/angle"
+            android:layout_width="420dp"
+            android:layout_height="0dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:adjustViewBounds="true"
+            android:maxHeight="320dp"
+            android:maxWidth="420dp"
             android:src="@drawable/a"
             app:layout_constraintBottom_toTopOf="@+id/angle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/emoticons"
+            android:layout_width="50dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="20dp"
+            android:maxHeight="50dp"
+            android:maxWidth="50dp"
+            android:src="@drawable/emoticon_blushedcheeks"
+            app:layout_constraintBottom_toTopOf="@+id/btnDisconnect"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/angle" />
 
         <TextView
             android:id="@+id/angle"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_above="@+id/btnDisconnect"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="21dp"
-            android:layout_marginStart="37dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
             android:text="Angle"
-            app:layout_constraintBottom_toTopOf="@+id/btnDisconnect"
-            app:layout_constraintStart_toStartOf="@+id/btnDisconnect"
+            app:layout_constraintBottom_toTopOf="@+id/emoticons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <Button
             android:id="@+id/btnDisconnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="92dp"
+            android:layout_marginBottom="45dp"
             android:text="Disconnect"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/angle" />
+            app:layout_constraintTop_toBottomOf="@+id/emoticons" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/angle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_above="@+id/imageView2"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginStart="36dp"-->
+        <!--android:layout_marginTop="80dp"-->
+        <!--android:text="Angle"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/btnDisconnect"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imageView2" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/btnDisconnect"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="50dp"-->
+        <!--android:text="Disconnect"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imageView5"-->
+        <!--app:layout_constraintVertical_bias="1.0" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/imageView5"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_marginBottom="134dp"-->
+        <!--android:src="@drawable/blushedcheeks"-->
+        <!--android:visibility="visible"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imageView2" />-->
 
 
     </android.support.constraint.ConstraintLayout>
