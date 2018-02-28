@@ -1,6 +1,9 @@
 package com.google.hangouts.hypnosture;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,12 +12,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.hangouts.hypnosture.USER.MainActivity;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +50,9 @@ public class Fragment_Gallery extends Fragment {
         }
 
         @Override
-        public Object getItem(int arg0) {
+        public Object getItem(int position) {
 
-            return null;
+            return itemList.get(position);
         }
 
         @Override
@@ -128,6 +135,7 @@ public class Fragment_Gallery extends Fragment {
                 myImageAdapter.add(image);
             }
         }
+
     }
 
     @Override
@@ -136,6 +144,49 @@ public class Fragment_Gallery extends Fragment {
 
         gridview = view.findViewById(R.id.gridview);
         gridview.setAdapter(myImageAdapter);
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                startActivity( new Intent(getActivity(), ViewActivity.class).putExtra("img", myImageAdapter.itemList.get(position).toString()));
+            }
+        });
+        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                // Setting Dialog Title
+                alertDialog.setTitle("Confirm Delete...");
+                // Setting Dialog Message
+                alertDialog.setMessage("Are you sure you want delete this?");
+                // Setting Icon to Dialog
+                alertDialog.setIcon(R.drawable.delete);
+                // Setting Positive "Yes" Button
+                alertDialog.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                                // Write your code here to execute after dialog
+                                File file = new File(myImageAdapter.itemList.get(position).toString());
+                                file.delete();
+                                myImageAdapter.notifyDataSetChanged();
+                                gridview.invalidateViews();
+                                Toast.makeText(getActivity(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                // Setting Negative "NO" Button
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,    int which) {
+                                // Write your code here to execute after dialog
+                                dialog.cancel();
+                            }
+                        });
+                // Showing Alert Message
+                alertDialog.show();
+
+
+                return true;
+            }
+        });
     }
 
     @Override
