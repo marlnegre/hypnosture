@@ -22,10 +22,9 @@
             android:id="@+id/profileImage"
             android:layout_width="145sp"
             android:layout_height="140sp"
-            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/textViewTitleProfile"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="22dp"
             android:background="@drawable/profilehome"
             android:scaleType="centerCrop"
             tools:layout_editor_absoluteX="112dp"
@@ -36,9 +35,9 @@
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/profileImage"
+            android:layout_alignBottom="@+id/toolbar"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/profile"
             android:textColor="@color/LoginEdittextColor"
             android:textSize="20sp"
@@ -50,8 +49,8 @@
             android:id="@+id/fname"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/textViewBirthday"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:ems="10"
             android:hint="Complete Name"
             android:inputType="textPersonName"
@@ -63,95 +62,33 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/profile"
+            android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/profile"
-            android:layout_below="@+id/rg"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="41dp"
             android:background="@color/ButtonColor"
             android:text="@string/profilebtn"
             android:textColor="@color/LoginEdittextColor" />
 
 
-        <TextView
-            android:id="@+id/sex"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/textViewBirthday"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewBirthday"
-            android:layout_centerHorizontal="true"
-            android:text="@string/profilesex"
-            android:textSize="25sp"
-            tools:layout_editor_absoluteX="79dp"
-            tools:layout_editor_absoluteY="390dp" />
-
-        <RadioGroup
-            android:id="@+id/rg"
-            android:layout_width="200sp"
-            android:layout_height="40sp"
-            android:layout_below="@+id/textViewBirthday"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:layout_gravity="center"
-                android:id="@+id/maleRB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/sex"
-                android:layout_toLeftOf="@+id/sex"
-                android:layout_toStartOf="@+id/sex"
-                android:checked="false"
-                android:onClick="rbclick"
-                android:text="Male"
-                android:textSize="22sp" />
-
-            <RadioButton
-                android:layout_gravity="center"
-                android:id="@+id/femaleRB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/birthday"
-                android:layout_alignRight="@+id/birthday"
-                android:layout_below="@+id/sex"
-                android:checked="false"
-                android:onClick="rbclick"
-                android:text="Female"
-                android:textSize="22sp" />
-
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/textViewTitleBirthday"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_above="@+id/okbutton"
             android:layout_alignLeft="@+id/fname"
             android:layout_alignStart="@+id/fname"
-            android:layout_below="@+id/fname"
-            android:layout_marginLeft="17dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="12dp"
-            android:text="Birthdate: " />
-
-        <TextView
-            android:id="@+id/textViewBirthday"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textViewTitleBirthday"
-            android:layout_alignLeft="@+id/sex"
-            android:layout_alignStart="@+id/sex"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
-            android:text="Click Me" />
+            android:layout_marginBottom="65dp"
+            android:hint="Birthday"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/textViewTitleProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/fname"
-            android:layout_below="@id/profileImage"
-            android:textColor="@color/black"
-            android:textSize="20dp"
             android:layout_centerHorizontal="true"
-            android:text="Click to Change Profile Picture" />
+            android:layout_marginBottom="38dp"
+            android:text="Click to Change Profile Picture"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 </RelativeLayout>

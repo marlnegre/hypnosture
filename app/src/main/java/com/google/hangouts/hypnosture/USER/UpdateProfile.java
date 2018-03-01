@@ -53,12 +53,10 @@ public class UpdateProfile extends AppCompatActivity {
 
     CircleImageView userImageProfileview;
     EditText fullname;
-    RadioGroup rg;
-    RadioButton rb, rb1, rb2;
     Button ok;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
-    private TextView textViewBirthdate;
+    private EditText textViewBirthdate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     DatabaseReference mUserDatabase;
@@ -74,9 +72,6 @@ public class UpdateProfile extends AppCompatActivity {
         userImageProfileview = findViewById(R.id.profileImage);
         fullname = findViewById(R.id.fname);
         textViewBirthdate = findViewById(R.id.textViewBirthday);
-        rb1 = findViewById(R.id.maleRB);
-        rb2 =  findViewById(R.id.femaleRB);
-        rg = findViewById(R.id.rg);
         ok = findViewById(R.id.okbutton);
         mAuth = FirebaseAuth.getInstance();
 
@@ -163,19 +158,10 @@ public class UpdateProfile extends AppCompatActivity {
     }
 
 
-    public void rbclick(View v){
-
-        int radioBtnID = rg.getCheckedRadioButtonId();
-        rb = (RadioButton) findViewById(radioBtnID);
-
-    }
-
     private void saveUserProfile() {
 
         final String Fname = fullname.getText().toString();
-        int radioBtnID = rg.getCheckedRadioButtonId();
         final String Birthday = textViewBirthdate.getText().toString();
-        rb =  findViewById(radioBtnID);
 
         String edit_text_fname = Fname;
 
@@ -197,12 +183,6 @@ public class UpdateProfile extends AppCompatActivity {
             return;
         }
 
-        if (!rb1.isChecked() && !rb2.isChecked()) {
-            Toast.makeText(UpdateProfile.this, "Select Sex", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(user!=null) {
@@ -222,7 +202,6 @@ public class UpdateProfile extends AppCompatActivity {
 
                     Map newUserInfo = new HashMap();
                     newUserInfo.put("fname", Fname);
-                    newUserInfo.put("sex", rb.getText().toString());
                     newUserInfo.put("birthday", Birthday);
                     newUserInfo.put("profilePicURL", profilePhotoUrl);
                     current_user_profile.updateChildren(newUserInfo);

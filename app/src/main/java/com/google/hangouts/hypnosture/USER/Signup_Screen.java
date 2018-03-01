@@ -58,7 +58,7 @@ public class Signup_Screen extends AppCompatActivity {
 
     Button signup;
     EditText email, password, confirm;
-    private TextView textViewBirthdate;
+    private EditText textViewBirthdate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     ProgressDialog mProgress;
 
@@ -174,10 +174,37 @@ public class Signup_Screen extends AppCompatActivity {
                 Pattern regexx = Pattern.compile("[$&+,:;=?@#|/'<>.^*0123456789()%-]");
 
 
-                if (Email.isEmpty() || Password.isEmpty() || Confirm.isEmpty() || TextUtils.isEmpty(Fname) || TextUtils.isEmpty(Birthday)){
+                if (Email.isEmpty() || Password.isEmpty() || Confirm.isEmpty() || Fname.isEmpty() || Birthday.isEmpty()){
                     Toast.makeText(Signup_Screen.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (Email.isEmpty()){
+                    email.setError("Email is empty");
+                    email.requestFocus();
+                    return;
+                }
+                if (Password.isEmpty()){
+                    password.setError("Email is empty");
+                    password.requestFocus();
+                    return;
+                }
+                if (Confirm.isEmpty()){
+                    confirm.setError("Email is empty");
+                    confirm.requestFocus();
+                    return;
+                }
+                if (Fname.isEmpty()){
+                    fname.setError("Email is empty");
+                    fname.requestFocus();
+                    return;
+                }
+                if (Birthday.isEmpty()){
+                    textViewBirthdate.setError("Email is empty");
+                    textViewBirthdate.requestFocus();
+                    return;
+                }
+
                 if (regexx.matcher(edit_text_fname).find()) {
                     fname.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
                     fname.requestFocus();
@@ -233,6 +260,26 @@ public class Signup_Screen extends AppCompatActivity {
         });
     }
 
+    private void sendEmailVerification(){
+        FirebaseUser firebaseUser = mAuth.getInstance().getCurrentUser();
+        if(firebaseUser!=null){
+            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(Signup_Screen.this, "Successfully Registered, Email verification sent", Toast.LENGTH_SHORT).show();
+                        mAuth.signOut();
+                        finish();
+                        startActivity(new Intent(Signup_Screen.this, MainActivity.class));
+                    }
+                    else{
+                        Toast.makeText(Signup_Screen.this, "Email verification hasn't been sent!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
 
     public void registerUser() {
 
@@ -271,15 +318,16 @@ public class Signup_Screen extends AppCompatActivity {
 
                                     User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
                                     myRef.child(userID).setValue(newUser);
-                                    Intent profileintent = new Intent(Signup_Screen.this, Activity_Homescreen.class);
-                                    startActivity(profileintent);
+                                    //Intent profileintent = new Intent(Signup_Screen.this, Activity_Homescreen.class);
+                                    //startActivity(profileintent);
+                                    sendEmailVerification();
                                 }
                             });
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 Toast.makeText(getApplicationContext(), "User Already Registered!", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), "Some error occurred.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Registration Failed! Check your internet connection.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

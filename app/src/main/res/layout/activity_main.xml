@@ -12,30 +12,28 @@
             android:id="@+id/editText"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/LoginEdittextColor"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Email"
-            android:textColor="@color/LoginEdittextColor"
-            android:layout_marginTop="34dp"
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
-            android:textColorHint="@color/LoginEdittextColor"/>
+            android:backgroundTint="@color/LoginEdittextColor"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:textColor="@color/LoginEdittextColor"
+            android:textColorHint="@color/LoginEdittextColor" />
 
         <EditText
             android:id="@+id/editText2"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="77dp"
-            android:backgroundTint="@color/LoginEdittextColor"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:hint="@string/Password"
-            android:textColor="@color/LoginEdittextColor"
-            android:layout_alignTop="@+id/editText"
             android:layout_alignLeft="@+id/editText"
             android:layout_alignStart="@+id/editText"
-            android:textColorHint="@color/LoginEdittextColor"/>
+            android:layout_below="@+id/editText"
+            android:backgroundTint="@color/LoginEdittextColor"
+            android:ems="10"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
+            android:textColor="@color/LoginEdittextColor"
+            android:textColorHint="@color/LoginEdittextColor" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -63,13 +61,23 @@
         <Button
             android:id="@+id/signupbtn"
             android:layout_width="290dp"
-            android:layout_marginTop="13dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/login"
             android:layout_alignStart="@+id/login"
-            android:layout_below="@+id/login"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="16dp"
             android:background="@color/signupbutton"
             android:text="@string/signup"
             android:textColor="@color/LoginEdittextColor" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Forgot Password?" />
 
 </RelativeLayout>

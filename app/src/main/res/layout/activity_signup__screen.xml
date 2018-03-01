@@ -53,7 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editPhoto"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Complete Name"
         android:inputType="textPersonName" />
@@ -63,7 +62,7 @@
         android:id="@+id/sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fname"
+        android:layout_below="@+id/textViewBirthday"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="@string/profilesex"
@@ -112,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText6"
         android:layout_alignStart="@+id/editText6"
-        android:layout_below="@+id/textViewBirthday"
+        android:layout_below="@+id/rg"
         android:ems="10"
         android:hint="@string/signup_email"
         android:inputType="textEmailAddress" />
@@ -121,8 +120,8 @@
         android:id="@+id/editText6"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/fname"
-        android:layout_alignStart="@+id/fname"
+        android:layout_alignLeft="@+id/textViewBirthday"
+        android:layout_alignStart="@+id/textViewBirthday"
         android:layout_below="@+id/editText5"
         android:ems="10"
         android:hint="@string/signup_password"
@@ -143,33 +142,22 @@
         android:id="@+id/submitSignup"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText3"
+        android:layout_alignRight="@+id/editText3"
         android:layout_below="@+id/editText3"
-        android:layout_centerHorizontal="true"
         android:background="@color/ButtonColor"
         android:text="@string/SUBMIT"
         android:textColor="@color/LoginEdittextColor" />
 
-    <TextView
+    <EditText
         android:id="@+id/textViewBirthday"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/rg"
-        android:layout_alignRight="@+id/rg"
-        android:layout_below="@+id/rg"
-        android:text="Click Me"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-    <TextView
-        android:id="@+id/textViewTitleBirthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewBirthday"
-        android:layout_alignBottom="@+id/textViewBirthday"
-        android:layout_alignEnd="@+id/sex"
-        android:layout_alignRight="@+id/sex"
-        android:layout_marginEnd="27dp"
-        android:layout_marginRight="27dp"
-        android:text="Birthdate: "
+        android:layout_alignLeft="@+id/fname"
+        android:layout_alignStart="@+id/fname"
+        android:layout_below="@+id/editPhoto"
+        android:layout_marginTop="30dp"
+        android:hint="Birthday"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
 
