@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,14 +41,12 @@ public class Activity_Homescreen extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar=null;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListener;
     DatabaseReference mUsersDatabase;
 
-    private TextView mName, mEmail;
-    private String name;
-    private Uri photoUrl;
-    private CircleImageView mPic;
+    TextView mName, mEmail;
+    CircleImageView mPic;
 
 
     @Override
@@ -56,9 +55,11 @@ public class Activity_Homescreen extends AppCompatActivity
         setContentView(R.layout.activity_homescreen);
         //firebase
         mAuth = FirebaseAuth.getInstance();
-        //firebase
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,9 +99,7 @@ public class Activity_Homescreen extends AppCompatActivity
         mName = navigationView.getHeaderView(0).findViewById(R.id.navbarname);
         mEmail = navigationView.getHeaderView(0).findViewById(R.id.navbaremail);
         mPic = navigationView.getHeaderView(0).findViewById(R.id.circleImageView);
-        //getCurrentinfo();
 
-        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
@@ -149,33 +148,12 @@ public class Activity_Homescreen extends AppCompatActivity
                     setTitle("Exercises");
                     transaction.replace(R.id.frame, new Fragment_Exercise()).commit();
                     return true;
-
             }
             return false;
         }
     };
 
-    /*private void getCurrentinfo(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                // Id of the provider (ex: google.com)
-                String providerId = profile.getProviderId();
 
-                // UID specific to the provider
-                String uid = profile.getUid();
-
-                // Name, email address, and profile photo Url
-                name = profile.getDisplayName();
-                photoUrl = profile.getPhotoUrl();
-                mName.setText(name);
-
-                Glide.with(getApplicationContext())
-                        .load(photoUrl.toString())
-                        .into(mPic);
-            };
-        }
-    }*/
 
     //Bottom nav
 
