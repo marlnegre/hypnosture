@@ -32,14 +32,14 @@
     <ImageButton
         android:id="@+id/info_imgButton"
         android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:layout_below="@id/updownExercisetoolbar"
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
-        android:background="@drawable/info_icon" />
+        android:background="@drawable/ic_info_outline_black_24dp" />
 
 
         <pl.droidsonroids.gif.GifImageView

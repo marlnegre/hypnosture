@@ -25,7 +25,8 @@
             android:layout_above="@+id/textViewTitleProfile"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:background="@drawable/profilehome"
+            android:background="@drawable/ic_account_circle_black_24dp"
+            android:paddingTop="20dp"
             android:scaleType="centerCrop"
             tools:layout_editor_absoluteX="112dp"
             tools:layout_editor_absoluteY="107dp" />
