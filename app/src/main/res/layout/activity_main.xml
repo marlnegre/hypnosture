@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/login"
             android:layout_alignStart="@+id/login"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/login"
             android:layout_marginTop="16dp"
             android:background="@color/signupbutton"
             android:text="@string/signup"
@@ -75,9 +75,10 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/login"
+            android:layout_below="@+id/signupbtn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:text="Forgot Password?" />
+            android:text="Forgot Password?"
+            android:textColor="@color/white"/>
 
 </RelativeLayout>
