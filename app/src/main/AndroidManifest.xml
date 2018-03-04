@@ -81,14 +81,11 @@
         <activity android:name=".ADMIN.UsersActivity" />
         <activity android:name=".ADMIN.VerifiedAdmin" />
         <activity android:name=".ADMIN.AdminLogin" />
-        <activity android:name=".ADMIN.AdminSignup_Screen" />
-        <activity android:name=".ADMIN.AdminProfile" />
-        <activity android:name=".ADMIN.AdminChangePassword" />
-        <activity android:name=".ADMIN.AdminUpdateProfile" />
         <activity android:name=".ADMIN.UsersProfileActivity" />
         <activity android:name=".ADMIN.AdminCreateUser" />
         <activity android:name=".Activity_Bluetooth" />
-        <activity android:name=".ViewActivity"></activity>
+        <activity android:name=".ViewActivity"/>
+        <activity android:name=".USER.ResetPassword"/>
     </application>
 
 </manifest>

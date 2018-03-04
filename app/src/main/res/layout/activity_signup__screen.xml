@@ -5,27 +5,27 @@
     android:layout_height="match_parent"
     android:background="@color/signupbgcolor">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/toolbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="13dp"
-            android:text="@string/signup"
-            android:textColor="@color/LoginEdittextColor"
-            android:textSize="20sp" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:text="@string/signup"
+        android:textColor="@color/LoginEdittextColor"
+        android:textSize="20sp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImage"
@@ -33,7 +33,6 @@
         android:layout_height="120dp"
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
         android:background="@drawable/profilehome"
         app:civ_border_color="@color/ButtonColor"
         app:civ_border_width="2dp" />
@@ -54,7 +53,19 @@
         android:layout_below="@+id/editPhoto"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Complete Name"
+        android:hint="First Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/lname"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sex"
+        android:layout_alignLeft="@+id/textViewBirthday"
+        android:layout_alignStart="@+id/textViewBirthday"
+        android:layout_marginBottom="33dp"
+        android:ems="10"
+        android:hint="Last Name"
         android:inputType="textPersonName" />
 
 
@@ -109,9 +120,9 @@
         android:id="@+id/editText5"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/editText6"
         android:layout_alignLeft="@+id/editText6"
         android:layout_alignStart="@+id/editText6"
-        android:layout_below="@+id/rg"
         android:ems="10"
         android:hint="@string/signup_email"
         android:inputType="textEmailAddress" />
@@ -120,9 +131,9 @@
         android:id="@+id/editText6"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/editText3"
         android:layout_alignLeft="@+id/textViewBirthday"
         android:layout_alignStart="@+id/textViewBirthday"
-        android:layout_below="@+id/editText5"
         android:ems="10"
         android:hint="@string/signup_password"
         android:inputType="textPassword" />
@@ -131,9 +142,9 @@
         android:id="@+id/editText3"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/submitSignup"
         android:layout_alignLeft="@+id/editText6"
         android:layout_alignStart="@+id/editText6"
-        android:layout_below="@+id/editText6"
         android:ems="10"
         android:hint="@string/signup_ConfirmPassword"
         android:inputType="textPassword" />
@@ -143,8 +154,9 @@
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/editText3"
+        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/editText3"
-        android:layout_below="@+id/editText3"
+        android:layout_marginBottom="11dp"
         android:background="@color/ButtonColor"
         android:text="@string/SUBMIT"
         android:textColor="@color/LoginEdittextColor" />
@@ -155,10 +167,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/fname"
         android:layout_alignStart="@+id/fname"
-        android:layout_below="@+id/editPhoto"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/fname"
+        android:layout_marginTop="17dp"
         android:hint="Birthday"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:inputType="date"/>
 
 
 </RelativeLayout>
