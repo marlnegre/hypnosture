@@ -57,7 +57,7 @@ public class Signup_Screen extends AppCompatActivity {
     public static final String USER_NAME = "artistname";
 
     Button signup;
-    EditText email, password, confirm;
+    EditText fname, lname, email, password, confirm, status;
     private EditText textViewBirthdate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     ProgressDialog mProgress;
@@ -66,7 +66,6 @@ public class Signup_Screen extends AppCompatActivity {
     StorageReference mStorageref;
 
     CircleImageView userImageProfileview;
-    EditText fname;
     RadioGroup rg;
     RadioButton rb, rb1, rb2;
     Uri imageHoldUri = null;
@@ -89,7 +88,6 @@ public class Signup_Screen extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference().child("Users");
 
-
         mProgress = new ProgressDialog(this);
         textViewBirthdate = findViewById(R.id.textViewBirthday);
         mAuth = FirebaseAuth.getInstance();
@@ -100,6 +98,7 @@ public class Signup_Screen extends AppCompatActivity {
         signup = findViewById(R.id.submitSignup);
         userImageProfileview = findViewById(R.id.profileImage);
         fname = findViewById(R.id.fname);
+        lname = findViewById(R.id.lname);
         rb1 = findViewById(R.id.maleRB);
         rb2 =  findViewById(R.id.femaleRB);
         rg = findViewById(R.id.rg);
@@ -163,6 +162,7 @@ public class Signup_Screen extends AppCompatActivity {
                 final String Password = password.getText().toString().trim();
                 final String Confirm = confirm.getText().toString().trim();
                 final String Fname = fname.getText().toString();
+                final String Lname = lname.getText().toString();
                 final String Birthday = textViewBirthdate.getText().toString();
                 int radioBtnID = rg.getCheckedRadioButtonId();
 
@@ -197,6 +197,11 @@ public class Signup_Screen extends AppCompatActivity {
                 if (Fname.isEmpty()){
                     fname.setError("Email is empty");
                     fname.requestFocus();
+                    return;
+                }
+                if (Lname.isEmpty()){
+                    lname.setError("Email is empty");
+                    lname.requestFocus();
                     return;
                 }
                 if (Birthday.isEmpty()){
@@ -237,23 +242,6 @@ public class Signup_Screen extends AppCompatActivity {
                     Toast.makeText(Signup_Screen.this, "Select Sex", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                    /*Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").equalTo(User);
-                    usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.getChildrenCount() > 0) {
-                                Toast.makeText(Signup_Screen.this, "Choose a different username.", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                registerUser();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
-                    });*/
-
                     registerUser();
 
             }
@@ -286,7 +274,9 @@ public class Signup_Screen extends AppCompatActivity {
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
         final String Fname = fname.getText().toString();
+        final String Lname = lname.getText().toString();
         final String Birthday = textViewBirthdate.getText().toString();
+        final String Status = "AC";
         final int radioBtnID = rg.getCheckedRadioButtonId();
 
         rb =  findViewById(radioBtnID);
@@ -316,10 +306,8 @@ public class Signup_Screen extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     userID = user.getUid();
 
-                                    User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
+                                    User newUser = new User(userID, Email, Password, Fname, Lname, rb.getText().toString(), Birthday, profilePhotoUrl);
                                     myRef.child(userID).setValue(newUser);
-                                    //Intent profileintent = new Intent(Signup_Screen.this, Activity_Homescreen.class);
-                                    //startActivity(profileintent);
                                     sendEmailVerification();
                                 }
                             });

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.google.hangouts.hypnosture.USER.MainActivity;
+
 import static java.lang.Thread.sleep;
 
 public class HomeActivity extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                 try {
 
                     sleep(3000);
-                    Intent myIntent = new Intent(getApplicationContext(), UserAdmin.class);
+                    Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(myIntent);
                     finish();
                 } catch (InterruptedException e) {

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +53,7 @@ public class UserProfile extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserProfile.this, UpdateProfile.class));
+                Toast.makeText(UserProfile.this, "Double-click birthday", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -69,12 +71,13 @@ public class UserProfile extends AppCompatActivity{
                     String PhotoUrl = dataSnapshot.child("profilePicURL").getValue().toString();
                     String Email = dataSnapshot.child("email").getValue().toString();
                     String Fname = dataSnapshot.child("fname").getValue().toString();
+                    String Lname = dataSnapshot.child("lname").getValue().toString();
                     String Sex = dataSnapshot.child("sex").getValue().toString();
                     String Birthday = dataSnapshot.child("birthday").getValue().toString();
 
                     Glide.with(UserProfile.this).load(PhotoUrl).into(circleImageView);
                     email.setText(Email);
-                    fullname.setText(Fname);
+                    fullname.setText(Fname + " " + Lname);
                     sex.setText(Sex);
                     birthday.setText(Birthday);
 

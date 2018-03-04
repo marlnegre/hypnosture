@@ -10,6 +10,7 @@ public class User {
     String email;
     String password;
     String fname;
+    String lname;
     String sex;
     String birthday;
     String profilePicURL;
@@ -17,11 +18,12 @@ public class User {
     public User(){
     }
 
-    public User(String userId, String email, String password, String fname, String sex, String birthday, String profilePicURL) {
+    public User(String userId, String email, String password, String fname, String lname, String sex, String birthday, String profilePicURL) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.fname = fname;
+        this.lname = lname;
         this.sex = sex;
         this.birthday = birthday;
         this.profilePicURL = profilePicURL;
@@ -59,6 +61,14 @@ public class User {
         this.fname = fname;
     }
 
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
     public String getSex() {
         return sex;
     }
@@ -82,4 +92,5 @@ public class User {
     public void setProfilePicURL(String profilePicURL) {
         this.profilePicURL = profilePicURL;
     }
+
 }
