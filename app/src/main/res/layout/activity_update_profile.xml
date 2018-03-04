@@ -51,8 +51,23 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/textViewBirthday"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
             android:ems="10"
-            android:hint="Complete Name"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="267dp" />
+
+
+        <EditText
+            android:id="@+id/lname"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textViewBirthday"
+            android:layout_alignLeft="@+id/textViewBirthday"
+            android:layout_alignStart="@+id/textViewBirthday"
+            android:ems="10"
+            android:hint="Last Name"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="267dp" />
@@ -77,8 +92,9 @@
             android:layout_above="@+id/okbutton"
             android:layout_alignLeft="@+id/fname"
             android:layout_alignStart="@+id/fname"
-            android:layout_marginBottom="65dp"
+            android:layout_marginBottom="43dp"
             android:hint="Birthday"
+            android:inputType="date"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
@@ -87,8 +103,10 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/fname"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="38dp"
+            android:layout_marginBottom="19dp"
             android:text="Click to Change Profile Picture"
             android:textColor="@color/black"
             android:textSize="20dp" />
+
+
 </RelativeLayout>

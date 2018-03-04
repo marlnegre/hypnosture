@@ -110,10 +110,12 @@ public class Activity_Homescreen extends AppCompatActivity
                 String PhotoUrl = dataSnapshot.child("profilePicURL").getValue().toString();
                 String Email = dataSnapshot.child("email").getValue().toString();
                 String Fname = dataSnapshot.child("fname").getValue().toString();
+                String Lname = dataSnapshot.child("lname").getValue().toString();
+
 
                 Glide.with(Activity_Homescreen.this).load(PhotoUrl).into(mPic);
                 mEmail.setText(Email);
-                mName.setText(Fname);
+                mName.setText(Fname + " " + Lname);
             }
 
             @Override
@@ -229,7 +231,7 @@ public class Activity_Homescreen extends AppCompatActivity
                 break;
             case R.id.drawer_logout:
                 mAuth.signOut();
-                Intent s7 = new Intent(Activity_Homescreen.this, UserAdmin.class);
+                Intent s7 = new Intent(Activity_Homescreen.this, MainActivity.class);
                 startActivity(s7);
                 break;
 

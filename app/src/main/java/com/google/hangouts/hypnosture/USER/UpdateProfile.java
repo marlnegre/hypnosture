@@ -52,7 +52,7 @@ public class UpdateProfile extends AppCompatActivity {
     private static final int SELECT_FILE = 2;
 
     CircleImageView userImageProfileview;
-    EditText fullname;
+    EditText fname, lname;
     Button ok;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
@@ -70,7 +70,8 @@ public class UpdateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
 
         userImageProfileview = findViewById(R.id.profileImage);
-        fullname = findViewById(R.id.fname);
+        fname = findViewById(R.id.fname);
+        lname = findViewById(R.id.lname);
         textViewBirthdate = findViewById(R.id.textViewBirthday);
         ok = findViewById(R.id.okbutton);
         mAuth = FirebaseAuth.getInstance();
@@ -160,7 +161,8 @@ public class UpdateProfile extends AppCompatActivity {
 
     private void saveUserProfile() {
 
-        final String Fname = fullname.getText().toString();
+        final String Fname = fname.getText().toString();
+        final String Lname = lname.getText().toString();
         final String Birthday = textViewBirthdate.getText().toString();
 
         String edit_text_fname = Fname;
@@ -168,13 +170,18 @@ public class UpdateProfile extends AppCompatActivity {
         Pattern regexx = Pattern.compile("[$&+,:;=?@#|/'<>.^*0123456789()%-]");
 
 
-        if (TextUtils.isEmpty(Fname)  || TextUtils.isEmpty(Birthday)){
+        if (TextUtils.isEmpty(Fname)  || TextUtils.isEmpty(Birthday) || TextUtils.isEmpty(Lname)){
             Toast.makeText(UpdateProfile.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
             return;
         }
         if (regexx.matcher(edit_text_fname).find()) {
-            fullname.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
-            fullname.requestFocus();
+            fname.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
+            fname.requestFocus();
+            return;
+        }
+        if (regexx.matcher(edit_text_fname).find()) {
+            lname.setError("Must not contain [0-9] and [$&+,:;=?@#|/'<>. ^*()%-]");
+            lname.requestFocus();
             return;
         }
 
@@ -202,6 +209,7 @@ public class UpdateProfile extends AppCompatActivity {
 
                     Map newUserInfo = new HashMap();
                     newUserInfo.put("fname", Fname);
+                    newUserInfo.put("fname", Lname);
                     newUserInfo.put("birthday", Birthday);
                     newUserInfo.put("profilePicURL", profilePhotoUrl);
                     current_user_profile.updateChildren(newUserInfo);
