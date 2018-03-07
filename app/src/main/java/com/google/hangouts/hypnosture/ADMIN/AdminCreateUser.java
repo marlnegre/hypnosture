@@ -286,8 +286,8 @@ public class AdminCreateUser extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     userID = user.getUid();
 
-                                    User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
-                                    databaseUsers.child(userID).setValue(newUser);
+//                                    User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
+//                                    databaseUsers.child(userID).setValue(newUser);
                                     Intent profileintent = new Intent(AdminCreateUser.this, UsersActivity.class);
                                     startActivity(profileintent);
                                 }

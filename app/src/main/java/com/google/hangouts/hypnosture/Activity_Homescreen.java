@@ -98,7 +98,7 @@ public class Activity_Homescreen extends AppCompatActivity
 
         mName = navigationView.getHeaderView(0).findViewById(R.id.navbarname);
         mEmail = navigationView.getHeaderView(0).findViewById(R.id.navbaremail);
-        mPic = navigationView.getHeaderView(0).findViewById(R.id.circleImageView);
+       // mPic = navigationView.getHeaderView(0).findViewById(R.id.circleImageView);
 
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
@@ -113,7 +113,7 @@ public class Activity_Homescreen extends AppCompatActivity
                 String Lname = dataSnapshot.child("lname").getValue().toString();
 
 
-                Glide.with(Activity_Homescreen.this).load(PhotoUrl).into(mPic);
+                //Glide.with(Activity_Homescreen.this).load(PhotoUrl).into(mPic);
                 mEmail.setText(Email);
                 mName.setText(Fname + " " + Lname);
             }
@@ -147,8 +147,8 @@ public class Activity_Homescreen extends AppCompatActivity
                     return true;
 
                 case R.id.navigation_exercise:
-                    setTitle("Exercises");
-                    transaction.replace(R.id.frame, new Fragment_Exercise()).commit();
+                    setTitle("Recommendations");
+                    transaction.replace(R.id.frame, new Recommendation()).commit();
                     return true;
             }
             return false;
@@ -210,13 +210,13 @@ public class Activity_Homescreen extends AppCompatActivity
                 startActivity(s0);
                 break;
             case R.id.drawer_stat:
-                Intent s1 = new Intent(Activity_Homescreen.this, Activity_PerformanceStat.class);
+                Intent s1 = new Intent(Activity_Homescreen.this, PerformanceTrack.class);
                 startActivity(s1);
                 break;
-            case R.id.drawer_recommendation:
-                Intent s2 = new Intent(Activity_Homescreen.this, RecommendationActivity.class);
-                startActivity(s2);
-                break;
+//            case R.id.drawer_recommendation:
+//                Intent s2 = new Intent(Activity_Homescreen.this, RecommendationActivity.class);
+//                startActivity(s2);
+//                break;
             case R.id.drawer_snore:
                 Intent s3 = new Intent(Activity_Homescreen.this, SnoreTrackActivity.class);
                 startActivity(s3);
