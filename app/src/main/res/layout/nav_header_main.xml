@@ -13,15 +13,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
-        app:civ_circle_background_color="@color/colorPrimaryDark"
-        app:civ_border_color="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/ic_launcher_round"
-        />
-
     <TextView
         android:id="@+id/navbarname"
         android:layout_width="match_parent"

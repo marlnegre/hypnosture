@@ -73,19 +73,17 @@
         <activity android:name=".AdminCreate" />
         -->
         <activity android:name=".ADMIN.AdminAngle" />
-        <activity android:name=".USER.UpdateProfile" />
         <activity android:name=".UserAdmin" />
-        <activity
-            android:name=".USER.UserProfile"
-            android:label=" " />
         <activity android:name=".ADMIN.UsersActivity" />
         <activity android:name=".ADMIN.VerifiedAdmin" />
         <activity android:name=".ADMIN.AdminLogin" />
         <activity android:name=".ADMIN.UsersProfileActivity" />
         <activity android:name=".ADMIN.AdminCreateUser" />
         <activity android:name=".Activity_Bluetooth" />
-        <activity android:name=".ViewActivity"/>
-        <activity android:name=".USER.ResetPassword"/>
+        <activity android:name=".ViewActivity" />
+        <activity android:name=".USER.ResetPassword" />
+        <activity android:name=".USER.UserProfile" />
+        <activity android:name=".USER.UpdateProfile"></activity>
     </application>
 
 </manifest>

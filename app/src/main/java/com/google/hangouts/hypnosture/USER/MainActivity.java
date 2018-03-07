@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.hangouts.hypnosture.ADMIN.UsersActivity;
 import com.google.hangouts.hypnosture.Activity_Homescreen;
 import com.google.hangouts.hypnosture.R;
 
@@ -95,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                final Query passwordQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("password").equalTo(passLogin);
-                //Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("adminID").equalTo(userLogin);
                 Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("email").equalTo(userLogin);
                usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -185,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.signupbtn:
                 startActivity(new Intent(this, Signup_Screen.class));
-                Toast.makeText(this, "Double click birthday", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

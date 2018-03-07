@@ -11,22 +11,16 @@ public class User {
     String password;
     String fname;
     String lname;
-    String sex;
-    String birthday;
-    String profilePicURL;
 
     public User(){
     }
 
-    public User(String userId, String email, String password, String fname, String lname, String sex, String birthday, String profilePicURL) {
+    public User(String userId, String email, String password, String fname, String lname) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.fname = fname;
         this.lname = lname;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.profilePicURL = profilePicURL;
     }
 
     public String getUserId() {
@@ -68,29 +62,4 @@ public class User {
     public void setLname(String lname) {
         this.lname = lname;
     }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getProfilePicURL() {
-        return profilePicURL;
-    }
-
-    public void setProfilePicURL(String profilePicURL) {
-        this.profilePicURL = profilePicURL;
-    }
-
 }

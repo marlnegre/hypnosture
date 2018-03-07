@@ -18,23 +18,15 @@
             android:background="@drawable/side_nav_bar"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/profilehome" />
-
             <TextView
-                android:id="@+id/editTextFullName"
+                android:id="@+id/textViewTitleProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Complete Name"
+                android:layout_marginTop="80dp"
+                android:text="Profile"
                 android:textColor="#fff"
-                android:textSize="22sp" />
+                android:textSize="32sp" />
         </LinearLayout>
 
 
@@ -52,7 +44,8 @@
                 android:weightSum="2">
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -64,21 +57,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:gravity="center"
                         android:textSize="17sp"
                         android:text="Update Profile"
                         android:textColor="#4a4a4a" />
 
                     <ImageButton
                         android:id="@+id/imageviewUpdateProfile"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:background="@drawable/updateprofileicon" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,6 +83,7 @@
                     <TextView
                         android:textSize="17sp"
                         android:id="@+id/titleChangePassword"
+                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -96,8 +92,8 @@
 
                     <ImageButton
                         android:id="@+id/imageviewChangePassword"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:background="@drawable/updatepasswordicon" />
 
@@ -118,66 +114,70 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_marginLeft="10dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_email" />
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:id="@+id/textViewTitleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="User's name"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/editTextFullName"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:id="@+id/textViewTitleEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="User's email"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewEmail"
-                android:textColor="#fff"
+                android:textSize="17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="9dp"
-                android:text="username email" />
+                android:text="email"
+                android:textColor="#fff" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_marginBottom="25dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_cake"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:textColor="#fff"
-                android:layout_marginTop="14dp"
-                android:text="username birthday"
-                android:id="@+id/editTextBirthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="25dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_wc"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="9dp"
-                android:text="username sex"
-                android:textColor="#fff"
-                android:id="@+id/editTextSex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

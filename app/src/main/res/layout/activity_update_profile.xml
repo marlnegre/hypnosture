@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/signupbgcolor"
     tools:context="com.google.hangouts.hypnosture.USER.UpdateProfile">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -18,96 +24,53 @@
             android:layout_alignParentTop="true"
             />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImage"
-            android:layout_width="145sp"
-            android:layout_height="140sp"
-            android:layout_above="@+id/textViewTitleProfile"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_account_circle_black_24dp"
-            android:paddingTop="20dp"
-            android:scaleType="centerCrop"
-            tools:layout_editor_absoluteX="112dp"
-            tools:layout_editor_absoluteY="107dp" />
-
-
         <TextView
-            android:id="@+id/profile"
+            android:id="@+id/changepass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/toolbar"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
-            android:text="@string/profile"
+            android:layout_marginTop="15dp"
+            android:text="UPDATE PROFILE"
             android:textColor="@color/LoginEdittextColor"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="153dp"
-            tools:layout_editor_absoluteY="16dp" />
-
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/fname"
+            android:id="@+id/changeFirstName"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textViewBirthday"
+            android:layout_above="@+id/changeLastName"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="18dp"
             android:ems="10"
             android:hint="First Name"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="267dp" />
+            android:inputType="textCapWords" />
 
 
         <EditText
-            android:id="@+id/lname"
+            android:id="@+id/changeLastName"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textViewBirthday"
-            android:layout_alignLeft="@+id/textViewBirthday"
-            android:layout_alignStart="@+id/textViewBirthday"
+            android:layout_alignLeft="@+id/changeFirstName"
+            android:layout_alignStart="@+id/changeFirstName"
+            android:layout_centerVertical="true"
             android:ems="10"
             android:hint="Last Name"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="267dp" />
+            android:inputType="textCapWords" />
 
         <Button
-            android:id="@+id/okbutton"
-            android:layout_width="80dp"
+            android:id="@+id/changeBtn"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/profile"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/profile"
-            android:layout_marginBottom="41dp"
-            android:background="@color/ButtonColor"
-            android:text="@string/profilebtn"
-            android:textColor="@color/LoginEdittextColor" />
-
-
-        <EditText
-            android:id="@+id/textViewBirthday"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/okbutton"
-            android:layout_alignLeft="@+id/fname"
-            android:layout_alignStart="@+id/fname"
-            android:layout_marginBottom="43dp"
-            android:hint="Birthday"
-            android:inputType="date"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-        <TextView
-            android:id="@+id/textViewTitleProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/fname"
+            android:layout_below="@+id/changeLastName"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="19dp"
-            android:text="Click to Change Profile Picture"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:layout_marginTop="30dp"
+            android:background="@color/ButtonColor"
+            android:text="UPDATE"
+            android:textColor="@color/LoginEdittextColor"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="536dp" />
 
+    </RelativeLayout>
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
