@@ -26,6 +26,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.hangouts.hypnosture.Activity_Homescreen;
 import com.google.hangouts.hypnosture.R;
+import com.google.hangouts.hypnosture.util.Helpers;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -79,6 +80,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
 
+                if (!Helpers.isValidEmail(userLogin)) {
+                    userEmail.setError("Email is invalid.");
+                    userEmail.requestFocus();
+                    return;
+                }
+
                 if(passLogin.isEmpty()){
 //                    Toast.makeText(MainActivity.this, "Password is empty", Toast.LENGTH_SHORT).show();
                     password.setError("Password is empty");
@@ -97,39 +104,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
 
+                mProgress.setTitle("Logging in User");
+                mProgress.setMessage("Please wait...");
+                mProgress.show();
+
                final Query passwordQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("password").equalTo(passLogin);
                 Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("email").equalTo(userLogin);
                usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        mProgress.setTitle("Logging in User");
-                        mProgress.setMessage("Please wait...");
-                        mProgress.show();
                         if (dataSnapshot.getChildrenCount() > 0) {
-                                passwordQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.hasChildren()) {
-                                                loginUser();
-                                                userEmail.setText("");
-                                                password.setText("");
-                                        } else {
-                                            Toast.makeText(MainActivity.this, "Password is wrong!", Toast.LENGTH_SHORT).show();
-                                            mProgress.dismiss();
-                                        }
+                            passwordQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.hasChildren()) {
+                                            loginUser();
+                                            userEmail.setText("");
+                                            password.setText("");
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
+                                        mProgress.dismiss();
                                     }
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-                                    }
-                                });
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                }
+                            });
                         }else {
-                            Toast.makeText(MainActivity.this, "User account may not be registered!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
                             mProgress.dismiss();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+                        Toast.makeText(MainActivity.this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
+                        mProgress.dismiss();
                     }
                 });
             }
@@ -141,25 +151,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String passLogin = password.getText().toString().trim();
 
         mAuth.signInWithEmailAndPassword(userLogin, passLogin)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()) {
+                    if (task.isSuccessful()) {
 
-                            mProgress.setTitle("Logging in user");
-                            mProgress.setMessage("Please wait...");
-                            mProgress.show();
+                        mProgress.setTitle("Logging in user");
+                        mProgress.setMessage("Please wait...");
+                        mProgress.show();
 
-                            checkUserEmailVerification();
-                            mProgress.dismiss();
+                        checkUserEmailVerification();
+                        mProgress.dismiss();
 
-                        }else {
-                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
-            }
+                }
+            });
+        }
 
     private void checkUserEmailVerification(){
         FirebaseUser firebaseUser = mAuth.getInstance().getCurrentUser();

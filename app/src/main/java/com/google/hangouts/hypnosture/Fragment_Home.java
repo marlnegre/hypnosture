@@ -23,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.hangouts.hypnosture.model.Statistics;
+import com.google.hangouts.hypnosture.model.statistics_helper.StatisticsHelper;
 import com.google.hangouts.hypnosture.util.Helpers;
 
 import java.io.File;
@@ -1077,6 +1079,8 @@ public class Fragment_Home extends Fragment {
             File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "ImproperPosture" + pic + ".jpg", saveFile);//save the screenshot to selected path
             //shareScreenshot(file); //finally share screenshot
             pic++;
+            
+            StatisticsHelper.writeNewStatistics(1);
         } else
             //If bitmap is null show toast message
             Toast.makeText(getActivity(), R.string.screenshot_take_failed, Toast.LENGTH_SHORT).show();

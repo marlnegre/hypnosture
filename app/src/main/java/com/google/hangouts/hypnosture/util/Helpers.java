@@ -1,9 +1,11 @@
 package com.google.hangouts.hypnosture.util;
 
-import android.os.health.TimerStat;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.text.TextUtils;
+import android.util.Patterns;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -39,5 +41,15 @@ public class Helpers {
         calendar.set(year, month, day, 23, 59, 59);
 
         return calendar.getTime();
+    }
+
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
+
+    public static boolean isOnline(Context context ) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

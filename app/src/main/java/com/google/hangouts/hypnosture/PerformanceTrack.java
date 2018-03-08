@@ -1,5 +1,6 @@
 package com.google.hangouts.hypnosture;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -11,8 +12,10 @@ import android.widget.CalendarView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.google.hangouts.hypnosture.model.statistics_helper.StatisticsHelper;
+import com.google.hangouts.hypnosture.util.Helpers;
 
 import java.util.Date;
 
