@@ -73,19 +73,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final String passLogin = password.getText().toString().trim();
 
                 if(userLogin.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Email is empty", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "Email is empty", Toast.LENGTH_SHORT).show();
+                    userEmail.setError("Email is empty");
+                    userEmail.requestFocus();
                     return;
                 }
 
                 if(passLogin.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Password is empty", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "Password is empty", Toast.LENGTH_SHORT).show();
+                    password.setError("Password is empty");
+                    password.requestFocus();
                     return;
                 }
 
-                if(userLogin.isEmpty() && passLogin.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Email and Password is empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(userLogin.isEmpty() && passLogin.isEmpty()){
+//                    Toast.makeText(MainActivity.this, "Email and Password is empty", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
                 if(passLogin.length() < 6){
                     password.setError("Minimum length of password must be 6");
