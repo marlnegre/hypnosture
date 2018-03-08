@@ -6,47 +6,38 @@
     android:layout_height="match_parent"
     tools:context="com.google.hangouts.hypnosture.SnoreTrackActivity">
 
-
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:background="?attr/colorPrimary"-->
-        <!--android:minHeight="?attr/actionBarSize"-->
-        <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp"
-        android:text="Snore Track"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:text="Snore Track" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <TextView
         android:id="@+id/textViewIntensity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="56dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="87dp"
+        android:layout_above="@+id/textViewMild"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toLeftOf="@+id/textViewFri"
+        android:layout_toStartOf="@+id/textViewFri"
         android:text="Intensity"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -54,12 +45,13 @@
         android:id="@+id/textViewSecondsSnored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_alignBottom="@+id/textViewIntensity"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
         android:text="No of seconds"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -67,12 +59,12 @@
         android:id="@+id/textViewSnored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewSecondsSnored"
-        android:layout_alignStart="@+id/textViewSecondsSnored"
-        android:layout_alignTop="@+id/textViewIntensity"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="19dp"
+        android:layout_alignBaseline="@+id/textViewIntensity"
+        android:layout_alignBottom="@+id/textViewIntensity"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_toEndOf="@+id/textViewFri"
+        android:layout_toRightOf="@+id/textViewFri"
         android:text="Snored"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -80,12 +72,12 @@
         android:id="@+id/textViewMild"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewSnored"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="38dp"
-        android:layout_toLeftOf="@+id/textView4"
-        android:layout_toStartOf="@+id/textView4"
+        android:layout_alignBaseline="@+id/textViewMildNo"
+        android:layout_alignBottom="@+id/textViewMildNo"
+        android:layout_alignEnd="@+id/textViewIntensity"
+        android:layout_alignRight="@+id/textViewIntensity"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:text="Mild"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -95,8 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewMild"
         android:layout_alignStart="@+id/textViewMild"
-        android:layout_below="@+id/textViewMild"
-        android:layout_marginTop="39dp"
+        android:layout_below="@+id/textViewMildNo"
         android:text="Loud"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -115,23 +106,26 @@
         android:id="@+id/textViewMildNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewMild"
-        android:layout_alignBottom="@+id/textViewMild"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
+        android:layout_above="@+id/textViewLoudNo"
+        android:layout_alignLeft="@+id/textViewLoudNo"
+        android:layout_alignStart="@+id/textViewLoudNo"
+        android:layout_marginBottom="50dp"
         android:inputType="number"
         android:text="120"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <TextView
         android:id="@+id/textViewLoudNo"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textViewLoud"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
-        android:text="100" />
+        android:layout_above="@+id/textViewFri"
+        android:layout_alignEnd="@+id/textViewSnored"
+        android:layout_alignRight="@+id/textViewSnored"
+        android:layout_marginBottom="128dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:text="100"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <TextView
         android:id="@+id/textViewEpicNo"
@@ -139,8 +133,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewEpic"
         android:layout_alignBottom="@+id/textViewEpic"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
+        android:layout_alignEnd="@+id/textViewLoudNo"
+        android:layout_alignRight="@+id/textViewLoudNo"
         android:text="40"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
