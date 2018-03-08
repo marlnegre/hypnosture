@@ -16,16 +16,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.hangouts.hypnosture.Activity_Homescreen;
 import com.google.hangouts.hypnosture.R;
+import com.google.hangouts.hypnosture.USER.ChangingPassword;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity{
 
     ImageButton updateBtn, changepassBtn;
-    private CircleImageView circleImageView;
     DatabaseReference mUsersDatabase;
-    private TextView fullname, birthday, sex, email;
+    TextView fullname, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +44,13 @@ public class UserProfile extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-        circleImageView = findViewById(R.id.circleImageView);
         email = findViewById(R.id.textViewEmail);
         fullname = findViewById(R.id.editTextFullName);
-        birthday = findViewById(R.id.editTextBirthday);
-        sex = findViewById(R.id.editTextSex);
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserProfile.this, UpdateProfile.class));
-                Toast.makeText(UserProfile.this, "Double-click birthday", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -64,28 +61,25 @@ public class UserProfile extends AppCompatActivity{
             }
         });
 
+
         mUsersDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    String PhotoUrl = dataSnapshot.child("profilePicURL").getValue().toString();
-                    String Email = dataSnapshot.child("email").getValue().toString();
-                    String Fname = dataSnapshot.child("fname").getValue().toString();
-                    String Lname = dataSnapshot.child("lname").getValue().toString();
-                    String Sex = dataSnapshot.child("sex").getValue().toString();
-                    String Birthday = dataSnapshot.child("birthday").getValue().toString();
+                String Email = dataSnapshot.child("email").getValue().toString();
+                String Fname = dataSnapshot.child("fname").getValue().toString();
+                String Lname = dataSnapshot.child("lname").getValue().toString();
 
-                    Glide.with(UserProfile.this).load(PhotoUrl).into(circleImageView);
-                    email.setText(Email);
-                    fullname.setText(Fname + " " + Lname);
-                    sex.setText(Sex);
-                    birthday.setText(Birthday);
+                email.setText(Email);
+                fullname.setText(Fname + " " + Lname);
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Toast.makeText(UserProfile.this, "USER ACCOUNT IS DELETED", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserProfile.this, Activity_Homescreen.class));
+                finish();
             }
         });
     }
