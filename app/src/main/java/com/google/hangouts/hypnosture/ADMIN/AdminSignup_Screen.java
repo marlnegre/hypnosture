@@ -265,8 +265,8 @@ public class AdminSignup_Screen extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     userID = user.getUid();
 
-                                    User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
-                                    databaseUsers.child(userID).setValue(newUser);
+//                                    User newUser = new User(userID, Email, Password, Fname, rb.getText().toString(), Birthday, profilePhotoUrl);
+//                                    databaseUsers.child(userID).setValue(newUser);
                                     Intent profileintent = new Intent(AdminSignup_Screen.this, UsersActivity.class);
                                     startActivity(profileintent);
                                 }

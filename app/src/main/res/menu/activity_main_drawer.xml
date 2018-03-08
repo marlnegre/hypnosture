@@ -16,10 +16,10 @@
             android:icon="@drawable/ic_equalizer_black_24dp"
             android:title="@string/drawer_perfstat" />
 
-        <item
-            android:id="@+id/drawer_recommendation"
-            android:icon="@drawable/ic_airline_seat_individual_suite_black_24dp"
-            android:title="@string/drawer_recommendations" />
+        <!--<item-->
+            <!--android:id="@+id/drawer_recommendation"-->
+            <!--android:icon="@drawable/ic_airline_seat_individual_suite_black_24dp"-->
+            <!--android:title="@string/drawer_recommendations" />-->
 
         <item
             android:id="@+id/drawer_snore"

@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_exercise"
-        android:icon="@drawable/ic_directions_run_black_24dp"
-        android:title="@string/title_exercise" />
+        android:icon="@drawable/ic_star_black_24dp"
+        android:title="@string/act_recom" />
 
 </menu>

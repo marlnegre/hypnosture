@@ -1,0 +1,86 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.google.hangouts.hypnosture.Recommendation"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/layout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="42dp"-->
+        <!--android:paddingTop="150dp"-->
+        <!--&gt;-->
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/postureRecommendation"-->
+        <!--app:srcCompat="@drawable/posturerecom"-->
+        <!--android:layout_width="130dp"-->
+        <!--android:layout_height="130dp"-->
+        <!--android:padding="0dp"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="30dp"-->
+        <!--android:paddingTop="150dp"-->
+        <!--&gt;-->
+    <!--<ImageButton-->
+        <!--android:id="@+id/recommendedExercise"-->
+        <!--app:srcCompat="@drawable/recomexer"-->
+        <!--android:layout_width="130dp"-->
+        <!--android:layout_height="130dp"-->
+        <!--android:padding="0dp"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--/>-->
+    <!--</LinearLayout>-->
+
+    <TableRow
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="40dp"
+    android:paddingTop="135dp">
+        <ImageButton
+        android:id="@+id/postureRecommendation"
+        app:srcCompat="@drawable/posturerecom"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        />
+
+        <ImageButton
+        android:id="@+id/recommendedExercise"
+        app:srcCompat="@drawable/recomexer"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:padding="0dp"
+            android:layout_marginLeft="40dp"
+        android:scaleType="fitCenter"
+        />
+
+    </TableRow>
+
+    <!--<TableRow-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--">-->
+        <ImageView
+            android:src="@drawable/square"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+           />
+    <!--</TableRow>-->
+
+
+
+
+</TableLayout>
