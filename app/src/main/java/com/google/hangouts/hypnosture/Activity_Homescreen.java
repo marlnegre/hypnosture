@@ -229,6 +229,7 @@ public class Activity_Homescreen extends AppCompatActivity
                 mAuth.signOut();
                 Intent s7 = new Intent(Activity_Homescreen.this, MainActivity.class);
                 startActivity(s7);
+                finish();
                 break;
 
 
