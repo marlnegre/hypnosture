@@ -63,7 +63,7 @@ public class UsersActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(UsersViewHolder usersViewHolder, User users, int position) {
                 usersViewHolder.setFullname(users.getFname());
-                usersViewHolder.setPhotoUrl(users.getProfilePicURL(), getApplicationContext());
+//                usersViewHolder.setPhotoUrl(users.getProfilePicURL(), getApplicationContext());
                 usersViewHolder.setEmail(users.getEmail());
 
                 final String user_id = getRef(position).getKey();
@@ -117,9 +117,9 @@ public class UsersActivity extends AppCompatActivity {
             case R.id.user:
                 startActivity(new Intent(this, AdminCreateUser.class));
                 return true;
-            case R.id.profile:
-                startActivity(new Intent(this, AdminProfile.class));
-                return true;
+//            case R.id.profile:
+//                startActivity(new Intent(this, AdminProfile.class));
+//                return true;
             case R.id.logout:
                 mAuth.signOut();
                 startActivity(new Intent(this, AdminLogin.class));

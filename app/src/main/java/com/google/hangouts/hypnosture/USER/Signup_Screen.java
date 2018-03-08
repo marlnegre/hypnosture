@@ -176,15 +176,15 @@ public class Signup_Screen extends AppCompatActivity {
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(Signup_Screen.this, "Successfully Registered, Email verification sent", Toast.LENGTH_SHORT).show();
-                        mAuth.signOut();
-                        finish();
-                        startActivity(new Intent(Signup_Screen.this, MainActivity.class));
-                    }
-                    else{
-                        Toast.makeText(Signup_Screen.this, "Email verification hasn't been sent!", Toast.LENGTH_SHORT).show();
-                    }
+                if(task.isSuccessful()){
+                    Toast.makeText(Signup_Screen.this, "Successfully Registered, Email verification sent", Toast.LENGTH_SHORT).show();
+                    mAuth.signOut();
+                    finish();
+                    startActivity(new Intent(Signup_Screen.this, MainActivity.class));
+                }
+                else{
+                    Toast.makeText(Signup_Screen.this, "Email verification hasn't been sent!", Toast.LENGTH_SHORT).show();
+                }
                 }
             });
         }
@@ -199,30 +199,30 @@ public class Signup_Screen extends AppCompatActivity {
         final String Lname = lname.getText().toString();
 
         mAuth.createUserWithEmailAndPassword(Email, Password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()) {
+                if (task.isSuccessful()) {
 
-                            mProgress.setTitle("Registering User");
-                            mProgress.setMessage("Please wait...");
-                            mProgress.show();
+                    mProgress.setTitle("Registering User");
+                    mProgress.setMessage("Please wait...");
+                    mProgress.show();
 
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    userID = user.getUid();
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    userID = user.getUid();
 
-                                    User newUser = new User(userID, Email, Password, Fname, Lname);
-                                    myRef.child(userID).setValue(newUser);
-                                    sendEmailVerification();
-                        } else {
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                Toast.makeText(getApplicationContext(), "User Already Registered!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Registration Failed! Check your internet connection.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                    User newUser = new User(userID, Email, Password, Fname, Lname);
+                    myRef.child(userID).setValue(newUser);
+                    sendEmailVerification();
+                } else {
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(getApplicationContext(), "User Already Registered!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Registration Failed! Check your internet connection.", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+                }
+            });
     }
 }

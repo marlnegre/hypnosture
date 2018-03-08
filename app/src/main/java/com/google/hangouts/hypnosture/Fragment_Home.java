@@ -23,6 +23,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.hangouts.hypnosture.model.Statistics;
+import com.google.hangouts.hypnosture.model.statistics_helper.StatisticsHelper;
+import com.google.hangouts.hypnosture.util.Helpers;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -124,8 +128,6 @@ public class Fragment_Home extends Fragment {
                     btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
                     BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
                     btSocket.connect(); //start connection
-
-
                 }
             } catch (IOException e) {
                 ConnectSuccess = false; //If the try failed, you can check the exception here
@@ -1077,6 +1079,8 @@ public class Fragment_Home extends Fragment {
             File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "ImproperPosture" + pic + ".jpg", saveFile);//save the screenshot to selected path
             //shareScreenshot(file); //finally share screenshot
             pic++;
+            
+            StatisticsHelper.writeNewStatistics(1);
         } else
             //If bitmap is null show toast message
             Toast.makeText(getActivity(), R.string.screenshot_take_failed, Toast.LENGTH_SHORT).show();

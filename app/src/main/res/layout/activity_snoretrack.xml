@@ -7,16 +7,23 @@
     tools:context="com.google.hangouts.hypnosture.SnoreTrackActivity">
 
 
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
         android:id="@+id/textView4"
@@ -25,9 +32,10 @@
         android:layout_alignBottom="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="13dp"
-        android:text="SNORE TRACK"
-        android:textColor="@color/LoginEdittextColor"
+        android:text="Snore Track"
+        android:textColor="@color/white"
         android:textSize="20sp" />
+
 
     <TextView
         android:id="@+id/textViewIntensity"

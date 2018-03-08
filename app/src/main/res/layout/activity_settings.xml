@@ -10,15 +10,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/settingsToolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/toolbar"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:theme="?attr/actionBarTheme"-->
+        <!--android:layout_marginBottom="15dp"-->
+        <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/settingsToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:layout_marginBottom="15dp"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
     <TextView
         android:id="@+id/textView2"
@@ -26,8 +32,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:layout_marginLeft="80dp"
-        android:text="SETTINGS" />
+        android:layout_gravity="center"
+        android:text="Settings" />
 
     </android.support.v7.widget.Toolbar>
 
