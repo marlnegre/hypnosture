@@ -49,8 +49,8 @@ public class Fragment_Exercise extends Fragment {
 
         listOfExercises = (ListView)view.findViewById(R.id.listView);
 
-        ListViewClass adapter = new ListViewClass(Fragment_Exercise.this, exercises, images);
-        listOfExercises.setAdapter(adapter);
+//        ListViewClass adapter = new ListViewClass(Fragment_Exercise.this, exercises, images);
+//        listOfExercises.setAdapter(adapter);
 
         listOfExercises.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
