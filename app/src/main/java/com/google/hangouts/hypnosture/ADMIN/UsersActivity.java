@@ -123,6 +123,7 @@ public class UsersActivity extends AppCompatActivity {
             case R.id.logout:
                 mAuth.signOut();
                 startActivity(new Intent(this, AdminLogin.class));
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
