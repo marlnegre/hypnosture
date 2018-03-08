@@ -117,6 +117,7 @@
     <string name="drawer_snore">Snore Track</string>
     <string name="drawer_logout">Log Out</string>
     <string name="act_perstat">Performance Statistics</string>
+    <string name="performance_track">Performance Track</string>
     <string name="act_profile">Profile</string>
     <string name="act_recom">Recommendation</string>
     <string name="act_snore">Snore Track</string>

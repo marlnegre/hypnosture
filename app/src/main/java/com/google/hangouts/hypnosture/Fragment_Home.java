@@ -23,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.hangouts.hypnosture.util.Helpers;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -124,8 +126,6 @@ public class Fragment_Home extends Fragment {
                     btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
                     BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
                     btSocket.connect(); //start connection
-
-
                 }
             } catch (IOException e) {
                 ConnectSuccess = false; //If the try failed, you can check the exception here

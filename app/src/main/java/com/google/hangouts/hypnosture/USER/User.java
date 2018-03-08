@@ -1,5 +1,7 @@
 package com.google.hangouts.hypnosture.USER;
 
+import com.google.hangouts.hypnosture.model.Statistics;
+
 /**
  * Created by neil on 2/9/18.
  */

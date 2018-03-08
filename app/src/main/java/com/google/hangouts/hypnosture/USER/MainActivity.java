@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final String passLogin = password.getText().toString().trim();
 
                 if(userLogin.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Username is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Email is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 if(userLogin.isEmpty() && passLogin.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Username and Password is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Email and Password is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
