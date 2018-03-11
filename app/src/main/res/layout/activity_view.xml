@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.hangouts.hypnosture.ViewActivity">
+    android:layout_gravity="center"
+    tools:context="com.google.hangouts.hypnosture.ViewActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:ignore="MergeRootFrame" />
 
     <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+        android:id="@+id/appBarLayout2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <android.support.v7.widget.Toolbar
@@ -21,12 +34,13 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <TextView
+                android:id="@+id/titleView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:text="Improper Posture"
                 android:textColor="@color/white"
-                android:text="Improper Posture" />
+                android:textSize="20dp" />
 
 
         </android.support.v7.widget.Toolbar>
@@ -35,14 +49,59 @@
 
     <ImageView
         android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="104dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="350dp"
+        android:maxWidth="350dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        app:srcCompat="@drawable/improperposture0" />
+
+    <TextView
+        android:id="@+id/dateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="date and time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/improper_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="64dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dateTime"
+        android:layout_marginTop="34dp"
+        android:text="@string/improper_desc"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/a" />
+        app:layout_constraintTop_toBottomOf="@+id/dateTime" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/recom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:text="@string/recommend"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

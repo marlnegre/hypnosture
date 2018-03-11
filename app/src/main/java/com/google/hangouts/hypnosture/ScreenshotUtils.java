@@ -6,6 +6,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -26,11 +28,12 @@ public class ScreenshotUtils {
 
 
     /*  Create Directory where screenshot will save for sharing screenshot  */
-    public static File getMainDirectoryName(Context context) {
+    public static File getMainDirectoryName(Context context, String user_id) {
         //Here we will use getExternalFilesDir and inside that we will make our Demo folder
         //benefit of getExternalFilesDir is that whenever the app uninstalls the images will get deleted automatically.
+
         File mainDir = new File(
-                context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "Demo");
+                context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), user_id);
 
         //If File is not present create directory
         if (!mainDir.exists()) {
