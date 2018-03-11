@@ -3,13 +3,17 @@ package com.google.hangouts.hypnosture;
 import android.os.Environment;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.io.File;
 import java.util.ArrayList;
 
 public class PhotoManager {
 
+    String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
-    final String MEDIA_PATH = baseDir + "/Android/data/com.google.hangouts.hypnosture";
+    final String MEDIA_PATH = baseDir + "/Android/data/com.google.hangouts.hypnosture/files/Pictures/" + user_id;
     private ArrayList<String> songsList= new ArrayList<String>();
     private String mp3Pattern = ".jpg";
     private String pngPattern = ".png";

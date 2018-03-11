@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.hangouts.hypnosture.model.Statistics;
 import com.google.hangouts.hypnosture.model.statistics_helper.StatisticsHelper;
 import com.google.hangouts.hypnosture.util.Helpers;
@@ -31,6 +32,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -42,7 +45,7 @@ public class Fragment_Home extends Fragment {
     TextView display_angle;
     ImageView angle_image, emoticon;
     RelativeLayout rootContent;
-    ScreenShot ss = new ScreenShot();
+    //ScreenShot ss = new ScreenShot();
     Boolean done = false;
     int counter = 0;
     int pic = 0;
@@ -1072,13 +1075,15 @@ public class Fragment_Home extends Fragment {
         if (b != null) {
             //showScreenShotImage(b);//show bitmap over imageview
 
-
             sendNotification();
 
-            File saveFile = com.google.hangouts.hypnosture.ScreenshotUtils.getMainDirectoryName(getActivity());//get the path to save screenshot
-            File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, "ImproperPosture" + pic + ".jpg", saveFile);//save the screenshot to selected path
+            String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            Date currentTime = Calendar.getInstance().getTime();
+
+            File saveFile = com.google.hangouts.hypnosture.ScreenshotUtils.getMainDirectoryName(getActivity(),user_id);//get the path to save screenshot
+            File file = com.google.hangouts.hypnosture.ScreenshotUtils.store(b, currentTime.toString() + ".jpg", saveFile);//save the screenshot to selected path
             //shareScreenshot(file); //finally share screenshot
-            pic++;
             
             StatisticsHelper.writeNewStatistics(1);
         } else
