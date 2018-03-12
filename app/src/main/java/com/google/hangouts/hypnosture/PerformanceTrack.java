@@ -2,6 +2,8 @@ package com.google.hangouts.hypnosture;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -47,24 +49,38 @@ public class PerformanceTrack extends AppCompatActivity {
                 final TextView postureNumber = view.findViewById(R.id.postureNumber);
                 final ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
-                StatisticsHelper.getStatistics(new Date(date), new StatisticsHelper.GetStatisticsCallback() {
-                    @Override
-                    public void onGet(Long improperPosture) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        postureNumber.setText(String.format(improperPosture.toString()));
-                    }
-                });
+                boolean connected = false;
+                ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    //we are connected to a network
+                    connected = true;
+                }
+                else
+                    connected = false;
 
-                printDate.setText(date.toString());
-                builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                if(connected) {
+                    StatisticsHelper.getStatistics(new Date(date), new StatisticsHelper.GetStatisticsCallback() {
+                        @Override
+                        public void onGet(Long improperPosture) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            postureNumber.setText(String.format(improperPosture.toString()));
+                        }
+                    });
+
+                    printDate.setText(date.toString());
+                    builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    builder.setView(view);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else
+                    Toast.makeText(getApplication(),"No Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
     }
