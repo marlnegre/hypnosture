@@ -36,9 +36,9 @@ public class SnoreHelper {
         System.out.println(startDate);
         System.out.println(endDate);
         System.out.println(currentUser.getUid());
-        Query statistics = FirebaseDatabase.getInstance().getReference("Snore").child(currentUser.getUid()).orderByChild("timestamp").startAt(startDate.getTime()).endAt(endDate.getTime());
+        Query snore = FirebaseDatabase.getInstance().getReference("Snore").child(currentUser.getUid()).orderByChild("timestamp").startAt(startDate.getTime()).endAt(endDate.getTime());
 
-        statistics.addListenerForSingleValueEvent(
+        snore.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -52,7 +52,7 @@ public class SnoreHelper {
                     }
                 });
 
-        return statistics;
+        return snore;
     }
 
     public interface GetSnoreCallback {

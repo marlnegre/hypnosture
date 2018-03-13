@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.hangouts.hypnosture.model.snore_helper.SnoreHelper;
 import com.google.hangouts.hypnosture.model.statistics_helper.StatisticsHelper;
 
 import java.util.Date;
@@ -57,14 +58,13 @@ public class SnoreTrackActivity extends AppCompatActivity {
                     connected = false;
 
                 if(connected) {
-                    StatisticsHelper.getStatistics(new Date(date), new StatisticsHelper.GetStatisticsCallback() {
+                    SnoreHelper.getSnore(new Date(date), new SnoreHelper.GetSnoreCallback() {
                         @Override
-                        public void onGet(Long improperPosture) {
+                        public void onGet(Long snoreDetected) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            snoreNumber.setText(String.format(improperPosture.toString()));
+                            snoreNumber.setText(String.format(snoreDetected.toString()));
                         }
                     });
-
                     printDate.setText(date.toString());
                     builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
                         @Override
