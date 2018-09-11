@@ -47,6 +47,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="40dp"
     android:paddingTop="135dp">
+
         <ImageButton
         android:id="@+id/postureRecommendation"
         app:srcCompat="@drawable/posturerecom"
