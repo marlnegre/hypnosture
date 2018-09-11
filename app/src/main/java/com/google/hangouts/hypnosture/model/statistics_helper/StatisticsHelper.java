@@ -13,10 +13,6 @@ import com.google.hangouts.hypnosture.util.Helpers;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * Created by bone on 08/03/2018.
- */
-
 public class StatisticsHelper {
     public static void writeNewStatistics(Integer improper_posture) {
         Statistics statistics = new Statistics(improper_posture);
@@ -30,10 +26,10 @@ public class StatisticsHelper {
         Date startDate = Helpers.getStartOfDay(currentDate);
         Date endDate = Helpers.getEndOfDay(currentDate);
 
-        System.out.println(currentDate);
-        System.out.println(startDate);
-        System.out.println(endDate);
-        System.out.println(currentUser.getUid());
+//        System.out.println(currentDate);
+//        System.out.println(startDate);
+//        System.out.println(endDate);
+//        System.out.println(currentUser.getUid());
         Query statistics = FirebaseDatabase.getInstance().getReference("Statistics").child(currentUser.getUid()).orderByChild("timestamp").startAt(startDate.getTime()).endAt(endDate.getTime());
 
         statistics.addListenerForSingleValueEvent(

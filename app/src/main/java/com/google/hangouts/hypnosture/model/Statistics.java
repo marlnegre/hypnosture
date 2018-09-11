@@ -2,10 +2,6 @@ package com.google.hangouts.hypnosture.model;
 
 import com.google.hangouts.hypnosture.util.Helpers;
 
-/**
- * Created by bone on 08/03/2018.
- */
-
 public class Statistics {
     public Integer improper_posture;
     public Long timestamp;
